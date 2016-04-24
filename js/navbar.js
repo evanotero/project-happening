@@ -8,7 +8,7 @@ var section_show_time = 500;
 jQuery(document).ready(function($) {
 
     // Switch section
-    $("a", '.mainmenu').click(function() {
+    $("a", '.mainmenu, #circle-wrap').click(function() {
         if (!$(this).hasClass('active')) {
             current_item = this;
             // Close all visible divs with the class of .section
