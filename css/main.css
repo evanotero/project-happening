@@ -191,13 +191,20 @@ body
 {
     display: block;
 
-    width: 20%;
+    width: 50%;
     height: auto;
     margin-top: -5%;
     margin-right: auto;
     margin-left: auto;
 }
 
+@media (min-width: 768px)
+{
+    #logo
+    {
+        width: 300px;
+    }
+}
 
 /********************************************************/
 /*                      Typography                      */
@@ -369,6 +376,7 @@ a:active
 .list-social .btn
 {
     font-size: 1.3em;
+    font-weight: bold;
 }
 
 .list-social .btn:hover,
