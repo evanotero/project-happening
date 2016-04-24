@@ -43,4 +43,29 @@
 </head>
 
 <body class="theme-shadows">
+  <div class="container col-sm-4 col-sm-offset-4 form-box">
+    <div class="row form-top">
+      <div class="form-top-left">
+        <h3>Admin Panel Login</h3>
+      </div>
+      <div class="form-top-right">
+        <i class="fa fa-lock"></i>
+      </div>
+    </div>
+  <div class="row form-bottom">
+  <form role="form" action="" method="post" class="login-form">
+    <div class="form-group">
+      <label class="sr-only" for="form-username">Username</label>
+        <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+      </div>
+      <div class="form-group">
+        <label class="sr-only" for="form-password">Password</label>
+        <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+      </div>
+      <button type="submit" class="btn">Sign in</button>
+  </form>
+  </div>
+  <!-- Load js libs only when the page is loaded. -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </body>
