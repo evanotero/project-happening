@@ -1,6 +1,7 @@
 html
 {
-    min-height: 100%;
+    height: 100%;
+    overflow: hidden;
 
     background: #505d6e url(../img/background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -11,12 +12,13 @@ html
 
 body
 {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.5em;
 
-    min-height: 100%;
+    height: 100%;
+    overflow: auto;
 
     color: #fff;
     color: rgba(255, 255, 255, .8);
@@ -28,7 +30,7 @@ body
 
 
 /********************************************************/
-/*                    Navigation bar                    */
+/*                        Nav bar                       */
 /********************************************************/
 
 .mainmenu
@@ -153,7 +155,7 @@ body
 
 
 /********************************************************/
-/*             Sections - universal classes             */
+/*                       Sections                       */
 /********************************************************/
 
 .section
@@ -171,16 +173,25 @@ body
     padding-bottom: 50px;
 }
 
+#mywall,
+#addevent
+{
+    padding-top: 80px;
+}
+
 @media (min-width: 768px)
 {
     .section
     {
         padding-top: 160px;
     }
+
+    #mywall,
+    #addevent
+    {
+        padding-top: 80px;
+    }
 }
-
-
-/* Show one of sections */
 
 #home
 {
@@ -352,25 +363,9 @@ a:active
 /*                 UI - Thumbnails                      */
 /********************************************************/
 
-.thumbnail
-{
-    padding: 10px;
-
-    border: 0 none;
-    -webkit-border-radius: 2px;
-       -moz-border-radius: 2px;
-            border-radius: 2px;
-    background-color: rgba(255, 255, 255, .2);
-}
-
-.thumbnail .caption
-{
-    color: inherit;
-}
-
 
 /********************************************************/
-/*                 Everything else                      */
+/*                     Contact Us                       */
 /********************************************************/
 
 .list-social .btn
@@ -403,7 +398,7 @@ a:active
 
 
 /***********************************************************/
-/*                    Text shadows                         */
+/*                    Text Shadows                         */
 /***********************************************************/
 
 .text-shadows
@@ -622,4 +617,74 @@ a:hover .underline
             transform: translate(1px, 35px) translateZ(0) translate3d(0, 0, 0);
 
     opacity: 1;
+}
+
+/* Admin Panel Login */
+.form-box
+{
+    margin-top: 70px;
+}
+
+.form-top
+{
+    overflow: hidden;
+
+    padding: 0 25px 0 25px;
+
+    text-align: left;
+
+    background: rgba(254, 209, 54, .35);
+}
+
+.form-top-left
+{
+    float: left;
+
+    width: 75%;
+    padding-top: 25px;
+}
+
+.form-top-left h3
+{
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+
+    margin-top: 0;
+
+    color: #fff;
+}
+
+.form-top-right
+{
+    font-size: 66px;
+    line-height: 100px;
+
+    float: left;
+
+    width: 25%;
+
+    text-align: right;
+
+    opacity: .5;
+    color: #fff;
+}
+
+.form-bottom
+{
+    padding: 25px 25px 25px 25px;
+
+    text-align: left;
+
+    background: rgba(87, 22, 25, .3);
+}
+
+.form-bottom form textarea
+{
+    height: 100px;
+}
+
+.form-bottom form button.btn
+{
+    width: 100%;
 }
