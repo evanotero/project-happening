@@ -1,18 +1,17 @@
-// global. currently active menu item 
+// Default Active Menu Item
 var current_item = 0;
 
-// few settings
+// Timers
 var section_hide_time = 500;
 var section_show_time = 500;
 
-// jQuery stuff
 jQuery(document).ready(function($) {
 
     // Switch section
     $("a", '.mainmenu').click(function() {
         if (!$(this).hasClass('active')) {
             current_item = this;
-            // close all visible divs with the class of .section
+            // Close all visible divs with the class of .section
             $('.section:visible').fadeOut(section_hide_time, function() {
                 $('a', '.mainmenu').removeClass('active');
                 $(current_item).addClass('active');
