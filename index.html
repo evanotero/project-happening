@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page Information -->
     <meta name="description" content="Boston College Events">
     <meta name="author" content="Evan Otero - Clinton Tak - Sinclair Jones">
     <title>Happening</title>
@@ -34,12 +35,18 @@
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- JS Libs  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/moment-with-locales.min.js"></script>
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 
 <body class="theme-shadows">
@@ -145,8 +152,89 @@
                 Share your events with the entire Boston College campus.
             </p>
         </div>
+        <div class="container">
+            <form id="addevent-form">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="eventnamelabel">Event Name</span>
+                            <input type="text" name="username" class="form-control" placeholder="..." aria-describedby="eventnamelabel">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="eventgrouplabel">Host/Group Name</span>
+                            <input type="text" name="group" class="form-control" placeholder="..." aria-describedby="eventgrouplabel">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="eventlocationlabel">Location</span>
+                            <input type="text" name="location" class="form-control" placeholder="..." aria-describedby="eventlocationlabel">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="eventurllabel">Event Link (URL)</span>
+                            <input type="text" name="link" class="form-control" placeholder="..." aria-describedby="eventurllabel">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-md-3 col-md-offset-3'>
+                        <div class="form-group">
+                            <label for="datetimepicker1">Date/Time Start:</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' name="datestart" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-3'>
+                        <div class="form-group">
+                            <label for="datetimepicker2">Date/Time End:</label>
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' name="dateend" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="form-group">
+                            <label for="eventcategory">Event Category:</label>
+                            <select class="form-control" id="eventcategory">
+                                <option>Placehodler1</option>
+                                <option>Placehodler2</option>
+                                <option>Placeholder3</option>
+                                <option>Placeholder4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <div class="form-group">
+                            <label for="eventdescription">Event Descripton:</label>
+                            <textarea class="form-control" rows="5" id="eventdescription" name="description"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <!-- Button trigger modal -->
-        <a href="#" class="col-lg-2 col-lg-offset-5 btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
+        <a href="#" class="col-sm-2 col-sm-offset-5 btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
     </section>
     <!-- Fourth (Contact) section -->
     <section class="section" id="contact">
@@ -164,10 +252,7 @@
             </div>
         </div>
     </section>
-    <!-- Load js libs only when the page is loaded. -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <!-- Custom template scripts -->
+    <!-- Custom scripts -->
     <script src="js/navbar.js"></script>
     <script src="js/scripts.js"></script>
 </body>
