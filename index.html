@@ -32,7 +32,7 @@
     <meta name="msapplication-config" content="img/icons/browserconfig.xml">
     <meta name="theme-color" content="#571619">
     <!-- Styles -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -43,6 +43,59 @@
 </head>
 
 <body class="theme-shadows">
+    <!-- Modal Window Register/Lost Password -->
+    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" align="center">
+                    <img class="img-circle" id="img_logo" src="img/happeninglogo.png">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div id="div-forms">
+                    <!-- Register Form -->
+                    <form id="register-form">
+                        <div class="modal-body">
+                            <div id="div-register-msg">
+                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-register-msg">Register an account.</span>
+                            </div>
+                            <input id="register_username" class="form-control" type="text" placeholder="Username (type ERROR for error effect)" required>
+                            <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
+                            <input id="register_password" class="form-control" type="password" placeholder="Password" required>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                            </div>
+                            <div>
+                                <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Lost Password Form -->
+                    <form id="lost-form" style="display:none;">
+                        <div class="modal-body">
+                            <div id="div-lost-msg">
+                                <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-lost-msg">Type your e-mail.</span>
+                            </div>
+                            <input id="lost_email" class="form-control" type="text" placeholder="E-Mail (type ERROR for error effect)" required>
+                        </div>
+                        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                            </div>
+                            <div>
+                                <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <nav class="mainmenu">
         <div class="container">
             <div class="dropdown">
@@ -92,6 +145,8 @@
                 Share your events with the entire Boston College campus.
             </p>
         </div>
+        <!-- Button trigger modal -->
+        <a href="#" class="col-lg-2 col-lg-offset-5 btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register-modal">Register/Forgot Password</a>
     </section>
     <!-- Fourth (Contact) section -->
     <section class="section" id="contact">
@@ -110,10 +165,11 @@
         </div>
     </section>
     <!-- Load js libs only when the page is loaded. -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <!-- Custom template scripts -->
     <script src="js/navbar.js"></script>
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
