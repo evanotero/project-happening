@@ -1,5 +1,5 @@
-// Modal Window Functions
 $(function() {
+    // Modal Window Variables
     var $formLost = $('#lost-form');
     var $formRegister = $('#register-form');
     var $divForms = $('#div-forms');
