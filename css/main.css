@@ -635,7 +635,7 @@ a:hover .underline
 
     text-align: left;
 
-    background: rgba(254, 209, 54, .35);
+    background: rgba(87, 22, 25, .7);
 }
 
 .form-top-left
@@ -678,7 +678,7 @@ a:hover .underline
 
     text-align: left;
 
-    background: rgba(87, 22, 25, .3);
+    background: rgba(87, 22, 25, .5);
 }
 
 .form-bottom form textarea
