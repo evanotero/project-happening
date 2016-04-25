@@ -40,9 +40,16 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="theme-shadows">
+  <?php
+  if(isset($_POST['submit']) && !empty($_POST['submit'])) {
+    verifyReCaptcha();
+  }
+  ?>
   <div class="container col-sm-4 col-sm-offset-4 form-box">
     <div class="row form-top">
       <div class="form-top-left">
@@ -52,20 +59,54 @@
         <i class="fa fa-lock"></i>
       </div>
     </div>
-  <div class="row form-bottom">
-  <form role="form" action="" method="post" class="login-form">
-    <div class="form-group">
-      <label class="sr-only" for="form-username">Username</label>
-        <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
-      </div>
-      <div class="form-group">
-        <label class="sr-only" for="form-password">Password</label>
-        <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
-      </div>
-      <button type="submit" class="btn">Sign in</button>
-  </form>
+    <div class="row form-bottom">
+      <?php displayForm() ?>
+    </div>
   </div>
   <!-- Load js libs only when the page is loaded. -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </body>
+</html>
+<?php
+function displayForm() {
+  $username = isset($_GET['username']) ? $_GET['username'] : "";
+?>
+<form action="" method="post" class="login-form">
+        <div class="form-group">
+          <label class="sr-only" for="form-username">Username</label>
+            <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" value="<?php echo$username ?>">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="form-password">Password</label>
+            <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+          </div>
+          <div class="g-recaptcha" data-sitekey="6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0"></div>
+          <br>
+          <button type="submit" name="submit" class="btn">Sign in</button>
+      </form>
+<?php
+}
+
+function verifyLogin() {
+  // Write code...
+}
+
+function verifyReCaptcha() {
+  if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
+    // Secret Key
+    $secret = '6LciMB4TAAAAAHC62dLUopifKuaJlF6XT1kLKPcZ';
+    // Verify Response Data
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+    $responseData = json_decode($verifyResponse);
+    if($responseData->success) {
+      verifyLogin(); // Now verify login information
+    } else {
+      $errMsg = 'Robot verification failed, please try again.';
+    }
+  } else {
+    $errMsg = 'Please click on the reCAPTCHA box.';
+  }
+  echo $errMsg;
+}
+?>
