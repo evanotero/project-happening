@@ -1,3 +1,4 @@
+// Form Submission
 $(function() {
     // Modal Window Variables
     var $formLost = $('#lost-form');
@@ -73,6 +74,7 @@ $(function() {
         }, $msgShowTime);
     }
 });
+// Bootstrap 3 Datepicker v4
 $(function() {
     $('#datetimepicker1').datetimepicker();
     $('#datetimepicker2').datetimepicker({
@@ -84,4 +86,8 @@ $(function() {
     $("#datetimepicker7").on("dp.change", function(e) {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
+});
+// Help Popover
+$(function() {
+    $('#help').popover();
 });
