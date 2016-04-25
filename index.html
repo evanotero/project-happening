@@ -150,10 +150,12 @@
             <h2 class="text-center title">Add Event</h2>
             <p class="lead text-center">
                 Share your events with the entire <span class="textgold">Boston College</span> campus.
+                <a tabindex="0" class="btn btn-sm btn-info" role="button" data-toggle="popover" data-trigger="focus" title="Help - click anywhere to dismiss" data-content="In order to add events, you must be a registered user and approved by an administrator.  After a registered user submits an event, it will be posted to the public page after approval.  If you would like to register to post events, please click on the button at the bottom of the page." id="help"><i class="fa fa-question" aria-hidden="true"></i></a>
             </p>
         </div>
         <div class="container">
             <form id="addevent-form">
+                <!-- Event Name Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
@@ -162,6 +164,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Event Group Name Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
@@ -170,6 +173,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Location Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
@@ -178,14 +182,16 @@
                         </div>
                     </div>
                 </div>
+                <!-- Event URL Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
-                            <span class="input-group-addon" id="eventurllabel">Event Link (URL)</span>
+                            <span class="input-group-addon" id="eventurllabel">Event URL</span>
                             <input type="text" name="link" class="form-control" placeholder="https://orgsync.com/12345/events/..." aria-describedby="eventurllabel">
                         </div>
                     </div>
                 </div>
+                <!-- Media URL Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
@@ -194,6 +200,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Date Input -->
                 <div class="row">
                     <div class='col-md-3 col-md-offset-3'>
                         <div class="form-group">
@@ -218,19 +225,21 @@
                         </div>
                     </div>
                 </div>
+                <!-- Event Category Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="form-group">
                             <label for="eventcategory">Event Category:</label>
                             <select class="form-control" id="eventcategory">
-                                <option>Placehodler1</option>
-                                <option>Placehodler2</option>
+                                <option>Placeholder1</option>
+                                <option>Placeholder2</option>
                                 <option>Placeholder3</option>
                                 <option>Placeholder4</option>
                             </select>
                         </div>
                     </div>
                 </div>
+                <!-- Event Description Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="form-group">
@@ -239,6 +248,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- Username Input -->
                 <div class="row">
                     <div class='col-md-3 col-md-offset-3'>
                         <div class="input-group">
@@ -246,6 +256,7 @@
                             <input type="text" name="username" class="form-control" placeholder="..." aria-describedby="eventusernamelabel">
                         </div>
                     </div>
+                    <!-- Password Input -->
                     <div class='col-md-3'>
                         <div class="input-group">
                             <span class="input-group-addon" id="eventmedialabel">Password</span>
@@ -253,10 +264,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="row submitrow">
+                    <!-- Register User Modal Button -->
+                    <div class="col-md-3 col-md-offset-3 ">
+                        <a href="#" class="col-md-12 btn btn-primary btn-md" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
+                    </div>
+                    <!-- Submit Button -->
+                    <div class="col-md-3">
+                        <input type="submit" name="submit" class="col-md-12 btn btn-primary btn-md submit" value="Submit Event">
+                    </div>
+                </div>
             </form>
         </div>
-        <!-- Button trigger modal -->
-        <a href="#" class="col-sm-2 col-sm-offset-5 btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
     </section>
     <!-- Fourth (Contact) section -->
     <section class="section" id="contact">
