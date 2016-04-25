@@ -366,7 +366,7 @@ a:active
 
 
 /********************************************************/
-/*                 UI - Thumbnails                      */
+/*              UI - Thumbnails/Posters                 */
 /********************************************************/
 
 
@@ -389,7 +389,6 @@ a:active
 
 
 /* Social buttons in the footer */
-
 #social
 {
     margin-top: 50px;
@@ -789,6 +788,43 @@ div.modal-content .glyphicon
 div.modal-content .form-control
 {
     border-radius: 0;
+}
+
+
+/***********************************************************/
+/*                    Date Picker Menu                     */
+/***********************************************************/
+.date .dropdown-menu {
+  background-color: rgba(0,0,0,.7);
+  color: white;
+}
+
+
+/***********************************************************/
+/*                    Add Event Form                       */
+/***********************************************************/
+form#addevent-form input,
+form#addevent-form select,
+form#addevent-form textarea {
+    background-color: rgba(0,0,0,.7);
+    color: white;
+}
+
+
+form#addevent-form span {
+    background-color: rgba(87,22,25,.8);
+    color: white;
+    font-weight: bold;
+}
+
+form#addevent-form label {
+    color: white;
+    border-radius: 1px;
+    font-weight: bold;
+}
+
+#addevent .row {
+    padding-bottom: 5px;
 }
 
 /***********************************************************/
