@@ -1,7 +1,8 @@
 html
 {
-    height: 100%;
     overflow: hidden;
+
+    height: 100%;
 
     background: #505d6e url(../img/background.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -17,8 +18,9 @@ body
     font-weight: normal;
     line-height: 1.5em;
 
-    height: 100%;
     overflow: auto;
+
+    height: 100%;
 
     color: #fff;
     color: rgba(255, 255, 255, .8);
@@ -617,6 +619,172 @@ a:hover .underline
             transform: translate(1px, 35px) translateZ(0) translate3d(0, 0, 0);
 
     opacity: 1;
+}
+
+
+/***********************************************************/
+/*                    Register Modal                       */
+/***********************************************************/
+#register-modal .modal-dialog
+{
+    font-family: 'Roboto', sans-serif;
+
+    width: 350px;
+}
+
+#register-modal input[type=text],
+input[type=password]
+{
+    margin-top: 10px;
+}
+
+#div-lost-msg,
+#div-register-msg
+{
+    line-height: 28px;
+
+    height: 30px;
+
+    transition: all ease-in-out 500ms;
+
+    color: black;
+    border: 1px solid #fed136;
+}
+
+#div-lost-msg.success,
+#div-register-msg.success
+{
+    border: 1px solid #68c3a3;
+    background-color: #c8f7c5;
+}
+
+#div-lost-msg.error,
+#div-register-msg.error
+{
+    border: 1px solid #eb575b;
+    background-color: #ffcad1;
+}
+
+#icon-lost-msg,
+#icon-register-msg
+{
+    line-height: 28px;
+
+    float: left;
+
+    width: 30px;
+    margin-right: 5px;
+
+    transition: all ease-in-out 500ms;
+    text-align: center;
+
+    color: black;
+    background-color: #fed136;
+}
+
+#icon-lost-msg.success,
+#icon-register-msg.success
+{
+    background-color: #68c3a3 !important;
+}
+
+#icon-lost-msg.error,
+#icon-register-msg.error
+{
+    background-color: #eb575b !important;
+}
+
+#img_logo
+{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.modal-backdrop.in
+{
+    opacity: .8;
+
+    filter: alpha(opacity=50);
+}
+
+.modal-content
+{
+    border: 1px solid #bdc3c7;
+    border-radius: 0;
+    outline: 0;
+    background-color: rgba(236,236,236,1);
+}
+
+.modal-header
+{
+    min-height: 16.43px;
+    padding: 15px 15px 15px 15px;
+
+    border-bottom: 0;
+}
+
+.modal-body
+{
+    position: relative;
+
+    padding: 5px 15px 5px 15px;
+}
+
+.modal-footer
+{
+    padding: 15px 15px 15px 15px;
+
+    text-align: left;
+
+    border-top: 0;
+}
+
+div.modal-content .btn
+{
+    border-radius: 0;
+}
+
+div.modal-content .btn:focus,
+div.modal-content .btn:active:focus,
+div.modal-content .btn.active:focus,
+div.modal-content .btn.focus,
+div.modal-content .btn:active.focus,
+div.modal-content .btn.active.focus
+{
+    outline: none;
+}
+
+div.modal-content .btn-lg,
+div.modal-content .btn-group-lg > .btn
+{
+    color: white;
+    border-radius: 0;
+    background-color: #571619;
+}
+
+div.modal-content .btn-link
+{
+    padding: 5px 10px 0 0;
+
+    color: #2c3e50;
+}
+
+div.modal-content .btn-link:hover,
+div.modal-content .btn-link:focus
+{
+    text-decoration: none;
+
+    color: #571619;
+}
+
+div.modal-content .glyphicon
+{
+    top: 0;
+}
+
+div.modal-content .form-control
+{
+    border-radius: 0;
 }
 
 /***********************************************************/
