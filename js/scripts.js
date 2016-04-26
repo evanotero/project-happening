@@ -1,4 +1,4 @@
-// Form Submission
+// Execute when document is ready
 $(function() {
     // Modal Window Variables
     var $formLost = $('#lost-form');
@@ -73,9 +73,8 @@ $(function() {
             $iconTag.removeClass($iconClass + " " + $divClass);
         }, $msgShowTime);
     }
-});
-// Bootstrap 3 Datepicker v4
-$(function() {
+
+    // Bootstrap 3 Datepicker v4
     $('#datetimepicker1').datetimepicker();
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important! See issue #1075
@@ -86,8 +85,28 @@ $(function() {
     $("#datetimepicker7").on("dp.change", function(e) {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
-});
-// Help Popover
-$(function() {
+
+    // Help Popover
     $('#help').popover();
+
+    // Parse OrgSync RSS Data and Insert into DB
+    $url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true"
+    scrapeRSS($url);
+
+    // Parse RSS and Return XML
+    function scrapeRSS($url) {
+        var request = $.ajax({
+            url: "includes/fetchevents.php",
+            type: "POST",
+            data: "url=" + $url,
+            success: function(data) {
+                console.log(data); // DEBUG
+                return true;
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr + " " + status + " " + error); // DEBUG
+                return false;
+            }
+        });
+    }
 });
