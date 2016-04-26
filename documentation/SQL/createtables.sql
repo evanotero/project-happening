@@ -14,12 +14,11 @@ CREATE TABLE users (
 # Before inserting into table,
 # convert org_id to group/club's name
 CREATE TABLE events (
-    ID VARCHAR(10) NOT NULL,
+    ID int NOT NULL AUTO_INCREMENT,
     NAME VARCHAR(100) NOT NULL,
     GROUP VARCHAR(70),
     LOCATION VARCHAR(320),
     DESCRIPTION VARCHAR(1000),
-    RSVPS INT,
     MEDIAURL VARCHAR(500),
     STARTDATE Date NOT NULL, 
     ENDDATE Date NOT NULL,
