@@ -3,8 +3,9 @@
 1. Add styling for events to MyWall (figure out if all events should be loaded at once or if more should load once as user scrolls)
 2. Add Form Validation to Add Events
 3. Add Form Validation to Register User / Forgot Password
-4. Add Google reCaptcha to Register User Form
-5. Create and Style Admin Panel Page
+4. Remove Google reCaptcha from Admin Login Form
+5. Add Google reCaptcha to Register User Form
+6. Create and Style Admin Panel Page
 
 ## Server-Side
 1. Create Events and Users Tables (add approved boolean variable to events table?  Keep track of manually added events and what users added them?)
