@@ -30,11 +30,12 @@ foreach ($items as $item) {
     $startdate = $item->children("event", true)->startdate[0];
     $enddate = $item->children("event", true)->enddate[0];
     $type = $item->children("event", true)->type[0];
-    $mediaurl = isset($item->children("media", true)->content) ? $item->children("media", true)->content->attributes()["url"] : "";
+    $mediaurl = isset($item->children("media", true)->content) ? $item->children("media", true)->content->attributes()["url"] : NULL;
     $eventlink = $item->link;
     // 1. Query to see if event already exits in database
     // 2. Check if each variable exists, else set to NULL
-    // 3. Insert Event into DB
+    // 3. Convert XML date to SQL date
+    // 4. Insert Event into DB
     // $result = perform_query( $dbc, $query )
     //print_r ($item); DEBUG
 }
