@@ -1,7 +1,7 @@
 <?php
 
 function connect_to_db( $dbname ){
-    $dbc = @mysqli_connect( "localhost", "username", "password", $dbname ) or
+    $dbc = @mysqli_connect( "localhost", "takc", "password", $dbname ) or
             die( "Connect failed: ". mysqli_connect_error() );
     return $dbc;
 }
