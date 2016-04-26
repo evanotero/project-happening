@@ -1,7 +1,6 @@
 <?php
 	// Start the session
 	session_start();
-	$_SESSION['hasError'];
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +59,7 @@
       </div>
     </div>
     <div class="row form-bottom">
-      <?php displayForm() ?>
+      <?php displayAdminPage() ?>
     </div>
   </div>
   <!-- Load js libs only when the page is loaded. -->
@@ -69,29 +68,15 @@
 </body>
 </html>
 <?php
-function displayForm() {
-  $username = isset($_GET['username']) ? $_GET['username'] : "";
-?>
-<form action="redirect.php" method="post" class="login-form">
-        <div class="form-group">
-          <label class="sr-only" for="form-username">Username</label>
-            <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" value="<?php echo $username ?>">
-          </div>
-          <div class="form-group">
-            <label class="sr-only" for="form-password">Password</label>
-            <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
-          </div>
-          <?php if($_SESSION['hasError']==1) { ?>
-          	<div id="alertAdminRegister">
-          		<p><?php echo $_SESSION['error'] ?></p>
-         	 </div>
-          <?php } ?>
-          <button type="submit" name="submit" class="btn">Sign in</button>
-      </form>
-<?php
-}
-/*
 
-*/	
+
+function displayAdminPage() {
+
+	$name = $_SESSION['name'];
+	echo "Hello, ".$name."!";
+
+}
+
+	
 
 ?>
