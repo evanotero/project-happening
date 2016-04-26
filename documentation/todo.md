@@ -9,7 +9,7 @@
 
 ## Server-Side
 1. Create Events and Users Tables (add approved boolean variable to events table?  Keep track of manually added events and what users added them?)
-2. Add Search Form to MyWall
+2. Add Search Form to MyWall (Make sure to santize input)
 3. Add Filtering Form to MyWall
 4. Add AJAX and PHP for Register User (check if user already exists)
 5. Add AJAX and PHP for Lost Password (check if user exists, then email new password)
