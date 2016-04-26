@@ -1,6 +1,6 @@
 <?php
   $response = array();
-  $errMsg = ""; 
+  $errMsg = "";
   if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
     // Secret Key
     $secret = '6LciMB4TAAAAAHC62dLUopifKuaJlF6XT1kLKPcZ';
@@ -19,9 +19,9 @@
   if($errMsg) {
     $response['status'] = 'failure';
     $response['errormsg'] = $errMsg;
-  } else
+  } else {
     $response['status'] = 'success';
+  }
   header('Content-type: application/json');
   echo json_encode($response);
-}
 ?>
