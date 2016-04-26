@@ -180,7 +180,7 @@ body
 #mywall,
 #addevent
 {
-    padding-top: 10px;
+    padding-top: 80px;
 }
 
 @media (min-width: 768px)
@@ -193,7 +193,7 @@ body
     #mywall,
     #addevent
     {
-        padding-top: 10px;
+        padding-top: 80px;
     }
 }
 
