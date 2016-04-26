@@ -4,7 +4,7 @@
 2. Add Form Validation to Add Events
 3. Add Form Validation to Register User / Forgot Password
 4. ~~Remove Google reCaptcha from Admin Login Form~~
-5. Add Google reCaptcha to Register User Form _and_ Forgot Password
+5. Add Google reCaptcha to Register User Form, Forgot Password Form, _and_ Add Event Form
 6. Create and Style Admin Panel Page
 
 ## Server-Side
@@ -18,3 +18,4 @@
 8. Add AJAX and PHP for Admins removing events from DB
 9. Add AJAX and PHP for Admins editing events in DB
 10. Add AJAX and PHP for Admins approving users to create events
+11. Add AJAX and _finish_ PHP for Google reCaptcga
