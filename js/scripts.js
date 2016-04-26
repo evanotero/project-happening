@@ -89,11 +89,11 @@ $(function() {
     // Help Popover
     $('#help').popover();
 
-    // Parse OrgSync RSS Data and Insert into DB
+    // Call scrapeRSS with BC OrgSync URL
     $url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true"
     scrapeRSS($url);
 
-    // Parse RSS and Return XML
+    // Parse RSS Data and Insert into DB
     function scrapeRSS($url) {
         var request = $.ajax({
             url: "includes/fetchevents.php",
