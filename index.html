@@ -24,7 +24,7 @@
     <link rel="icon" type="image/png" href="img/icons/android-chrome-192x192.png" sizes="192x192">
     <link rel="icon" type="image/png" href="img/icons/favicon-16x16.png" sizes="16x16">
     <link rel="manifest" href="img/icons/manifest.json">
-    <link rel="mask-icon" href="img/icons/safari-pinned-tab.svg" color="#571619">
+    <link rel="mask-icon" href="img/icons/safari-pinned-tab.svg" color="#571619"> <!-- Shows error when validated, but is legal -->
     <link rel="shortcut icon" href="img/icons/favicon.ico">
     <meta name="apple-mobile-web-app-title" content="Happening">
     <meta name="application-name" content="Happening">
@@ -47,15 +47,16 @@
     <script src="js/moment-with-locales.min.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="theme-shadows">
     <!-- Modal Window Register/Lost Password -->
-    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" align="center">
-                    <img class="img-circle" id="img_logo" src="img/happeninglogo.png">
+                <div class="modal-header">
+                    <img class="img-circle" alt="logo" id="img_logo" src="img/happeninglogo.png">
                 </div>
                 <div id="div-forms">
                     <!-- Register Form -->
@@ -68,7 +69,8 @@
                             <input id="register_username" class="form-control" type="text" placeholder="Username (type ERROR for error effect)" required>
                             <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
                             <input id="register_password" class="form-control" type="password" placeholder="Password" required>
-                            <!-- ### ADD RECAPTCHA HERE ### -->
+                            <!-- reCAPTCHA -->
+                            <div class="g-recaptcha" data-sitekey="6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0"></div>
                         </div>
                         <div class="modal-footer">
                             <div>
@@ -88,6 +90,8 @@
                                 <span id="text-lost-msg">Type your e-mail.</span>
                             </div>
                             <input id="lost_email" class="form-control" type="text" placeholder="E-Mail (type ERROR for error effect)" required>
+                            <!-- reCAPTCHA -->
+                            <div class="g-recaptcha" data-sitekey="6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0"></div>
                         </div>
                         <div class="modal-footer">
                             <div>
@@ -108,7 +112,7 @@
         <div class="container">
             <div class="dropdown">
                 <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <ul class="dropdown-menu" role="menu">
                     <li><a href="#home" class="active">Welcome</a></li>
                     <li><a href="#mywall" id="navmywall">My Wall</a></li>
                     <li><a href="#addevent">Add Event</a></li>
@@ -205,9 +209,9 @@
                 <div class="row">
                     <div class='col-md-3 col-md-offset-3'>
                         <div class="form-group">
-                            <label for="datetimepicker1">Date/Time Start:</label>
+                            <label for="datetimepicker1input">Date/Time Start:</label>
                             <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' name="datestart" class="form-control" />
+                                <input type='text' id="datetimepicker1input" name="datestart" class="form-control" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -216,9 +220,9 @@
                     </div>
                     <div class='col-md-3'>
                         <div class="form-group">
-                            <label for="datetimepicker2">Date/Time End:</label>
+                            <label for="datetimepicker2input">Date/Time End:</label>
                             <div class='input-group date' id='datetimepicker2'>
-                                <input type='text' name="dateend" class="form-control" />
+                                <input type='text' id='datetimepicker2input' name="dateend" class="form-control" />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -260,9 +264,15 @@
                     <!-- Password Input -->
                     <div class='col-md-3'>
                         <div class="input-group">
-                            <span class="input-group-addon" id="eventmedialabel">Password</span>
-                            <input type="text" name="password" class="form-control" placeholder="..." aria-describedby="eventmedialabel">
+                            <span class="input-group-addon" id="eventpasswordlabel">Password</span>
+                            <input type="text" name="password" class="form-control" placeholder="..." aria-describedby="eventpasswordlabel">
                         </div>
+                    </div>
+                </div>
+                <!-- reCaptcha -->
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-3 ">
+                        <div class="g-recaptcha" data-sitekey="6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0"></div>
                     </div>
                 </div>
                 <div class="row submitrow">
