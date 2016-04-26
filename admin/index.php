@@ -40,8 +40,6 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <!-- reCAPTCHA -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body class="theme-shadows">
@@ -81,8 +79,6 @@ function displayForm() {
             <label class="sr-only" for="form-password">Password</label>
             <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
           </div>
-          <div class="g-recaptcha" data-sitekey="6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0"></div>
-          <br>
           <button type="submit" name="submit" class="btn">Sign in</button>
       </form>
 <?php
