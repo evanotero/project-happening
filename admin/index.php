@@ -43,11 +43,7 @@
 </head>
 
 <body class="theme-shadows">
-  <?php
-  if(isset($_POST['submit']) && !empty($_POST['submit'])) {
-    verifyReCaptcha();
-  }
-  ?>
+
   <div class="container col-sm-4 col-sm-offset-4 form-box">
     <div class="row form-top">
       <div class="form-top-left">
@@ -82,5 +78,59 @@ function displayForm() {
           <button type="submit" name="submit" class="btn">Sign in</button>
       </form>
 <?php
+}
+
+function verifyForm () {
+		$username;
+		$password;
+		$encPass;
+		$hasError = 0;
+		
+		$hasUserError = 0;
+		$usernameError = "You must provide a valid username.";
+		
+		$hasPassError = 0;
+		$passError = "You must provide a valid password.";
+		
+		
+		if(isset($_POST['username'])) {    //validate username
+			$username = $_POST['username'];
+		}
+		else {
+			$hasUserError = 1;
+			$hasError = 1;		
+		}
+		
+		
+		
+		if(isset($_POST['password'])){     //validate password
+			$password = $_POST['password'];
+			$encPass = sha1($password);
+		}
+		else {
+			$hasPassError = 1;
+			$hasError = 1;
+		}
+		
+		if ($hasError == 1) {    //form has some sort of error
+			if($hasUserError == 1 && $hasPassError == 1){   //has not provided either user or pass
+			 	$error = "You must provide a valid username and password.";
+			 	echo $error;
+			}
+			else if ($hasUserError == 1){   //user error
+				echo $usernameError;
+			}
+			else{                           //pass error
+				echo $passError;
+			}
+		}
+		else {                  //no error. Check the server if user is admin
+		
+			
+		
+		}
+		
+		
+		
 }
 ?>
