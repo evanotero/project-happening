@@ -30,7 +30,7 @@ foreach ($items as $item) {
     $startdate = $item->children("event", true)->startdate[0];
     $enddate = $item->children("event", true)->enddate[0];
     $type = $item->children("event", true)->type[0];
-    $mediaurl = $item->children("media", true)->content->attributes()["url"];
+    $mediaurl = isset($item->children("media", true)->content) ? $item->children("media", true)->content->attributes()["url"] : "";
     $eventlink = $item->link;
     // 1. Query to see if event already exits in database
     // 2. Check if each variable exists, else set to NULL
