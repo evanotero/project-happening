@@ -74,6 +74,15 @@ function displayAdminPage() {
 
 	$name = $_SESSION['name'];
 	echo "Hello, ".$name."!";
+	?>
+	<form action="killSession.php" method="get" class="form-bottom">
+        <div class="form-group">   
+          <button type="submit" name="Logout" class="btn">Log Out</button>
+        </div>
+    </form>
+      
+    <?php
+      
 
 }
 
