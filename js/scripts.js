@@ -36,7 +36,6 @@ $(function() {
     $("form").submit(function(e) {
         switch (this.id) {
             case "lost-form":
-                console.log("lost");
                 var ls_email = $('#lost_email').val();
                 // Place holder validation
                 if (ls_email == "ERROR") {
@@ -49,7 +48,6 @@ $(function() {
                 return false;
                 break;
             case "register-form":
-                console.log("register");
                 var rg_username = $('#register_username').val();
                 var rg_email = $('#register_email').val();
                 var rg_password = $('#register_password').val();
@@ -64,7 +62,14 @@ $(function() {
                 return false;
                 break;
             case "addevent-form":
-                console.log("addevent");
+                // Insert Form Validation...
+                verifyCaptcha(recaptcha1).done(function(result) {
+                    if (result['status'] == "success") {
+                        // Insert AJAX to insert event...
+                    }
+                }).fail(function() {
+                    // console.log("Error in Captcha - Add Event.");
+                });
                 grecaptcha.reset(recaptcha1);
                 return false;
                 break;
@@ -76,6 +81,18 @@ $(function() {
 
     function verifyCaptcha(recaptchaid) {
         var response = grecaptcha.getResponse(recaptchaid);
+        return $.ajax({
+            url: "includes/verifycaptcha.php",
+            type: "POST",
+            data: "g-recaptcha-response=" + response,
+            success: function(data) {
+                //console.log(data); // DEBUG
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr + " " + status + " " + error); // DEBUG
+            },
+            dataType: "json"
+        });
     }
 
     $('#lost_register_btn').click(function() { modalAnimate(formLost, formRegister); });
