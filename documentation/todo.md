@@ -1,5 +1,5 @@
 # To-Do
-## Front-End
+## Client-Side
 1. Add styling for events to MyWall (figure out if all events should be loaded at once or if more should load once as user scrolls)
 2. Add Form Validation to Add Events
 3. Add Form Validation to Register User / Forgot Password
@@ -9,7 +9,7 @@
 7. If possible, make all styling compatible with mobile
 
 ## Server-Side
-1. Create Events and Users Tables (add approved boolean variable to events table?  Keep track of manually added events and what users added them?)
+1. ~~Create Events and Users Tables (add approved boolean variable to events table)~~ _Keep track of manually added events and what users added them?_
 2. Add Search Form to MyWall (Make sure to santize input)
 3. Add Filtering Form to MyWall
 4. Add AJAX and PHP for Register User (check if user already exists)
@@ -19,4 +19,4 @@
 8. Add AJAX and PHP for Admins removing events from DB
 9. Add AJAX and PHP for Admins editing events in DB
 10. Add AJAX and PHP for Admins approving users to create events
-11. Add AJAX and _finish_ PHP for Google reCaptcga
+11. ~~Add AJAX and _finish_ PHP for Google reCaptcha~~
