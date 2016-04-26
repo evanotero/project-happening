@@ -1,7 +1,5 @@
 <?php
 include("dbconn.php");
-//INSERT INTO events (ID, NAME, GROUP, LOCATION, DESCRIPTION, ) 
-//VALUES ($id, $eventName, $group, $location, $description, )
 
 // Get RSS URL
 $URL = $_POST['url'];
