@@ -718,7 +718,11 @@ input[type=password]
     min-height: 16.43px;
     padding: 15px 15px 15px 15px;
 
+    text-align: center;
+
     border-bottom: 0;
+
+    align: center;
 }
 
 .modal-body
