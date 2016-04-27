@@ -793,10 +793,16 @@ div.modal-content .form-control
 /***********************************************************/
 /*                    Date Picker Menu                     */
 /***********************************************************/
-.date .dropdown-menu
+.date .bootstrap-datetimepicker-widget
 {
     color: white;
     background-color: rgba(0,0,0,.7);
+}
+
+
+.date .btn
+{
+    color: white;
 }
 
 
