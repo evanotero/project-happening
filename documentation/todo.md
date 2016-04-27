@@ -9,7 +9,7 @@
 7. If possible, make all styling compatible with mobile
 
 ## Server-Side
-1. ~~Create Events and Users Tables (add approved boolean variable to events table)~~ _Keep track of manually added events and what users added them?_
+1. ~~Create Events and Users Tables (Add approved boolean variable to events table; Keep track of manually added events and what users added them)~~
 2. Add Search Form to MyWall (Make sure to santize input)
 3. Add Filtering Form to MyWall
 4. Add AJAX and PHP for Register User (check if user already exists)
