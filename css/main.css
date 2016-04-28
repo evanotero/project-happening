@@ -931,10 +931,63 @@ form#addevent-form label
     width: 100%;
 }
 
+
 #alertAdminRegister
 {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
     font-size: 12px;
 
     color: red;
+}
+
+
+
+/***********************************************************/
+/*                    Table Formatting                     */
+/***********************************************************/ 
+
+div.table-wrapper
+{
+    width: 100%;
+    opacity: .9;
+}
+
+table#results
+{
+    font-size: 13px;
+
+    width: 75%;
+    margin: 0 auto;
+
+    border-collapse: collapse;
+
+    color: #333;
+    border-width: 1px;
+    border-color: #666;
+}
+
+table#results th
+{
+    padding: 8px;
+
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666;
+    background-color: #571619;
+}
+
+table#results td
+{
+    padding: 8px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666;
+    background-color: #fff;
+}
+
+table#results tr:nth-child(even) td
+{
+    background-color: #fed136;
 }
