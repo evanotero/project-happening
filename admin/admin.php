@@ -1,6 +1,8 @@
 <?php
 	// Start the session
 	session_start();
+	if(!isset($_SESSION['name']))
+		header("Location: index.php");
 ?>
 
 <!DOCTYPE html>
@@ -73,8 +75,27 @@
 function displayAdminPage() {
 
 	$name = $_SESSION['name'];
+	$email = $_SESSION['email'];
+	
 	echo "Hello, ".$name."!";
+	//echo "Your email is ".$email;
+	/*
+	$query = "select * from events where approved=0;";
+	$result = search($query);
+	
+	if(mysqli_num_rows($result) == 0){
+		//all events are approved
+	
+	}
+	else{
+		//select to approve
+	}
+	*/
 	?>
+	<div class='table'>
+	
+	</div>
+	<br>
 	<form action="killSession.php" method="get" class="form-bottom">
         <div class="form-group">   
           <button type="submit" name="Logout" class="btn">Log Out</button>

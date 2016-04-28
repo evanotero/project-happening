@@ -1,7 +1,15 @@
 <?php
 	
 	session_start();
+		
+		function search ($query){   //Needs to be changed for include file
+			
+			//function in file which is not on github
+			//function connects to mysql
+			//then calls		$result = perform_query( $dbc, $query );
 
+			//returns result
+		}
 	
 		$username;
 		$password;
@@ -45,6 +53,8 @@
 			$hasError = 1;
 		}
 		
+		
+		
 		if ($hasError == 1) {    //form has some sort of error
 			$_SESSION['hasError'] = 1;
 			if($hasUserError == 1 && $hasPassError == 1){   //has not provided either user or pass
@@ -59,16 +69,30 @@
 			header("Location: index.php");
 		}
 		else {                  //no error. Check the server if user is admin
+			/*   To be reactivated once I include the search function
 			
 			
-			/*
+			$query = "select * from users WHERE username='".$username."' and password='".$encPass."' and priv='admin';";
 			
-				Connect to server.
-				Check if user is an admin
-				display admin page.
-			
+			$result = search($query);
+			if (mysqli_num_rows($result) == 0) {
+				$SESSION['error'] = "Your username or password is incorrect";
+				header("Location: index.php");
+			}
+			else {
+				while($obj = $result->fetch_object()) {
+					$name = $obj->firstname;
+					$email = $obj->email;
+					
+					$_SESSION['email'] = $email
+					$_SESSION['name'] = $name;
+				}
+				
+			}
 			*/
+			
 			$_SESSION['name'] = "Administrator";
+			$_SESSION['email'] = "jonesuz@bc.edu";
 			
 			header("Location: admin.php");
 		
