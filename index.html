@@ -79,6 +79,10 @@
                             <div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
                             </div>
+                            <br>
+                            <div>
+                                <ul class="registererrors"></ul>
+                            </div>
                             <div>
                                 <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
                             </div>
@@ -100,6 +104,10 @@
                         <div class="modal-footer">
                             <div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                            </div>
+                            <br>
+                            <div>
+                                <ul class="losterrors"></ul>    
                             </div>
                             <div>
                                 <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
@@ -145,9 +153,6 @@
         </div>
     </section>
     <!-- Second (My Wall) section -->
-
-
-
     <section class="section" id="mywall">
         <div class="container">
             <h2 class="text-center title">My Wall</h2>
@@ -155,27 +160,22 @@
         </div>
         <div class="container" id="eventlist">
             <table id="results">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Organizer</th>
-                    <th>Location</th>
-                    <th>Description</th>
-                    <th>Media URL</th>
-                    <th>Startdate</th>
-                    <th>EndDate</th>
-                    <th>Link</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Organizer</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                        <th>Media URL</th>
+                        <th>Startdate</th>
+                        <th>EndDate</th>
+                        <th>Link</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="js/tablemaker.js"></script>
     </section>
-
-
     <!-- Third (Add Event) section -->
     <section class="section" id="addevent">
         <div class="container">
