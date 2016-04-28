@@ -37,7 +37,9 @@ $(function() {
         switch (this.id) {
             case "lost-form":
                 var ls_email = $('#lost_email').val();
-                // Place holder validation
+
+
+
                 if (ls_email == "ERROR") {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
                 } else {
@@ -51,9 +53,27 @@ $(function() {
                 var rg_username = $('#register_username').val();
                 var rg_email = $('#register_email').val();
                 var rg_password = $('#register_password').val();
-                // Place holder validation
-                if (rg_username == "ERROR") {
+                var rg_verifypassword = $('#register_verifypassword').val();
+                var rg_status = "success";
+
+                // Form Validation
+                var rg_emailerror = if(validateEmail(rg_email);
+                var rg_usernameerror = validateUsername(rg_name);
+                var rg_password = validatePassword(rg_password);
+
+                // Captcha Verification
+                verifyCaptcha(recaptcha1).done(function(result) {
+                    if (result['status'] == "success")
+                        rg_status = "success";
+                    else
+                        rg_status = "failure"
+                }).fail(function() {
+                    // console.log("Error in Captcha - Add Event.");
+                });
+
+                if (rg_status == "failure") {
                     msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error");
+                    // Add specific form errors
                 } else {
                     msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
                     // Insert AJAX...
@@ -78,6 +98,41 @@ $(function() {
         }
         return false;
     });
+
+    function validateEmail(email) {
+        var emailregex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        if (!emailregex.test(email) || email.length < 1)
+            return false;
+        else
+            return true;
+    }
+
+    function validateUsername(username) {
+        var error = "";
+        var usernameregex = /\W/; // allow letters, numbers, and underscores
+        if (username.length < 1)
+            error = "You didn't enter a username.";
+        else if ((username.length < 5) || (username.length > 20))
+            error = "The username is the wrong length.";
+        else if (usernameregex.test(username))
+            error = "The username contains illegal characters.";
+        else
+            error = "";
+        return error;
+    }
+
+    function validatePassword(password, verifypassword) {
+        var error = "";
+        if (password.length < 1)
+            error = "You didn't enter a password.";
+        else if (verifypassword.length < 1)
+            error = "You didn't verify your password.";
+        else if (password != verifypassword)
+            error = "Passwords do not match."
+        else
+            error = "";
+        return error;
+    }
 
     function verifyCaptcha(recaptchaid) {
         var response = grecaptcha.getResponse(recaptchaid);
