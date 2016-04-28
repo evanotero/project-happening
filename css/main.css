@@ -796,6 +796,12 @@ div.modal-content .form-control
     border-radius: 0;
 }
 
+.registererrors,
+.losterrors
+{
+    color: #571619;
+}
+
 
 /***********************************************************/
 /*                    Date Picker Menu                     */
