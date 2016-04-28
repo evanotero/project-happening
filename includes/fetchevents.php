@@ -32,7 +32,6 @@ foreach ($items as $item) {
     $type = $item->children("event", true)->type[0];
     $mediaurl = isset($item->children("media", true)->content) ? $item->children("media", true)->content->attributes()["url"] : NULL;
     $eventlink = $item->link;
-    // 1. Query to see if event already exits in database
     // 2. Check if each variable exists, else set to NULL
     // 3. Convert XML date to SQL date
     // 4. Insert Event into DB
