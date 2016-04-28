@@ -32,11 +32,27 @@ foreach ($items as $item) {
     $type = $item->children("event", true)->type[0];
     $mediaurl = isset($item->children("media", true)->content) ? $item->children("media", true)->content->attributes()["url"] : NULL;
     $eventlink = $item->link;
-    // 2. Check if each variable exists, else set to NULL
-    // 3. Convert XML date to SQL date
-    // 4. Insert Event into DB
+    // 1. Query to see if event already exits in database
+    $val = mysql_query('select NAME from `events` where NAME == $name');
+    if($val === FALSE)  // 3. Convert XML date to SQL date:I think the current format is fine
+    {                    // 4. Insert Event into DB
+        $query = "INSERT INTO events (
+                    ID, NAME,ORGANIZER, LOCATION,DESCRIPTION, 
+                    MEDIAURL,STARTDATE, ENDDATE,LINK, APPROVED) 
+                    VALUES ('', '$name','$group','$location','$description','$mediaurl',
+                    '$startdate','$enddate','$type','$eventlink')";
+        $dbc = connect_to_db("takc");
+        $result = perform_query( $dbc, $query); 
+       
+    }
     // $result = perform_query( $dbc, $query )
     //print_r ($item); DEBUG
+
+
+    //insert
+    
 }
+
+
 // disconnect_from_db($dbc, $result);
 ?>
