@@ -33,7 +33,21 @@ $('#register-modal').on('hidden.bs.modal', function(e) {
     $('#lost_email').val("");
     grecaptcha.reset(recaptcha3);
     grecaptcha.reset(recaptcha2);
-})
+});
+
+// Clear Add Event Form when switch nav bar
+$("a", '.mainmenu').click(function() {
+    $('#event_name').val("");
+    $('#event_host').val("");
+    $('#event_location').val("");
+    $('#event_url').val("");
+    $('#event_username').val("");
+    $('#event_password').val();
+    $('#datetimepicker1input').val("");
+    $('#datetimepicker2input').val("");
+    $(".eventerrors").text("");
+    grecaptcha.reset(recaptcha1);
+});
 
 // Execute when document is ready
 $(function() {
@@ -80,8 +94,7 @@ $(function() {
                     if (ls_status == "failure") {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error!");
                         divForms.css("height", formLost.height() + 10);
-                    }
-                    else {
+                    } else {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
                         // Insert AJAX...
                     }
@@ -129,7 +142,7 @@ $(function() {
                     }
                     if (rg_passworderror != "") {
                         rg_status = "failure";
-                        $(".registererrors").append("<li>" + rg_passworderror + "</li>");
+                        $(".registererrors").append("<li>" + rg_passworderror + "  Must be at least 6 characters, 1 number, 1 lowercase and 1 uppercase letter.</li>");
                     }
                     if (rg_verifypassworderror != "") {
                         rg_status = "failure";
@@ -156,10 +169,83 @@ $(function() {
                 return false;
                 break;
             case "addevent-form":
+                var e_name = $('#event_name').val();
+                var e_organization = $('#event_host').val();
+                var e_location = $('#event_location').val();
+                var e_url = $('#event_url').val();
+                var e_username = $('#event_username').val();
+                var e_password = $('#event_password').val();
+                var e_startdate = $('#datetimepicker1input').val();
+                var e_enddate = $('#datetimepicker2input').val();
+                var e_status = "success";
+
+                // Clear any errors
+                $(".eventerrors").text("");
+
+                // Form Validation
+                var e_nameerrors = validateString(e_name);
+                var e_organizationerrors = validateString(e_organization);
+                var e_locationerrors = validateString(e_location);
+                var e_urlerrors = validateNotEmpty(e_url);
+                var e_usernameerrors = validateUsername(e_username);
+                var e_passworderrors = validatePassword(e_password);
+                var e_startdateerrors = validateNotEmpty(e_startdate);
+                var e_enddateerrors = validateNotEmpty(e_enddate);
+                var e_captchaerror = "";
+
                 // Insert Form Validation...
                 verifyCaptcha(recaptcha1).done(function(result) {
                     if (result['status'] == "success") {
-                        // Insert AJAX to insert event...
+                        // Do nothing
+                    } else {
+                        // console.log("fail");
+                        e_status = "failure";
+                        e_captchaerror = "Captcha Failed.";
+                    }
+                    // Display Errors
+                    if (e_nameerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_nameerrors + "name.</li>");
+                    }
+                    if (e_organizationerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_organizationerrors + "organization.</li>");
+                    }
+                    if (e_locationerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_locationerrors + "location.</li>");
+                    }
+                    if (e_startdateerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_startdateerrors + "start date.</li>");
+                    }
+                    if (e_enddateerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_enddateerrors + "end date.</li>");
+                    }
+                    if (e_urlerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_urlerrors + "url.</li>");
+                    }
+                    if (e_usernameerrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_usernameerrors + "</li>");
+                    }
+                    if (e_passworderrors != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_passworderrors + "</li>");
+                    }
+                    if (e_captchaerror != "") {
+                        e_status = "failure";
+                        $(".eventerrors").append("<li>" + e_captchaerror + "</li>");
+                    }
+
+                    // Register User if no failure occured
+                    if (e_status == "failure") {
+                        // Do nothing
+                    } else {
+                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
+                        // Insert AJAX...
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
@@ -172,6 +258,25 @@ $(function() {
         }
         return false;
     });
+
+    function validateNotEmpty(str) {
+        var error = "";
+        if (str.length < 1)
+            error = "Please enter a valid ";
+        else
+            error = "";
+        return error;
+    }
+
+    function validateString(str) {
+        var error = "";
+        var strregex = /^[a-zA-Z\s]*$/;
+        if (!strregex.test(str) || str.length < 1)
+            error = "Please enter a valid ";
+        else
+            error = "";
+        return error;
+    }
 
     function validateEmail(email) {
         var error = "";
@@ -203,7 +308,7 @@ $(function() {
         // at least one number, one lowercase and one uppercase letter
         // at least six characters
         if (!passwordregex.test(password))
-            error = "Invalid Password.  Must be at least 6 characters, 1 number, 1 lowercase and 1 uppercase letter.";
+            error = "Invalid Password.";
         else
             error = "";
         return error;
