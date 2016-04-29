@@ -804,10 +804,12 @@ div.modal-content .form-control
     color: #571619;
 }
 
-.eventerrors {
+.eventerrors
+{
+    margin-top: 10px;
+
     color: #fff;
     background-color: rgba(87,22,25,.8);
-    margin-top: 10px;
 }
 
 
