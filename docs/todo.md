@@ -1,8 +1,8 @@
 # To-Do
 ## Client-Side
 1. Add styling for events to MyWall (figure out if all events should be loaded at once or if more should load once as user scrolls)
-2. Add Form Validation to Add Events
-3. Add Form Validation to Register User / Forgot Password
+2. ~~Add Form Validation to Add Events~~
+3. ~~Add Form Validation to Register User / Forgot Password~~
 4. ~~Remove Google reCaptcha from Admin Login Form~~
 5. ~~Add Google reCaptcha to Register User Form, Forgot Password Form, _and_ Add Event Form~~
 6. Create and Style Admin Panel Page
