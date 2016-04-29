@@ -31,6 +31,8 @@ $('#register-modal').on('hidden.bs.modal', function(e) {
     $('#register_password').val("");
     $('#register_verifypassword').val("");
     $('#lost_email').val("");
+    grecaptcha.reset(recaptcha3);
+    grecaptcha.reset(recaptcha2);
 })
 
 // Execute when document is ready
@@ -48,13 +50,45 @@ $(function() {
         switch (this.id) {
             case "lost-form":
                 var ls_email = $('#lost_email').val();
+                var ls_status = "success";
 
-                if (ls_email == "ERROR") {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
-                } else {
-                    msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Password Reset & Sent!");
-                    // Insert AJAX...
-                }
+                // Clear any errors
+                $(".losterrors").text("");
+
+                var ls_emailerror = validateEmail(ls_email);
+                var ls_captchaerror = "";
+
+                verifyCaptcha(recaptcha3).done(function(result) {
+                    if (result['status'] == "success") {
+                        // Do nothing
+                    } else {
+                        // console.log("fail");
+                        ls_status = "failure";
+                        ls_captchaerror = "Captcha Failed.";
+                    }
+                    // Display Errors
+                    if (ls_emailerror != "") {
+                        ls_status = "failure";
+                        $(".losterrors").append("<li>" + ls_emailerror + "</li>");
+                    }
+                    if (ls_captchaerror != "") {
+                        ls_status = "failure";
+                        $(".losterrors").append("<li>" + ls_captchaerror + "</li>");
+                    }
+
+                    // Proceed if no failure occured
+                    if (ls_status == "failure") {
+                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error!");
+                        divForms.css("height", formLost.height() + 10);
+                    }
+                    else {
+                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
+                        // Insert AJAX...
+                    }
+                }).fail(function() {
+                    // console.log("Error in Captcha - Add Event.");
+                });
+
                 grecaptcha.reset(recaptcha3);
                 return false;
                 break;
@@ -66,22 +100,6 @@ $(function() {
                 var rg_status = "success";
 
                 // Clear any errors
-                if ($("#register_username").hasClass("has-failure")) {
-                    $("#register_username").removeClass('has-failure');
-                    $("#register_username").removeClass('has-feedback');
-                }
-                if ($("#register_email").hasClass("has-failure")) {
-                    $("#register_email").removeClass('has-failure');
-                    $("#register_email").removeClass('has-feedback');
-                }
-                if ($("#register_password").hasClass("has-failure")) {
-                    $("#register_password").removeClass('has-failure');
-                    $("#register_password").removeClass('has-feedback');
-                }
-                if ($("#register_verifypassword").hasClass("has-failure")) {
-                    $("#register_verifypassword").removeClass('has-failure');
-                    $("#register_verifypassword").removeClass('has-feedback');
-                }
                 $(".registererrors").text("");
 
                 // Form Validation
@@ -96,33 +114,25 @@ $(function() {
                     if (result['status'] == "success") {
                         // Do nothing
                     } else {
-                        console.log("fail");
+                        // console.log("fail");
                         rg_status = "failure";
                         rg_captchaerror = "Captcha Failed.";
                     }
                     // Display Errors
-                    if (!rg_emailerror) {
+                    if (rg_emailerror != "") {
                         rg_status = "failure";
-                        $("#register_username").addClass('has-failure');
-                        $("#register_username").addClass('has-feedback');
                         $(".registererrors").append("<li>" + rg_emailerror + "</li>");
                     }
                     if (rg_usernameerror != "") {
                         rg_status = "failure";
-                        $("#register_email").addClass('has-failure');
-                        $("#register_email").addClass('has-feedback');
                         $(".registererrors").append("<li>" + rg_usernameerror + "</li>");
                     }
                     if (rg_passworderror != "") {
                         rg_status = "failure";
-                        $("#register_password").addClass('has-failure');
-                        $("#register_password").addClass('has-feedback');
                         $(".registererrors").append("<li>" + rg_passworderror + "</li>");
                     }
                     if (rg_verifypassworderror != "") {
                         rg_status = "failure";
-                        $("#register_verifypassword").addClass('has-failure');
-                        $("#register_verifypassword").addClass('has-feedback');
                         $(".registererrors").append("<li>" + rg_verifypassworderror + "</li>");
                     }
                     if (rg_captchaerror != "") {
@@ -131,9 +141,10 @@ $(function() {
                     }
 
                     // Register User if no failure occured
-                    if (rg_status == "failure")
+                    if (rg_status == "failure") {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error!");
-                    else {
+                        divForms.css("height", formRegister.height() + 30);
+                    } else {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
                         // Insert AJAX...
                     }
@@ -163,11 +174,13 @@ $(function() {
     });
 
     function validateEmail(email) {
+        var error = "";
         var emailregex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (!emailregex.test(email) || email.length < 1)
-            return false;
+            error = "The email is invalid.";
         else
-            return true;
+            error = "";
+        return error;
     }
 
     function validateUsername(username) {
