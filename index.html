@@ -198,7 +198,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
                             <span class="input-group-addon" id="eventnamelabel">Event Name</span>
-                            <input type="text" name="username" class="form-control" placeholder="..." aria-describedby="eventnamelabel">
+                            <input type="text" id="event_name" name="name" class="form-control" placeholder="..." aria-describedby="eventnamelabel">
                         </div>
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
                             <span class="input-group-addon" id="eventgrouplabel">Host/Group Name</span>
-                            <input type="text" name="group" class="form-control" placeholder="..." aria-describedby="eventgrouplabel">
+                            <input type="text" id="event_host" name="group" class="form-control" placeholder="..." aria-describedby="eventgrouplabel">
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
                             <span class="input-group-addon" id="eventlocationlabel">Location</span>
-                            <input type="text" name="location" class="form-control" placeholder="..." aria-describedby="eventlocationlabel">
+                            <input type="text" id="event_location" name="location" class="form-control" placeholder="..." aria-describedby="eventlocationlabel">
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
                             <span class="input-group-addon" id="eventurllabel">Event URL</span>
-                            <input type="text" name="link" class="form-control" placeholder="https://orgsync.com/12345/events/..." aria-describedby="eventurllabel">
+                            <input type="url" name="link" class="form-control" placeholder="https://orgsync.com/12345/events/..." aria-describedby="eventurllabel">
                         </div>
                     </div>
                 </div>
@@ -234,7 +234,7 @@
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="input-group">
                             <span class="input-group-addon" id="eventmedialabel">Media URL</span>
-                            <input type="text" name="media" class="form-control" placeholder="http://i.imgur.com/12345.jpg" aria-describedby="eventmedialabel">
+                            <input type="url" name="media" class="form-control" placeholder="http://i.imgur.com/12345.jpg" aria-describedby="eventmedialabel">
                         </div>
                     </div>
                 </div>
@@ -263,26 +263,12 @@
                         </div>
                     </div>
                 </div>
-                <!-- Event Category Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="form-group">
-                            <label for="eventcategory">Event Category:</label>
-                            <select class="form-control" id="eventcategory">
-                                <option>Placeholder1</option>
-                                <option>Placeholder2</option>
-                                <option>Placeholder3</option>
-                                <option>Placeholder4</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
                 <!-- Event Description Input -->
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-3">
                         <div class="form-group">
                             <label for="eventdescription">Event Descripton:</label>
-                            <textarea class="form-control" rows="5" id="eventdescription" name="description"></textarea>
+                            <textarea class="form-control" id="event_url" rows="5" id="eventdescription" name="description"></textarea>
                         </div>
                     </div>
                 </div>
@@ -291,14 +277,14 @@
                     <div class='col-md-3 col-md-offset-3'>
                         <div class="input-group">
                             <span class="input-group-addon" id="eventusernamelabel">Username</span>
-                            <input type="text" name="username" class="form-control" placeholder="..." aria-describedby="eventusernamelabel">
+                            <input type="text" id="event_username" name="username" class="form-control" placeholder="..." aria-describedby="eventusernamelabel">
                         </div>
                     </div>
                     <!-- Password Input -->
                     <div class='col-md-3'>
                         <div class="input-group">
                             <span class="input-group-addon" id="eventpasswordlabel">Password</span>
-                            <input type="text" name="password" class="form-control" placeholder="..." aria-describedby="eventpasswordlabel">
+                            <input type="text" id="event_password" name="password" class="form-control" placeholder="..." aria-describedby="eventpasswordlabel">
                         </div>
                     </div>
                 </div>
@@ -311,12 +297,15 @@
                 </div>
                 <div class="row submitrow">
                     <!-- Register User Modal Button -->
-                    <div class="col-md-3 col-md-offset-3 ">
+                    <div class="col-md-3 col-md-offset-3">
                         <a href="#" class="col-md-12 btn btn-primary btn-md" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
                     </div>
                     <!-- Submit Button -->
                     <div class="col-md-3">
                         <input type="submit" name="submit" class="col-md-12 btn btn-primary btn-md submit" value="Submit Event">
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <ul class="eventerrors"></ul>
                     </div>
                 </div>
             </form>
