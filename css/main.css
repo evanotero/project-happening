@@ -799,6 +799,8 @@ div.modal-content .form-control
 .registererrors,
 .losterrors
 {
+    padding-top: 5px;
+
     color: #571619;
 }
 
@@ -960,11 +962,12 @@ form#addevent-form label
 
 /***********************************************************/
 /*                    Table Formatting                     */
-/***********************************************************/ 
+/***********************************************************/
 
 div.table-wrapper
 {
     width: 100%;
+
     opacity: .9;
 }
 
