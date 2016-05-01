@@ -4,13 +4,13 @@ $string = isset($_GET['q']) ? $_GET['q'] : "";
 $dbc= connect_to_db("takc");
 if ($string == "" ) {
     //$query="select * from `events`";
-    $query="select * from `events` where `name`";
+    $query="select * from `events`";
 } else {
     $string = "%".$string."%";
-    $query = "(select * from `events` where `name` NOT IN ($list) AND `NAME` like '$string')  union
-                            (select * from `events` where `GROUP` like '$string' AND `attraction_id`) union
-                            (select * from `events` where `LOCATION` like '$string' AND `attraction_id`) union
-                            (select * from `events` where `STARTDATE` like '$string' AND `attraction_id`)";
+    $query = "(select * from `events` where `name` AND `NAME` like '$string')  union
+                            (select * from `events` where `GROUP` like '$string') union
+                            (select * from `events` where `LOCATION` like '$string') union
+                            (select * from `events` where `STARTDATE` like '$string')";
 }
 $result = perform_query( $dbc, $query );       
 $data = array();
