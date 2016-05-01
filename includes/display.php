@@ -1,6 +1,5 @@
 <?php
-//====================insert username/password later========//
-include("dbconn.php");
+include("dbconn.php")
 $dbc= connect_to_db("takc");
 if ($string == "" ) {
     //$query="select * from `events`";
