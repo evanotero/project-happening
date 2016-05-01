@@ -410,4 +410,33 @@ $(function() {
             }
         });
     }
+    function populateTable() {
+        var str = "";
+        if ($('input#searchtext').val()) {
+            str = $('input#searchtext').val();
+        }
+        $.getJSON("includes/display.php", { q: str }, function(data) {
+                $.each(data, function(i, value) {
+                    $("#results tbody").append("<tr><td>" +
+                        value.name + "</td><td>" +
+                        value.organizer + "</td><td>" +
+                        value.location + "</td><td>" +
+                        value.description + "</td><td>" +
+                        value.mediaurl + "</td><td>" +
+                        value.startdate + "</td><td>" +
+                        value.enddate + "</td><td>" +
+                        value.link + "</td><td>" +
+                        "<form method='GET' onsubmit='hideAttraction(this); displayTable(); return false;'>" +
+                        "<input type='hidden' value='" + value.attraction_id + "' name='attraction_id' />" +
+                        "<input type='hidden' value='Hide' name='op' id='hideop' />" +
+                        "<input type='submit' value='Hide' name='submit' id='hideattraction' />" +
+                        "</form>" + "</td></tr>");
+                });
+
+            })
+            .fail(function() {
+                console.log("getJSON error");
+            });
+    }
+    //put events into a table 
 });
