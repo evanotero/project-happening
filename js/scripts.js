@@ -410,6 +410,8 @@ $(function() {
             }
         });
     }
+    //poplating table 
+    populateTable();
     function populateTable() {
         var str = "";
         if ($('input#searchtext').val()) {
@@ -417,20 +419,28 @@ $(function() {
         }
         $.getJSON("includes/display.php", { q: str }, function(data) {
                 $.each(data, function(i, value) {
-                    $("#results tbody").append("<tr><td>" +
-                        value.name + "</td><td>" +
-                        value.organizer + "</td><td>" +
-                        value.location + "</td><td>" +
-                        value.description + "</td><td>" +
-                        value.mediaurl + "</td><td>" +
-                        value.startdate + "</td><td>" +
-                        value.enddate + "</td><td>" +
-                        value.link + "</td><td>" +
-                        "<form method='GET' onsubmit='hideAttraction(this); displayTable(); return false;'>" +
-                        "<input type='hidden' value='" + value.attraction_id + "' name='attraction_id' />" +
-                        "<input type='hidden' value='Hide' name='op' id='hideop' />" +
-                        "<input type='submit' value='Hide' name='submit' id='hideattraction' />" +
-                        "</form>" + "</td></tr>");
+                    var array = value.startdate.split("-");
+                    var startyear = array[0];
+                    var startmonth = array[1];
+                    var startday = array[2];
+
+                    $("#results").append("<li>"+
+                        "<time datetime="+
+                        value.startdate + "><span class='day'>"+
+                        startday + "</span><span class='month'>"+
+                        startmonth + " </span><span class='year'>"+
+                        startyear + "</span><span class='time'>ALL DAY</span></time><img alt="+
+                        value.name + "src="+
+                        value.mediaurl + "/><div class='info'><h2 class='title'>"+
+                        value.name + "</h2><p class='desc'>"+
+                        value.description + "</p></div"+
+                        "<div class='social'>"+
+                            "<ul>"+
+                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>"+
+                                "<li class='google-plus'><i clas='fa fa-info fa-lg' aria-hidden='true'></i></li>"+
+                                "<li class='twitter'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>"+
+                            "</ul>"+
+                        "</div></li>");
                 });
 
             })
