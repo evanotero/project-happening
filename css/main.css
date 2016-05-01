@@ -520,8 +520,8 @@ a:active
     background-color: rgb(200, 200, 200);
 }
 .facebook i,
-.twitter i,
-.google-plus i
+.link i,
+.info i
 {
     display: block;
 
@@ -529,11 +529,11 @@ a:active
 
     color: rgb(75, 110, 168) !important;
 }
-.twitter i
+.link i
 {
     color: rgb(254,209,54) !important;
 }
-.google-plus i
+.info i
 {
     color: rgb(87,22,25) !important;
 }
@@ -542,12 +542,12 @@ a:active
     color: rgb(255, 255, 255) !important;
     background-color: rgb(75, 110, 168) !important;
 }
-.twitter:hover i
+.link:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(254,209,54) !important;
 }
-.google-plus:hover i
+.info:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(87,22,25) !important;
