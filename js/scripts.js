@@ -419,21 +419,22 @@ $(function() {
         // }
         $.getJSON("includes/display.php", { q: str }, function(data) {
                 $.each(data, function(i, value) {
-                    var array = value.startdate.split("-");
+                    var array = value.STARTDATE.split("-");
+                    var array2 = array[2].split(" ");
                     var startyear = array[0];
                     var startmonth = array[1];
                     var startday = array[2];
 
                     $("#results").append("<li>"+
                         "<time datetime="+
-                        value.startdate + "><span class='day'>"+
+                        value.STARTDATE + "><span class='day'>"+
                         startday + "</span><span class='month'>"+
                         startmonth + " </span><span class='year'>"+
                         startyear + "</span><span class='time'>ALL DAY</span></time><img alt="+
-                        value.name + "src="+
-                        value.mediaurl + "/><div class='info'><h2 class='title'>"+
-                        value.name + "</h2><p class='desc'>"+
-                        value.description + "</p></div"+
+                        value.NAME + "src="+
+                        value.MEDIAURL + "/><div class='info'><h2 class='title'>"+
+                        value.NAME + "</h2><p class='desc'>"+
+                        value.DESCRIPTION + "</p></div"+
                         "<div class='social'>"+
                             "<ul>"+
                                 "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>"+
