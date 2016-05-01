@@ -178,6 +178,11 @@ body
     padding-top: 100px;
     padding-bottom: 50px;
 }
+.section #unapprovedEvents
+{
+	display: block !important; 
+	
+}
 
 #mywall,
 #addevent

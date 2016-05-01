@@ -3,6 +3,8 @@
 	session_start();
 	if(!isset($_SESSION['name']))
 		header("Location: index.php");
+		
+	include "../includes/dbconn.php";
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +66,8 @@
       <?php displayAdminPage() ?>
     </div>
   </div>
+  <div class>
+  	<?php displayTable() ?>
   <!-- Load js libs only when the page is loaded. -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -79,32 +83,99 @@ function displayAdminPage() {
 	
 	echo "Hello, ".$name."!";
 	//echo "Your email is ".$email;
-	/*
-	$query = "select * from events where approved=0;";
-	$result = search($query);
 	
-	if(mysqli_num_rows($result) == 0){
-		//all events are approved
 	
-	}
-	else{
-		//select to approve
-	}
-	*/
 	?>
-	<div class='table'>
 	
-	</div>
 	<br>
 	<form action="killSession.php" method="get" class="form-bottom">
         <div class="form-group">   
           <button type="submit" name="Logout" class="btn">Log Out</button>
         </div>
     </form>
+    
+    
       
     <?php
-      
+    
+     
+}
 
+function displayTable() {
+
+	$dbc = connect_to_db('takc');
+	
+	
+	
+	$query = "select * from events where approved=0;";
+	$result = perform_query( $dbc, $query );
+	
+	if(!(mysqli_num_rows($result) == 0)){
+		
+			echo "
+		 <section class='section' id='unapprovedEvents'>
+			<div class='container' id='adminEventlist'>
+        	    <table id='eventsToApprove'>
+            	    <thead>
+                	    <tr>
+                	    	<th>select<th>
+                    	    <th>Name</th>
+                        	<th>Organizer</th>
+                   	 		<th>Location</th>
+                        	<th>Description</th>
+                        	<th>Media URL</th>
+                        	<th>Startdate</th>
+                        	<th>EndDate</th>
+                        	<th>Link</th>
+                    	</tr>
+         	       </thead>
+            	   <tbody>";
+            	   	
+            	   	
+            	   		while($obj = $result->fetch_object()) {
+            	   			//there's another unapproved event
+            	   			$E_ID = $obj->E_ID;
+            	   			$name = $obj->NAME;
+            	   			$organizer = $obj->ORGANIZER;
+            	   			$location = $obj->LOCATION;
+            	   			$desc = $obj->DESCRIPTION;
+            	   			$medurl = $obj->MEDIAURL;
+            	   			$start = $obj->STARTDATE;
+            	   			$end = $obj->ENDDATE;
+            	   			$link = $obj->LINK;
+            	   			
+            	   			echo "<tr>";
+            	   			//row
+            	   				echo "<td><input type=checkbox name='aprove[]' value='$E_ID'></td>";
+            	   				echo "<td>$name</td>";
+            	   				echo "<td>$organizer</td>";
+            	   				echo "<td>$location</td>";
+            	   				echo "<td>$desc</td>";
+            	   				echo "<td>$medurl</td>";
+            	   				echo "<td>$start</td>";
+            	   				echo "<td>$end</td>";
+            	   				echo "<td>$link</td>";
+            	   			
+            	   			echo "</tr>";
+            	   		}
+            	   		
+            	   	echo "
+            	   </tbody>
+           	 </table>
+       	 </div>
+   	 </section>";
+		
+		
+	
+	}
+	else{
+		echo "hey moron";
+		//all events are approved
+	
+	}
+	
+	 disconnect_from_db( $dbc, $result );
+	
 }
 
 	
