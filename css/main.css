@@ -180,7 +180,7 @@ body
 }
 #unapprovedEvents
 {
-	display: block !important; 
+    display: block !important;
 }
 
 #mywall,
@@ -370,9 +370,275 @@ a:active
 
 
 /********************************************************/
-/*              UI - Thumbnails/Posters                 */
+/*              My Wall - Displaying Events             */
 /********************************************************/
+.event-list
+{
+    font-family: 'Lato', sans-serif;
 
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+.event-list > li
+{
+    margin: 0 0 20px;
+    padding: 0;
+
+    background-color: rgba(255, 255, 255);
+    box-shadow: 0 0 5px rgb(51, 51, 51);
+    box-shadow: 0 0 5px rgba(51, 51, 51, .7);
+}
+.event-list > li > time
+{
+    display: inline-block;
+
+    width: 100%;
+    padding: 5px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    color: rgb(255, 255, 255);
+    background-color: rgba(254,209,54,0.7);
+}
+.event-list > li:nth-child(even) > time
+{
+    background-color: rgba(87,22,25,0.7);
+}
+.event-list > li > time > span
+{
+    display: none;
+}
+.event-list > li > time > .day
+{
+    font-size: 42pt;
+    font-weight: 300;
+    line-height: 1;
+
+    display: block;
+}
+.event-list > li time > .month
+{
+    font-size: 24pt;
+    font-weight: 900;
+    line-height: 1;
+
+    display: block;
+}
+.event-list > li time > .time
+{
+    font-size: 20pt;
+    font-weight: 300;
+    line-height: 1;
+
+    display: block;
+}
+.event-list > li > img
+{
+    display: none;
+    opacity: 0.9;
+}
+.event-list > li > .info
+{
+    padding-top: 5px;
+    background-color: rgba(245, 245, 245, 0.8);
+    text-align: center;
+}
+.event-list > li > .social
+{
+    background-color: rgba(245, 245, 245, 0.8);
+}
+.event-list > li > .info > .title
+{
+    font-size: 17pt;
+    font-weight: 700;
+    color: black;
+    margin: 0;
+}
+.event-list > li > .info > .desc
+{
+    font-size: 13pt;
+    font-weight: 300;
+    color: black;
+    margin: 0;
+}
+.event-list > li > .info > ul,
+.event-list > li > .social > ul
+{
+    display: table;
+    
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 0;
+    
+    list-style: none;
+
+    text-align: center;
+}
+.event-list > li > .social > ul
+{
+    margin: 0;
+}
+.event-list > li > .info > ul > li,
+.event-list > li > .social > ul > li
+{
+    font-size: 11pt;
+    font-weight: 300;
+
+    display: table-cell;
+
+    padding: 3px 0;
+
+    cursor: pointer;
+
+    color: rgb(30, 30, 30);
+}
+.event-list > li > .info > ul > li > i
+{
+    display: block;
+
+    width: 100%;
+
+    text-decoration: none;
+
+    color: rgb(30, 30, 30);
+}
+.event-list > li > .social > ul > li
+{
+    padding: 0;
+}
+.event-list > li > .social > ul > li > i
+{
+    padding: 3px 0;
+}
+.event-list > li > .info > ul > li:hover,
+.event-list > li > .social > ul > li:hover
+{
+    color: rgb(30, 30, 30);
+    background-color: rgb(200, 200, 200);
+}
+.facebook i,
+.twitter i,
+.google-plus i
+{
+    display: block;
+
+    width: 100%;
+
+    color: rgb(75, 110, 168) !important;
+}
+.twitter i
+{
+    color: rgb(254,209,54) !important;
+}
+.google-plus i
+{
+    color: rgb(87,22,25) !important;
+}
+.facebook:hover i
+{
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(75, 110, 168) !important;
+}
+.twitter:hover i
+{
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(254,209,54) !important;
+}
+.google-plus:hover i
+{
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(87,22,25) !important;
+}
+
+@media (min-width: 768px)
+{
+    .event-list > li
+    {
+        position: relative;
+
+        display: block;
+        
+        width: 100%;
+        height: 120px;
+        padding: 0;
+    }
+    .event-list > li > time,
+    .event-list > li > img
+    {
+        display: inline-block;
+    }
+    .event-list > li > time,
+    .event-list > li > img
+    {
+        float: left;
+
+        width: 120px;
+    }
+    .event-list > li > .info
+    {
+        overflow: hidden;
+
+        background-color: rgba(245, 245, 245, 0.8);
+    }
+    .event-list > li > time,
+    .event-list > li > img
+    {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+        padding: 0;
+    }
+    .event-list > li > .info
+    {
+        position: relative;
+
+        height: 120px;
+        padding-right: 40px;
+
+        text-align: left;
+    }
+    .event-list > li > .info > .title,
+    .event-list > li > .info > .desc
+    {
+        padding: 0 10px;
+    }
+    .event-list > li > .info > ul
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    .event-list > li > .social
+    {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.0);
+        display: block;
+
+        width: 40px;
+    }
+    .event-list > li > .social > ul
+    {
+        border-left: 1px solid rgb(230, 230, 230);
+    }
+    .event-list > li > .social > ul > li
+    {
+        display: block;
+
+        padding: 0;
+    }
+    .event-list > li > .social > ul > li > i
+    {
+        display: block;
+
+        width: 40px;
+        padding: 10px 0 9px;
+    }
+}
 
 /********************************************************/
 /*                     Contact Us                       */
