@@ -7,6 +7,7 @@
 5. ~~Add Google reCaptcha to Register User Form, Forgot Password Form, _and_ Add Event Form~~
 6. Create and Style Admin Panel Page
 7. If possible, make all styling compatible with mobile
+8. Use LazyLoad to make webpage load quicker
 
 ## Server-Side
 1. ~~Create Events and Users Tables (Add approved boolean variable to events table; Keep track of manually added events and what users added them)~~
