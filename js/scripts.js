@@ -414,9 +414,9 @@ $(function() {
     populateTable();
     function populateTable() {
         var str = "";
-        if ($('input#searchtext').val()) {
-            str = $('input#searchtext').val();
-        }
+        // if ($('input#searchtext').val()) {
+        //     str = $('input#searchtext').val();
+        // }
         $.getJSON("includes/display.php", { q: str }, function(data) {
                 $.each(data, function(i, value) {
                     var array = value.startdate.split("-");
