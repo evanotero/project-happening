@@ -444,8 +444,9 @@ $(function() {
                 });
 
             })
-            .fail(function() {
+            .fail(function(xhr, status, error) {
                 console.log("getJSON error");
+                console.log(xhr + " " + status + " " + error); // DEBUG
             });
     }
     //put events into a table 
