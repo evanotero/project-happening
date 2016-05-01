@@ -1,12 +1,8 @@
 <?php
-$string = isset($_GET['q']) ? $_GET['q'] : "";
-$list = "0";
-if (isset($_COOKIE['bobc'])) {
-    $hidden_attractions = unserialize($_COOKIE['bobc']);
-    $list = "'". implode("', '", $hidden_attractions) ."'";
-}
+
 //====================insert username/password later========//
-$dbc= @mysqli_connect("localhost", "username", "password", "csci2254") or die("Connect failed: ". mysqli_connect_error());
+include("dbconn.php")
+$dbc= connect_to_db("takc");
 if ($string == "" ) {
     //$query="select * from `events`";
     $query="select * from `events` where `name` NOT IN ($list) ";
@@ -23,6 +19,4 @@ while ($obj = mysqli_fetch_object($result)) {
     $data[] = $obj;
 }
 echo json_encode($data);
-if (gettype($result)==="object")
-    mysqli_free_result($result);
-mysqli_close($dbc);
+disconnect_from_db($dbc, $result); 
