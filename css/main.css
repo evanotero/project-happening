@@ -1105,7 +1105,6 @@ div.modal-content .form-control
 /***********************************************************/
 
 form#addevent-form input:not(.submit),
-form#addevent-form select,
 form#addevent-form textarea
 {
     color: white;
@@ -1128,10 +1127,10 @@ form#addevent-form label
     color: white;
     border-radius: 1px;
 }
-
-#addevent .row
+#addevent .input-group,
+#addevent .form-group
 {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .popover-title
@@ -1287,4 +1286,14 @@ table#results td
 table#results tr:nth-child(even) td
 {
     background-color: #fed136;
+}
+
+
+/***********************************************************/
+/*                       ReCaptcha                          */
+/***********************************************************/
+
+div.g-recaptcha {
+  margin: 0 auto;
+  width: 304px;
 }
