@@ -580,6 +580,6 @@ $(function() {
             hour -= 0;
             hour += ":";
         }
-        return hour + min + ampm
+        return hour + min + ampm;
     }
 });
