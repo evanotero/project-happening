@@ -1,3 +1,9 @@
+// Screen Dimensions
+var viewport = {
+    width: $(window).width(),
+    height: $(window).height()
+};
+
 // Render Google reCaptcha
 var recaptcha1;
 var recaptcha2;
@@ -57,17 +63,39 @@ $(document).on('click', '.social .link i', function() {
     $(this).children()[0].click();
 });
 
-// Execute when document is ready
+/*** Execute when document is ready ***/
 $(function() {
-    // Modal Window Variables
+    /*** Variables ***/
     var formLost = $('#lost-form');
     var formRegister = $('#register-form');
     var divForms = $('#div-forms');
     var modalAnimateTime = 300;
     var msgAnimateTime = 150;
     var msgShowTime = 2000;
+    var url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true";
 
+    /*** Function Calls when Document is Ready ***/
+    displayPopover(); // Help Popover
+    scrapeRSS(url); // Get data from RSS
+    populateWall(); // Put events on MyWall
+    $('#datetimepicker1').datetimepicker(); // Bootstrap 3 Datepicker v4
+    $('#datetimepicker2').datetimepicker({
+        useCurrent: false //Important!
+    });
 
+    /*** Event Listeners ***/
+    // Listen for Date Picker
+    $("#datetimepicker1").on("dp.change", function(e) {
+        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker2").on("dp.change", function(e) {
+        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+
+    $('#lost_register_btn').click(function() { modalAnimate(formLost, formRegister); });
+    $('#register_lost_btn').click(function() { modalAnimate(formRegister, formLost); });
+
+    // Listen for Form Submission
     $("form").submit(function(e) {
         switch (this.id) {
             case "lost-form":
@@ -267,6 +295,7 @@ $(function() {
         return false;
     });
 
+    /*** Form Validation Functions ***/
     function validateNotEmpty(str) {
         var error = "";
         if (str.length < 1)
@@ -349,9 +378,7 @@ $(function() {
         });
     }
 
-    $('#lost_register_btn').click(function() { modalAnimate(formLost, formRegister); });
-    $('#register_lost_btn').click(function() { modalAnimate(formRegister, formLost); });
-
+    /*** Modal Animate & Message Display  ***/
     function modalAnimate(oldForm, newForm) {
         var oldH = oldForm.height();
         var newH = newForm.height();
@@ -383,27 +410,25 @@ $(function() {
         }, msgShowTime);
     }
 
-    // Bootstrap 3 Datepicker v4
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker({
-        useCurrent: false //Important!
-    });
-    $("#datetimepicker1").on("dp.change", function(e) {
-        $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-    });
-    $("#datetimepicker7").on("dp.change", function(e) {
-        $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-    });
+    /*** Display Popovers Function ***/
+    function displayPopover() {
+        var placement = "auto right";
 
-    // Help Popover
-    $('#help').popover();
+        if (viewport.width < 768) {
+            placement = "auto bottom"
+        }
 
-    // Call scrapeRSS with BC OrgSync URL and populate MyWall
-    var url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true"
-    scrapeRSS(url);
-    populateWall();
+        $('#help').popover({
+            placement: placement,
+            content: "<p>Use this section to add events that are not posted to OrgSync, or are currently not listed.</p>" +
+                "<p>In order to add events, you must be a registered user and approved by an administrator." +
+                "  After a registered user submits an event, it will be posted to the public page after approval." +
+                "  If you would like to register to post events, please click on the button at the bottom of the page.</p>",
+            viewport: { 'selector': 'body', 'padding': '5px 5px 5px 5px' }
+        });
+    }
 
-    // Parse RSS Data and Insert into DB
+    /*** Parse RSS Data and Insert into DB ***/
     function scrapeRSS(url) {
         var request = $.ajax({
             url: "includes/fetchevents.php",
@@ -420,6 +445,7 @@ $(function() {
         });
     }
 
+    /*** Insert DB data on to MyWall ***/
     function populateWall() {
         var str = "";
         // if ($('input#searchtext').val()) {
@@ -520,6 +546,7 @@ $(function() {
             });
     }
 
+    /*** Convert numbered month to abbreviation ***/
     function convertMonth(month) {
         // Convert Month
         switch (month) {
@@ -565,6 +592,7 @@ $(function() {
         return month;
     }
 
+    /*** Convert time to format hh:mm AM/PM ***/
     function convertTime(time) {
         var times = time.split(":");
         var hour = times[0];
