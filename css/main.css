@@ -401,11 +401,11 @@ a:active
     text-transform: uppercase;
 
     color: rgb(255, 255, 255);
-    background-color: rgba(254,209,54,0.7);
+    background-color: rgba(254,209,54,.7);
 }
 .event-list > li:nth-child(even) > time
 {
-    background-color: rgba(87,22,25,0.7);
+    background-color: rgba(87,22,25,.7);
 }
 .event-list > li > time > span
 {
@@ -438,41 +438,48 @@ a:active
 .event-list > li > img
 {
     display: none;
-    opacity: 0.9;
+
+    opacity: .9;
 }
 .event-list > li > .info
 {
     padding-top: 5px;
-    background-color: rgba(245, 245, 245, 0.8);
+
     text-align: center;
+
+    background-color: rgba(245, 245, 245, .8);
 }
 .event-list > li > .social
 {
-    background-color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(245, 245, 245, .8);
 }
 .event-list > li > .info > .title
 {
     font-size: 17pt;
     font-weight: 700;
-    color: black;
+
     margin: 0;
+
+    color: black;
 }
 .event-list > li > .info > .desc
 {
     font-size: 13pt;
     font-weight: 300;
-    color: black;
+
     margin: 0;
+
+    color: black;
 }
 .event-list > li > .info > ul,
 .event-list > li > .social > ul
 {
     display: table;
-    
+
     width: 100%;
     margin: 10px 0 0;
     padding: 0;
-    
+
     list-style: none;
 
     text-align: center;
@@ -553,9 +560,11 @@ a:active
     background-color: rgb(87,22,25) !important;
 }
 
-.event-list > li > .social > ul > li > a{
-    color: inherit;
+.event-list > li > .social > ul > li > a
+{
     text-decoration: none;
+
+    color: inherit;
 }
 
 @media (min-width: 768px)
@@ -565,7 +574,7 @@ a:active
         position: relative;
 
         display: block;
-        
+
         width: 100%;
         height: 120px;
         padding: 0;
@@ -586,7 +595,7 @@ a:active
     {
         overflow: hidden;
 
-        background-color: rgba(245, 245, 245, 0.8);
+        background-color: rgba(245, 245, 245, .8);
     }
     .event-list > li > time,
     .event-list > li > img
@@ -621,10 +630,12 @@ a:active
         position: absolute;
         top: 0;
         right: 0;
-        background-color: rgba(0,0,0,0.0);
+
         display: block;
 
         width: 40px;
+
+        background-color: rgba(0,0,0,.0);
     }
     .event-list > li > .social > ul
     {
@@ -1298,7 +1309,8 @@ table#results tr:nth-child(even) td
 /*                       ReCaptcha                          */
 /***********************************************************/
 
-div.g-recaptcha {
-  margin: 0 auto;
-  width: 304px;
+div.g-recaptcha
+{
+    width: 304px;
+    margin: 0 auto;
 }
