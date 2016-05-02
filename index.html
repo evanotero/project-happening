@@ -58,6 +58,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <img class="img-circle" alt="logo" id="img_logo" src="img/happeninglogo.png">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
                 </div>
                 <div id="div-forms">
                     <!-- Register Form -->
@@ -92,7 +95,6 @@
                             <div>
                                 <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
                             </div>
-                            <span class="textmaroon" style="font-size: 8px;">Press ESC or click on background to EXIT</span>
                         </div>
                     </form>
                     <!-- Lost Password Form -->
@@ -118,7 +120,6 @@
                             <div>
                                 <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
                             </div>
-                            <span class="textmaroon" style="font-size: 8px;">Press ESC or click on background to EXIT</span>
                         </div>
                     </form>
                 </div>
@@ -179,7 +180,7 @@
             <h2 class="text-center title">Add Event</h2>
             <p class="lead text-center">
                 Share your events with the entire <span class="textgold">Boston College</span> campus.
-                <a tabindex="0" class="btn btn-sm btn-info" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Help - click anywhere to dismiss" data-content="<p>Use this section to add events that are not posted to OrgSync, or are currently not listed.</p><p>In order to add events, you must be a registered user and approved by an administrator.  After a registered user submits an event, it will be posted to the public page after approval.  If you would like to register to post events, please click on the button at the bottom of the page.</p>" id="help"><i class="fa fa-question" aria-hidden="true"></i></a>
+                <a tabindex="0" class="btn btn-sm btn-info" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Help - click anywhere to dismiss" id="help"><i class="fa fa-question" aria-hidden="true"></i></a>
             </p>
         </div>
         <div class="container">
@@ -286,7 +287,7 @@
                 <div class="row submitrow">
                     <!-- Register User Modal Button -->
                     <div class="col-sm-3 col-sm-offset-3">
-                        <a href="#" class="col-sm-12 btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password</a>
+                        <a href="#" class="col-sm-12 btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password </a>
                     </div>
                     <!-- Submit Button -->
                     <div class="col-sm-3">
