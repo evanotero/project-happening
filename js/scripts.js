@@ -41,7 +41,7 @@ $('#register-modal').on('hidden.bs.modal', function(e) {
     grecaptcha.reset(recaptcha2);
 });
 
-// Clear Add Event Form when switch nav bar
+// Clear Add Event Form when switching sections via nav bar
 $("a", '.mainmenu').click(function() {
     $('#event_name').val("");
     $('#event_host').val("");
