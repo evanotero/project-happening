@@ -62,6 +62,90 @@ $(document).on('click', '.social .facebook i', function() {
 $(document).on('click', '.social .link i', function() {
     $(this).children()[0].click();
 });
+$(document).on('click', '.social .info i', function() {
+    $('#event-modal').modal('toggle');
+    var el_event = this.parentNode.parentNode.parentNode.parentNode;
+    var el_img = el_event.getElementsByTagName("img");
+    var day = el_event.getElementsByClassName("day")[0].innerHTML;
+    var month = convertMonthToName(el_event.getElementsByClassName("month")[0].innerHTML);
+    var year = el_event.getElementsByClassName("year")[0].innerHTML;
+    var time = el_event.getElementsByClassName("time")[0].innerHTML;
+    var name = el_event.getElementsByClassName("title")[0].innerHTML;
+    var organizer = el_event.getElementsByClassName("organizer")[0].innerHTML;
+    var timespan = el_event.getElementsByClassName("timespan")[0].innerHTML;
+    var location = el_event.getElementsByClassName("location")[0].innerHTML;
+    var description = el_event.getElementsByClassName("deschidden")[0].innerHTML;
+
+    if (location != "") {
+        location = location.split(":")[1];
+        location = "<i class='fa fa-map-marker' aria-hidden='true'></i><span class='location'> " + location + "</span>";
+    }
+
+    var newhtml;
+    if (el_img[0]) {
+        var img_src = el_img[0].src;
+        var img_alt = el_img[0].alt;
+
+        newhtml = "<img alt='" + img_alt + "'src='" + img_src + "'/>" +
+            "<h2 class='title'>" + name + "</h2>" +
+            "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
+            "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
+            location +
+            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>";
+    } else {
+        newhtml = "<h2 class='title'>" + name + "</h2>" +
+            "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
+            "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
+            location +
+            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>";
+    }
+    $('#event-modal .modal-body').html(newhtml);
+})
+
+function convertMonthToName(month) {
+    // Convert Month
+    switch (month) {
+        case "JAN":
+            month = "January";
+            break;
+        case "FEB":
+            month = "February";
+            break;
+        case "MAR":
+            month = "March";
+            break;
+        case "APR":
+            month = "April";
+            break;
+        case "MAY":
+            month = "May";
+            break;
+        case "JUN":
+            month = "June";
+            break;
+        case "JUL":
+            month = "July";
+            break;
+        case "AUG":
+            month = "August";
+            break;
+        case "SEP":
+            month = "September";
+            break;
+        case "OCT":
+            month = "October";
+            break;
+        case "NOV":
+            month = "November";
+            break;
+        case "DEC":
+            month = "December";
+            break;
+        default:
+            break;
+    }
+    return month;
+}
 
 /*** Execute when document is ready ***/
 $(function() {
@@ -480,6 +564,9 @@ $(function() {
                     if (starttime == "All Day") {
                         starttime = "";
                         endtime = "";
+                    } else if (starttime == endtime) {
+                        starttime = "<span class='descriptionlabel'>Time</span>: " + starttime;
+                        endtime = "<br>";
                     } else {
                         starttime = "<span class='descriptionlabel'>Time</span>: " + starttime;
                         endtime = " - " + endtime + "<br>";
@@ -503,9 +590,9 @@ $(function() {
                                 "<span class='time'>" + displaytime + "</span></time>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER + "<br>" +
-                                starttime + endtime +
-                                location + "</p>" +
+                                "<span class='descriptionlabel'>Organizer</span>: <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                                "<span class='timespan'>" + starttime + endtime + "</span>" +
+                                "<span class='location'>" + location + "</span></p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
                                 "</p></div>" +
                                 "<div class='social'><ul>" +
@@ -525,9 +612,9 @@ $(function() {
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER + "<br>" +
-                                starttime + endtime +
-                                location + "</p>" +
+                                "<span class='descriptionlabel'>Organizer</span>: <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                                "<span class='timespan'>" + starttime + endtime + "</span>" +
+                                "<span class='location'>" + location + "</span></p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
                                 "</p></div>" +
                                 "<div class='social'><ul>" +
