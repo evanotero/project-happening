@@ -6,10 +6,10 @@
 		header("Location: index.php");
 		
 	if(!isset($_SESSION['amountDeleted']))
-		$_SESSION['amountDeleted']=-1;
+		$_SESSION['amountDeleted']=0;
 	
 	if(!isset($_SESSION['amountApproved']))
-		$_SESSION['amountApproved']=-1;
+		$_SESSION['amountApproved']=0;
 	
 	if(isset($_POST['filter']))
 		approve();
