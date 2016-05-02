@@ -438,6 +438,30 @@ $(function() {
                     var startday = startdaytime[0];
                     var starttime = convertTime(startdaytime[1]);
 
+                    // End Dates
+                    var end = value.STARTDATE.split("-");
+                    var enddaytime = end[2].split(" ");
+                    var endyear = end[0];
+                    var endmonth = convertMonth(end[1]);
+                    var endday = enddaytime[0];
+                    var endtime = convertTime(enddaytime[1]);
+
+                    // Determine time information to display
+                    var displaytime = starttime;
+                    if (starttime == "All Day") {
+                        starttime = "";
+                        endtime = "";
+                    } else
+                        endtime = " - " + endtime + "<br>";
+
+                    // Determine location information to display
+                    var location = value.LOCATION;
+                    if (location == "")
+                        location = "";
+                    else
+                        location = "Location: " + location + "<br>";
+
+
                     if ((startyear > currentyear) || (startyear == currentyear && start[1] > currentmonth) || (startyear == currentyear && start[1] == currentmonth && startday >= currentday)) {
                         if (value.MEDIAURL == "" || value.MEDIAURL == null)
                             $(".event-list").append("<li>" +
@@ -445,9 +469,13 @@ $(function() {
                                 "<span class='day'>" + startday + "</span>" +
                                 "<span class='month'>" + startmonth + "</span>" +
                                 "<span class='year'>" + startyear + "</span>" +
-                                "<span class='time'>" + starttime + "</span></time>" +
+                                "<span class='time'>" + displaytime + "</span></time>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
-                                "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
+                                "<p class='desc'>" +
+                                starttime + endtime +
+                                location +
+                                value.DESCRIPTION +
+                                "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                                 "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
@@ -461,10 +489,14 @@ $(function() {
                                 "<span class='day'>" + startday + "</span>" +
                                 "<span class='month'>" + startmonth + "</span>" +
                                 "<span class='year'>" + startyear + "</span>" +
-                                "<span class='time'>" + starttime + "</span></time>" +
+                                "<span class='time'>" + displaytime + "</span></time>" +
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
-                                "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
+                                "<p class='desc'>" +
+                                starttime + endtime +
+                                location +
+                                value.DESCRIPTION +
+                                "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                                 "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
