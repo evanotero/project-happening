@@ -498,9 +498,9 @@ $(function() {
                             "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                             "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
                             "<div class='social'><ul>" +
-                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
                             "</ul></div></li>");
                     else
                         $(".event-list").append("<li>" +
@@ -513,9 +513,9 @@ $(function() {
                             "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                             "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
                             "<div class='social'><ul>" +
-                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
                             "</ul></div></li>");
                 });
             })
