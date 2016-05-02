@@ -447,11 +447,11 @@ a:active
 
     text-align: center;
 
-    background-color: rgba(245, 245, 245, .8);
+    background-color: rgba(245, 245, 245, .82);
 }
 .event-list > li > .social
 {
-    background-color: rgba(245, 245, 245, .8);
+    background-color: rgba(245, 245, 245, .82);
 }
 .event-list > li > .info > .title
 {
@@ -471,6 +471,12 @@ a:active
 
     color: black;
 }
+
+.event-list > li > .info > .deschidden
+{
+    display: none;
+}
+
 .event-list > li > .info > ul,
 .event-list > li > .social > ul
 {
@@ -567,6 +573,11 @@ a:active
     color: inherit;
 }
 
+.event-list > li > .info > .desc > .descriptionlabel
+{
+    font-weight: 500;
+}
+
 @media (min-width: 768px)
 {
     .event-list > li
@@ -595,7 +606,7 @@ a:active
     {
         overflow: hidden;
 
-        background-color: rgba(245, 245, 245, .8);
+        background-color: rgba(245, 245, 245, .82);
     }
     .event-list > li > time,
     .event-list > li > img
