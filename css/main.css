@@ -538,7 +538,7 @@ a:active
 }
 .link i
 {
-    color: rgb(254,209,54) !important;
+    color: rgb(113,166,65) !important;
 }
 .info i
 {
@@ -552,7 +552,7 @@ a:active
 .link:hover i
 {
     color: rgb(255, 255, 255) !important;
-    background-color: rgb(254,209,54) !important;
+    background-color: rgb(113,166,65) !important;
 }
 .info:hover i
 {
