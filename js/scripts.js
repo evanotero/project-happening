@@ -454,15 +454,17 @@ $(function() {
                     if (starttime == "All Day") {
                         starttime = "";
                         endtime = "";
-                    } else
+                    } else {
+                        starttime = "<span class='descriptionlabel'>Time</span>: " + starttime;
                         endtime = " - " + endtime + "<br>";
+                    }
 
                     // Determine location information to display
                     var location = value.LOCATION;
                     if (location == "")
                         location = "";
                     else
-                        location = "Location: " + location + "<br>";
+                        location = "<span class='descriptionlabel'>Location</span>: " + location + "<br>";
 
 
                     if ((startyear > currentyear) || (startyear == currentyear && start[1] > currentmonth) || (startyear == currentyear && start[1] == currentmonth && startday >= currentday)) {
@@ -475,9 +477,10 @@ $(function() {
                                 "<span class='time'>" + displaytime + "</span></time>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
+                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER + "<br>" +
                                 starttime + endtime +
-                                location +
-                                value.DESCRIPTION +
+                                location + "</p>" +
+                                "<p class='deschidden'>" + value.DESCRIPTION +
                                 "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
@@ -496,9 +499,10 @@ $(function() {
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
+                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER +
                                 starttime + endtime +
-                                location +
-                                value.DESCRIPTION +
+                                location + "</p>" +
+                                "<p class='deschidden'>" + value.DESCRIPTION +
                                 "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
