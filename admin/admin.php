@@ -1,6 +1,7 @@
 <?php
 	// Start the session
 	session_start();
+	include "../includes/dbconn.php";
 	if(!isset($_SESSION['name']))
 		header("Location: index.php");
 		
@@ -10,8 +11,10 @@
 	if(!isset($_SESSION['amountApproved']))
 		$_SESSION['amountApproved']=-1;
 	
-		
-	include "../includes/dbconn.php";
+	if(isset($_POST['filter']))
+		approve();
+	
+	
 ?>
 
 <!DOCTYPE html>
@@ -122,7 +125,7 @@ function displayTable() {
 			echo "
 		 <section class='section' id='unapprovedEvents'>
 			<div class='container' id='adminEventlist'>
-				<form method='POST'>
+				<form method='POST' action='admin.php'>
         	    <table id='eventsToApprove'>
             	    <thead>
                 	    <tr>
@@ -192,16 +195,57 @@ function displayTable() {
 	
 }
 
-if(isset($_POST['filter'])){
-	if(isset($_POST['approve']))
-		$_SESSION['approve'] = $_POST['approve'];
+
+function approve() {
+
+		$_SESSION['amountDeleted'] = 0;
+		$del=0;
+		
+		$_SESSION['amountApproved'] = 0;
+		$app=0;
+		
+		if(isset($_POST['approve']))
+			$_SESSION['approve'] = $_POST['approve'];
 	
-	if(isset($_POST['approve']))
-		$_SESSION['approve'] = $_POST['approve'];
+		if(isset($_POST['approve']))
+			$_SESSION['approve'] = $_POST['approve'];
+		
+		if(isset($_SESSION['delete']))
+			$deleteArray = $_SESSION['delete'];
+		
+		if(isset($_SESSION['approve']))	
+			$approveArray = $_SESSION['approve'];
+		
+		$dbc = connect_to_db('takc');
+		
+		if(isset($_SESSION['delete'])){
+		foreach ($deleteArray as $id) {
+			//delete
+			$query = "DELETE from events where E_ID='".$id."';";
+			$result = perform_query( $dbc, $query );
+            
+            $del++;
+        }
+        }
+        
+        if(isset($_SESSION['approve'])){
+        foreach ($approveArray as $id) {
+             //update
+            $query = "UPDATE events SET APPROVED=1 where E_ID='".$id."';";
+			$result = perform_query( $dbc, $query );
+             
+            $app++;
+        }
+        }
+        
+        $_SESSION['amountDeleted'] = $del;
+        $_SESSION['amountApproved'] = $app;
+		
+		disconnect_from_db( $dbc, $result );
 	
-	header("Location: approve.php");
-	exit;
+
 }
+
 
 	
 

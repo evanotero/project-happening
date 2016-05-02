@@ -11,6 +11,11 @@
 		$_SESSION['amountApproved'] = 0;
 		$app=0;
 		
+		if(isset($_POST['approve']))
+			$_SESSION['approve'] = $_POST['approve'];
+	
+		if(isset($_POST['approve']))
+			$_SESSION['approve'] = $_POST['approve'];
 		
 		if(isset($_SESSION['delete']))
 			$deleteArray = $_SESSION['delete'];
