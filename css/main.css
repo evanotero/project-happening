@@ -173,11 +173,12 @@ body
     overflow: auto;
 
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     min-height: 420px;
     padding-top: 100px;
     padding-bottom: 50px;
 }
+
 #unapprovedEvents
 {
     display: block !important;
@@ -573,6 +574,7 @@ a:active
     color: inherit;
 }
 
+.event-list > li > .info > .desc > span > .descriptionlabel,
 .event-list > li > .info > .desc > .descriptionlabel
 {
     font-weight: 500;
@@ -924,7 +926,7 @@ a:hover .underline
 
 
 /***********************************************************/
-/*                    Register Modal                       */
+/*                        Modals                           */
 /***********************************************************/
 
 #register-modal .modal-dialog
@@ -933,6 +935,26 @@ a:hover .underline
 
     width: 350px;
     margin-top: 80px;
+}
+
+#event-modal .modal-dialog
+{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    margin-top: 180px;
+}
+
+#event-modal .modal-dialog .modal-body img
+{
+    width: 120px;
+}
+
+#event-modal .modal-dialog .modal-body .title
+{
+    font-size: 17pt;
+    font-weight: 700;
+
+    color: black;
 }
 
 #register-modal input[type=text],
