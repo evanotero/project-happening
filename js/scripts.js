@@ -420,11 +420,18 @@ $(function() {
         $.getJSON("includes/display.php", { q: str }, function(data) {
                 $.each(data, function(i, value) {
                     var array = value.STARTDATE.split("-");
-                    var array2 = array[2].split(" ");
+                    var dayandtime = array[2].split(" ");
+                    
+
                     var startyear = array[0];
                     var startmonth = array[1];
-                    var startday = array[2];
-
+                    var startday = dayandtime[0];
+                    var starttime = dayandtime[1];
+                    var startimes = starttime.split(":");
+                    var starthour = starttimes[0];
+                    var startmins = starttimes[1];
+                    console.log(startday)
+                    
                     $("#results").append("<li>"+
                         "<time datetime="+
                         value.STARTDATE + "><span class='day'>"+
