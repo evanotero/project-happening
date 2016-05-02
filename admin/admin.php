@@ -4,6 +4,13 @@
 	if(!isset($_SESSION['name']))
 		header("Location: index.php");
 		
+	if(!isset($_SESSION['amountDeleted']))
+		$_SESSION['amountDeleted']=-1;
+	
+	if(!isset($_SESSION['amountApproved']))
+		$_SESSION['amountApproved']=-1;
+	
+		
 	include "../includes/dbconn.php";
 ?>
 
@@ -115,10 +122,12 @@ function displayTable() {
 			echo "
 		 <section class='section' id='unapprovedEvents'>
 			<div class='container' id='adminEventlist'>
+				<form method='POST'>
         	    <table id='eventsToApprove'>
             	    <thead>
                 	    <tr>
-                	    	<th>select<th>
+                	    	<th>Approve<th>
+                	    	<th>Delete<th>
                     	    <th>Name</th>
                         	<th>Organizer</th>
                    	 		<th>Location</th>
@@ -146,7 +155,8 @@ function displayTable() {
             	   			
             	   			echo "<tr>";
             	   			//row
-            	   				echo "<td><input type=checkbox name='aprove[]' value='$E_ID'></td>";
+            	   				echo "<td><input type=checkbox name='approve[]' value='$E_ID'></td>";
+            	   				echo "<td><input type=checkbox name='delete[]' value='$E_ID'></td>";
             	   				echo "<td>$name</td>";
             	   				echo "<td>$organizer</td>";
             	   				echo "<td>$location</td>";
@@ -162,6 +172,10 @@ function displayTable() {
             	   	echo "
             	   </tbody>
            	 </table>
+           	 	<input type='submit' name='filter' class='btn' value='FILTER!'>
+           	 </form>";
+           	 echo "<br> You deleted ".$_SESSION['amountDeleted']." events, and approved ".$_SESSION['amountApproved']." events<br>";
+           	 echo "
        	 </div>
    	 </section>";
 		
@@ -169,13 +183,24 @@ function displayTable() {
 	
 	}
 	else{
-		echo "hey moron";
+		echo "All events are up to date!";
 		//all events are approved
 	
 	}
 	
 	 disconnect_from_db( $dbc, $result );
 	
+}
+
+if(isset($_POST['filter'])){
+	if(isset($_POST['approve']))
+		$_SESSION['approve'] = $_POST['approve'];
+	
+	if(isset($_POST['approve']))
+		$_SESSION['approve'] = $_POST['approve'];
+	
+	header("Location: approve.php");
+	exit;
 }
 
 	

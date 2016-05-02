@@ -1,7 +1,8 @@
 <?php
 	// Start the session
 	session_start();
-	$_SESSION['hasError'];
+	if(!isset($_SESSION['hasError']))
+		$_SESSION['hasError']=0;
 ?>
 
 <!DOCTYPE html>

@@ -2,14 +2,9 @@
 	
 	session_start();
 		
-		function search ($query){   //Needs to be changed for include file
-			
-			//function in file which is not on github
-			//function connects to mysql
-			//then calls		$result = perform_query( $dbc, $query );
+		include "../includes/dbconn.php";
 
-			//returns result
-		}
+		
 	
 		$username;
 		$password;
@@ -70,31 +65,37 @@
 		}
 		else {                  //no error. Check the server if user is admin
 			/*   To be reactivated once I include the search function
-			
-			
+			*/
+			$dbc = connect_to_db('takc');
+	
 			$query = "select * from users WHERE username='".$username."' and password='".$encPass."' and priv='admin';";
 			
-			$result = search($query);
+			
+			$result = perform_query( $dbc, $query );
 			if (mysqli_num_rows($result) == 0) {
-				$SESSION['error'] = "Your username or password is incorrect";
+				$_SESSION['hasError'] = 1;
+				$_SESSION['error'] = "Your username or password is incorrect";
+				disconnect_from_db( $dbc, $result );
+	
 				header("Location: index.php");
 			}
 			else {
 				while($obj = $result->fetch_object()) {
-					$name = $obj->firstname;
-					$email = $obj->email;
+					$name = $obj->FIRSTNAME;
+					$email = $obj->EMAIL;
 					
-					$_SESSION['email'] = $email
+					$_SESSION['email'] = $email;
 					$_SESSION['name'] = $name;
 				}
 				
+				disconnect_from_db( $dbc, $result );
+	
+				header("Location: admin.php");
+				
 			}
-			*/
 			
-			$_SESSION['name'] = "Administrator";
-			$_SESSION['email'] = "jonesuz@bc.edu";
 			
-			header("Location: admin.php");
+			
 		
 		}
 		
