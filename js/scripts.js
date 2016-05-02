@@ -442,7 +442,7 @@ $(function() {
                     var starttime = convertTime(startdaytime[1]);
 
                     // End Dates
-                    var end = value.STARTDATE.split("-");
+                    var end = value.ENDDATE.split("-");
                     var enddaytime = end[2].split(" ");
                     var endyear = end[0];
                     var endmonth = convertMonth(end[1]);
@@ -499,7 +499,7 @@ $(function() {
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER +
+                                "<span class='descriptionlabel'>Organizer</span>: " + value.ORGANIZER + "<br>" +
                                 starttime + endtime +
                                 location + "</p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
