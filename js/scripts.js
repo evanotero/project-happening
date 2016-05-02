@@ -390,9 +390,10 @@ $(function() {
     // Help Popover
     $('#help').popover();
 
-    // Call scrapeRSS with BC OrgSync URL
+    // Call scrapeRSS with BC OrgSync URL and populate MyWall
     var url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true"
     scrapeRSS(url);
+    populateWall();
 
     // Parse RSS Data and Insert into DB
     function scrapeRSS(url) {
@@ -410,9 +411,8 @@ $(function() {
             }
         });
     }
-    //poplating table 
-    populateTable();
-    function populateTable() {
+
+    function populateWall() {
         var str = "";
         // if ($('input#searchtext').val()) {
         //     str = $('input#searchtext').val();
@@ -421,36 +421,103 @@ $(function() {
                 $.each(data, function(i, value) {
                     var array = value.STARTDATE.split("-");
                     var dayandtime = array[2].split(" ");
-                    
 
                     var startyear = array[0];
                     var startmonth = array[1];
                     var startday = dayandtime[0];
                     var starttime = dayandtime[1];
-                    var startimes = starttime.split(":");
+                    var starttimes = starttime.split(":");
                     var starthour = starttimes[0];
                     var startmins = starttimes[1];
-                    console.log(startday)
-                    
-                    $("#results").append("<li>"+
-                        "<time datetime="+
-                        value.STARTDATE + "><span class='day'>"+
-                        startday + "</span><span class='month'>"+
-                        startmonth + " </span><span class='year'>"+
-                        startyear + "</span><span class='time'>ALL DAY</span></time><img alt="+
-                        value.NAME + "src="+
-                        value.MEDIAURL + "/><div class='info'><h2 class='title'>"+
-                        value.NAME + "</h2><p class='desc'>"+
-                        value.DESCRIPTION + "</p></div"+
-                        "<div class='social'>"+
-                            "<ul>"+
-                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>"+
-                                "<li class='google-plus'><i clas='fa fa-info fa-lg' aria-hidden='true'></i></li>"+
-                                "<li class='twitter'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>"+
-                            "</ul>"+
-                        "</div></li>");
-                });
+                    var ampm = " AM";
 
+                    // Convert Month
+                    switch (startmonth) {
+                        case "01":
+                            startmonth = "JAN";
+                            break;
+                        case "02":
+                            startmonth = "FEB";
+                            break;
+                        case "03":
+                            startmonth = "MAR";
+                            break;
+                        case "04":
+                            startmonth = "APR";
+                            break;
+                        case "05":
+                            startmonth = "MAY";
+                            break;
+                        case "06":
+                            startmonth = "JUN";
+                            break;
+                        case "07":
+                            startmonth = "JUL";
+                            break;
+                        case "08":
+                            startmonth = "AUG";
+                            break;
+                        case "09":
+                            startmonth = "SEP";
+                            break;
+                        case "10":
+                            startmonth = "OCT";
+                            break;
+                        case "11":
+                            startmonth = "NOV";
+                            break;
+                        case "12":
+                            startmonth = "DEC";
+                            break;
+                        default:
+                            break;
+                    }
+
+                    // Convert Hour and AM/PM
+                    if (starthour == 00) {
+                        starthour = "All";
+                        startmins = " Day";
+                        ampm = "";
+                    } else if (starthour >= 12) {
+                        ampm = " PM";
+                        if (starthour != 12)
+                            starthour -= 12;
+                        starthour += ":";
+                    } else {
+                        starthour -= 0;
+                        starthour += ":";
+                    }
+
+                    if (value.MEDIAURL == "" || value.MEDIAURL == null)
+                        $(".event-list").append("<li>" +
+                            "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
+                            "<span class='day'>" + startday + "</span>" +
+                            "<span class='month'>" + startmonth + "</span>" +
+                            "<span class='year'>" + startyear + "</span>" +
+                            "<span class='time'>" + starthour + startmins + ampm + "</span></time>" +
+                            "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
+                            "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
+                            "<div class='social'><ul>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
+                            "</ul></div></li>");
+                    else
+                        $(".event-list").append("<li>" +
+                            "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
+                            "<span class='day'>" + startday + "</span>" +
+                            "<span class='month'>" + startmonth + "</span>" +
+                            "<span class='year'>" + startyear + "</span>" +
+                            "<span class='time'>" + starthour + startmins + ampm + "</span></time>" +
+                            "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
+                            "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
+                            "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
+                            "<div class='social'><ul>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
+                            "</ul></div></li>");
+                });
             })
             .fail(function(xhr, status, error) {
                 console.log("getJSON error");
