@@ -49,6 +49,11 @@ $("a", '.mainmenu').click(function() {
     grecaptcha.reset(recaptcha1);
 });
 
+// Listen for clicks on social buttons
+$(document).on('click', '.social i', function() {
+    $(this).children()[0].click();
+});
+
 // Execute when document is ready
 $(function() {
     // Modal Window Variables
@@ -445,8 +450,10 @@ $(function() {
                                 "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
+                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
+                                "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
+                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
+                                "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
                                 "</ul></div></li>");
                         else
                             $(".event-list").append("<li>" +
@@ -460,8 +467,10 @@ $(function() {
                                 "<p class='desc'>" + value.DESCRIPTION + "</p></div>" +
                                 "<div class='social'><ul>" +
                                 "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'></i></li>" +
+                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
+                                "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
+                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
+                                "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
                                 "</ul></div></li>");
                     }
                 });
