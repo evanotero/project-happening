@@ -50,7 +50,10 @@ $("a", '.mainmenu').click(function() {
 });
 
 // Listen for clicks on social buttons
-$(document).on('click', '.social i', function() {
+$(document).on('click', '.social .facebook i', function() {
+    $(this).children()[0].click();
+});
+$(document).on('click', '.social .link i', function() {
     $(this).children()[0].click();
 });
 
