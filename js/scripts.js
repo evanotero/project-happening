@@ -77,7 +77,7 @@ $(document).on('click', '.social .info i', function() {
     var description = el_event.getElementsByClassName("deschidden")[0].innerHTML;
 
     var headerhtml = "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
-                "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>"+"<h2 class='title'>" + name + "</h2>";
+        "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>" + "<h2 class='title'>" + name + "</h2>";
 
     if (description.length > 8)
         description = "<div class='divider'></div><p>" + description + "</p>";
@@ -96,10 +96,10 @@ $(document).on('click', '.social .info i', function() {
             description;
     } else
         bodyhtml = "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
-            "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
-            location +
-            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
-            description;
+        "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
+        location +
+        "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
+        description;
     $('#event-modal .modal-header').html(headerhtml);
     $('#event-modal .modal-body').html(bodyhtml);
 })
@@ -158,12 +158,13 @@ $(function() {
     var modalAnimateTime = 300;
     var msgAnimateTime = 150;
     var msgShowTime = 2000;
+    var timeoutID = null;
     var url = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q&per_page=100&upcoming=true";
 
     /*** Function Calls when Document is Ready ***/
     displayPopover(); // Help Popover
     scrapeRSS(url); // Get data from RSS
-    populateWall(); // Put events on MyWall
+    populateWall(""); // Put events on MyWall
     $('#datetimepicker1').datetimepicker(); // Bootstrap 3 Datepicker v4
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important!
@@ -178,7 +179,8 @@ $(function() {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
 
-    $('#lost_register_btn').click(function() {grecaptcha.reset(recaptcha3);
+    $('#lost_register_btn').click(function() {
+        grecaptcha.reset(recaptcha3);
         grecaptcha.reset(recaptcha2);
         grecaptcha.reset(recaptcha3);
         modalAnimate(formLost, formRegister);
@@ -189,10 +191,19 @@ $(function() {
         modalAnimate(formRegister, formLost);
     });
 
+    // Listen for typing in search
+    $('input#search_input').keyup(function() {
+        clearTimeout(timeoutID);
+        var $target = $(this);
+        timeoutID = setTimeout(function() { populateWall($target.val()); }, 500);
+    });
+
     // Listen for Form Submission
     $("form").submit(function(e) {
         switch (this.id) {
             case "search-form":
+                populateWall($('input#search_input').val());
+                return false;
                 break;
             case "lost-form":
                 var ls_email = $('#lost_email').val();
@@ -542,11 +553,11 @@ $(function() {
     }
 
     /*** Insert DB data on to MyWall ***/
-    function populateWall() {
+    function populateWall(search) {
         var str = "";
-        // if ($('input#searchtext').val()) {
-        //     str = $('input#searchtext').val();
-        // }
+        if (search)
+            str = search;
+        $(".event-list").empty();
         $.getJSON("includes/display.php", { q: str }, function(data) {
                 $.each(data, function(i, value) {
                     // Current Dates
