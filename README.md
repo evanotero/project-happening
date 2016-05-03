@@ -1,11 +1,18 @@
-# Project Hapenning
+# Project Happening
 
 ![](https://github.com/CSCI2254/project-happening/blob/master/img/happeninglogo.png)
 
 ## Description
-Final Project for Web Applications Development
+Final Project for Web Applications Development (CSCI2254, Spring 2016).
 
+### Summary
+A web application for Boston College students to view, search, and add all events that are occurring on campus.
+
+### Proposal Documents
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
+
+### URL
+The website can be reached at: http://cscilab.bc.edu/~takc/happening/index.html.
 
 ## Grading
 4/11
