@@ -78,25 +78,28 @@ $(document).on('click', '.social .info i', function() {
 
     var headerhtml = "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
                 "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>"+"<h2 class='title'>" + name + "</h2>";
+    console.log(description.length);
+    if (description.length > 8)
+        description = "<div class='divider'></div><p>" + description + "</p>";
+    else
+        description = "";
 
     var bodyhtml;
     if (el_img[0]) {
         var img_src = el_img[0].src;
         var img_alt = el_img[0].alt;
-
         bodyhtml = "<img alt='" + img_alt + "'src='" + img_src + "'/><br>" +
             "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
             "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
             location +
             "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
-            "<div class='divider'></div>" + description;
-    } else {
+            description;
+    } else
         bodyhtml = "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
             "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
             location +
             "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
-            "<div class='divider'></div>" + description;
-    }
+            description;
     $('#event-modal .modal-header').html(headerhtml);
     $('#event-modal .modal-body').html(bodyhtml);
 })
