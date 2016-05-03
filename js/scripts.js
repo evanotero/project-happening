@@ -76,30 +76,29 @@ $(document).on('click', '.social .info i', function() {
     var location = el_event.getElementsByClassName("location")[0].innerHTML;
     var description = el_event.getElementsByClassName("deschidden")[0].innerHTML;
 
-    if (location != "") {
-        location = location.split(":")[1];
-        location = "<i class='fa fa-map-marker' aria-hidden='true'></i><span class='location'> " + location + "</span>";
-    }
+    var headerhtml = "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
+                "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>"+"<h2 class='title'>" + name + "</h2>";
 
-    var newhtml;
+    var bodyhtml;
     if (el_img[0]) {
         var img_src = el_img[0].src;
         var img_alt = el_img[0].alt;
 
-        newhtml = "<img alt='" + img_alt + "'src='" + img_src + "'/>" +
-            "<h2 class='title'>" + name + "</h2>" +
+        bodyhtml = "<img alt='" + img_alt + "'src='" + img_src + "'/><br>" +
             "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
             "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
             location +
-            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>";
+            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
+            "<div class='divider'></div>" + description;
     } else {
-        newhtml = "<h2 class='title'>" + name + "</h2>" +
-            "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
+        bodyhtml = "<i class='fa fa-calendar-o' aria-hidden='true'></i><span class='date'> " + month + "  " + day + ",  " + year + "</span><br>" +
             "<i class='fa fa-clock-o' aria-hidden='true'></i><span class='timespan'> " + time + "</span><br>" +
             location +
-            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>";
+            "<i class='fa fa-users' aria-hidden='true'></i><span class='organization'> " + organizer + "</span>" +
+            "<div class='divider'></div>" + description;
     }
-    $('#event-modal .modal-body').html(newhtml);
+    $('#event-modal .modal-header').html(headerhtml);
+    $('#event-modal .modal-body').html(bodyhtml);
 })
 
 function convertMonthToName(month) {
