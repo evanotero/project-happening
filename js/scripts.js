@@ -739,4 +739,39 @@ $(function() {
         }
         return hour + min + ampm;
     }
+
+    /****register user***/
+    function registeruser(){
+        var dataString = $("#register-form").serialize();
+
+        var request = $.ajax({
+            url: "include/registeruser.php",
+            type: "POST",
+            data: dataString,
+        
+        success: function(data) {
+                //console.log(data); // DEBUG
+        },
+        error: function(xhr, status, error) {
+            console.log(xhr + " " + status + " " + error); // DEBUG
+        }
+        });
+        $("#div-forms").show();
+        setTimeout(function() { $("#div-forms").hide(); }, 5000);
+    }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
