@@ -314,7 +314,11 @@ $(function() {
                         divForms.css("height", formRegister.height() + 30);
                     } else {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
+<<<<<<< Updated upstream
                         registeruser();
+=======
+                        registeruser();// Insert AJAX...
+>>>>>>> Stashed changes
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
