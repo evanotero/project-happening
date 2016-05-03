@@ -521,7 +521,7 @@ $(function() {
             type: "POST",
             data: "url=" + url,
             success: function(data) {
-                //console.log(data); // DEBUG
+                // console.log(data); // DEBUG
                 return true;
             },
             error: function(xhr, status, error) {
@@ -551,7 +551,7 @@ $(function() {
                     var startyear = start[0];
                     var startmonth = convertMonth(start[1]);
                     var startday = startdaytime[0];
-                    var starttime = convertTime(startdaytime[1]);
+                    var starttime = convertTime(startdaytime[1], true);
 
                     // End Dates
                     var end = value.ENDDATE.split("-");
@@ -559,7 +559,7 @@ $(function() {
                     var endyear = end[0];
                     var endmonth = convertMonth(end[1]);
                     var endday = enddaytime[0];
-                    var endtime = convertTime(enddaytime[1]);
+                    var endtime = convertTime(enddaytime[1], false);
 
                     // Determine time information to display
                     var displaytime = starttime;
@@ -682,13 +682,13 @@ $(function() {
     }
 
     /*** Convert time to format hh:mm AM/PM ***/
-    function convertTime(time) {
+    function convertTime(time, isStart) {
         var times = time.split(":");
         var hour = times[0];
         var min = times[1];
         var ampm = " AM";
 
-        if (hour == 00) {
+        if (hour == 00 && isStart) {
             hour = "All";
             min = " Day";
             ampm = "";
@@ -698,7 +698,10 @@ $(function() {
                 hour -= 12;
             hour += ":";
         } else {
-            hour -= 0;
+            if (hour == 00)
+                hour = 12;
+            else
+                hour -= 0;
             hour += ":";
         }
         return hour + min + ampm;
