@@ -64,7 +64,7 @@ foreach ($items as $item) {
         $query = "UPDATE events
                     SET NAME = '$name', ORGANIZER = '$group', LOCATION = '$location', 
                     DESCRIPTION = '$description', MEDIAURL = '$mediaurl', STARTDATE = '$startdate',
-                    ENDDATE = '$enddate' WHERE LINK = '$eventlink'";
+                    ENDDATE = '$enddate' WHERE LINK = '$eventlink';";
     } else {                  
         // Insert Event into DB
 
@@ -72,7 +72,7 @@ foreach ($items as $item) {
                     NAME, ORGANIZER, LOCATION, DESCRIPTION, 
                     MEDIAURL, STARTDATE, ENDDATE, LINK, APPROVED, U_ID) 
                     VALUES ('$name','$group','$location','$description','$mediaurl',
-                    '$startdate','$enddate', '$eventlink', 1, 1)";
+                    '$startdate','$enddate', '$eventlink', 1, 1);";
     }    
     $result = perform_query( $dbc, $query); 
 }
