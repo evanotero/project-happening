@@ -131,8 +131,8 @@ function displayTable() {
         	    <table id='eventsToApprove'>
             	    <thead>
                 	    <tr>
-                	    	<th>Approve<th>
-                	    	<th>Delete<th>
+                	    	<th>Approve</th>
+                	    	<th>Delete</th>
                     	    <th>Name</th>
                         	<th>Organizer</th>
                    	 		<th>Location</th>
@@ -209,11 +209,10 @@ function displayTable() {
             	    <thead>
                 	    <tr>
                 	    	<th>Delete</th>
-                	    	<th>User ID<th>
-                    	    <th>First Name</th>
-                        	<th>Last Name</th>
-                   	 		<th>Username</th>
-                        	<th>E-mail</th>
+                	    	<th>First Name</th>
+                    	    <th>Last Name</th>
+                        	<th>Username</th>
+                   	 		<th>Email</th>
                         	<th>Privacy</th>
                     	</tr>
          	       </thead>
