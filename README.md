@@ -1,6 +1,6 @@
 # Project Hapenning
 
-![](http://i.imgur.com/AqBQQVz.png?1)
+![](https://github.com/CSCI2254/project-happening/blob/master/img/happeninglogo.png)
 
 ## Description
 Final Project for Web Applications Development
