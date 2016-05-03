@@ -12,7 +12,7 @@ $PWEncrypt = sha1($Password1);
 
 $dbc= connect_to_db("takc");
 
-// Ned to check if user already exists
+// Need to check if user already exists
 
 $insertsql = "INSERT INTO users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) VALUES ('$Firstname','$Lastname','$Username', '$Register_email','$PWEncrypt', 'unverified');";
 $result = perform_query( $dbc, $query);
