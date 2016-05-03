@@ -1417,7 +1417,7 @@ div.table-wrapper
     opacity: .9;
 }
 
-table#results
+table
 {
     font-size: 13px;
 
@@ -1431,7 +1431,7 @@ table#results
     border-color: #666;
 }
 
-table#results th
+table th
 {
     padding: 8px;
 
@@ -1442,7 +1442,7 @@ table#results th
     background-color: #571619;
 }
 
-table#results td
+table td
 {
     padding: 8px;
 
@@ -1452,7 +1452,7 @@ table#results td
     background-color: #fff;
 }
 
-table#results tr:nth-child(even) td
+table tr:nth-child(even) td
 {
     background-color: #fed136;
 }
