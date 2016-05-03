@@ -353,10 +353,36 @@ function updateUsers(){
         
         if(isset($_SESSION['updatePriv'])){
         foreach ($updateArray as $arr) {
+        
+        
              //update
-            $a = explode('=>', $arr);
-            $query = "UPDATE users SET PRIV='".$a[1]."' where U_ID='".$a[0]."';";
+           // $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';"; 
+             
+             
+            $a = explode('=>', $arr);   // $a[0]=id    $a[1]=priv (new)
            
+           /******for email******/ 
+            $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';";
+            $result = perform_query( $dbc, $query );
+            while($obj = $result->fetch_object()) {
+            	   			//there's another unapproved event
+            	   			$name = $obj->FIRSTNAME;
+            	   			$email = $obj->EMAIL;
+            	   			$oldPriv = $obj->PRIV;
+            }
+            
+            $to = "'$email'";
+			$subject = "Happening - Change in User privacy";
+			$txt = "Hello, $name! We have apdated your privacy setting from $oldPriv to $[1]";
+			$headers = "From: webmaster@happeningBC.com" . "\r\n" .
+				"BCC: '$_SESSION['email']'";
+
+			mail($to,$subject,$txt,$headers);
+
+            
+             
+            /*******updating database*****/
+            $query = "UPDATE users SET PRIV='".$a[1]."' where U_ID='".$a[0]."';";
 			$result = perform_query( $dbc, $query );
              
 
