@@ -342,7 +342,7 @@ function updateUsers(){
 		
 		$dbc = connect_to_db('takc');
 		
-		if(isset($_SESSION['delete'])){
+		if(isset($_SESSION['deleteUser'])){
 		foreach ($deleteArray as $id) {
 			//delete
 			$query = "DELETE from users where U_ID='".$id."';";
