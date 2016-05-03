@@ -746,12 +746,12 @@ $(function() {
         var dataString = $("#register-form").serialize();
 
         var request = $.ajax({
-            url: "include/registeruser.php",
+            url: "includes/registeruser.php",
             type: "POST",
             data: dataString,
 
             success: function(data) {
-                //console.log(data); // DEBUG
+                console.log(data); // DEBUG
             },
             error: function(xhr, status, error) {
                 console.log(xhr + " " + status + " " + error); // DEBUG
