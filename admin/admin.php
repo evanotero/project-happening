@@ -14,6 +14,8 @@
 	if(isset($_POST['filter']))
 		approve();
 	
+	if(isset($_POST['updateUsers']))
+		updateUsers();
 	
 ?>
 
@@ -235,10 +237,10 @@ function displayTable() {
             	   				echo "<td>$username</td>";
             	   				echo "<td>$email</td>";
             	   				echo "<td>
-            	   						<select>
-            	   							<option value='admin' "; if($priv=='admin') echo "selected"; echo ">Admin</option>
-            	   							<option value='user' "; if($priv=='user') echo "selected"; echo ">User</option>
-            	   							<option value='unverified' "; if($priv=='unverified') echo "selected"; echo ">Unverified</option>
+            	   						<select name='updatePriv[]'>
+            	   							<option value='$U_ID=>admin' "; if($priv=='admin') echo "selected"; echo ">Admin</option>
+            	   							<option value='$U_ID=>user' "; if($priv=='user') echo "selected"; echo ">User</option>
+            	   							<option value='$U_ID=>unverified' "; if($priv=='unverified') echo "selected"; echo ">Unverified</option>
             	   						</select>
             	   					  </td>";
             	   				
@@ -248,7 +250,7 @@ function displayTable() {
             	   	echo "
             	   </tbody>
            	 </table>
-           	 	<input type='submit' name='update' class='btn' value='UPDATE USERS!'>
+           	 	<input type='submit' name='updateUsers' class='btn' value='UPDATE USERS!'>
            	 </form>";
            	 
            	 echo "
@@ -282,8 +284,8 @@ function approve() {
 		if(isset($_POST['approve']))
 			$_SESSION['approve'] = $_POST['approve'];
 	
-		if(isset($_POST['approve']))
-			$_SESSION['approve'] = $_POST['approve'];
+		if(isset($_POST['delete']))
+			$_SESSION['delete'] = $_POST['delete'];
 		
 		if(isset($_SESSION['delete']))
 			$deleteArray = $_SESSION['delete'];
@@ -321,6 +323,51 @@ function approve() {
 
 }
 
+function updateUsers(){
+
+		
+		//setting sessions
+		if(isset($_POST['deleteUser']))
+			$_SESSION['deleteUser'] = $_POST['deleteUser'];
+	
+		if(isset($_POST['updatePriv']))
+			$_SESSION['updatePriv'] = $_POST['updatePriv'];
+		
+		//setting arrays
+		if(isset($_SESSION['deleteUser']))
+			$deleteArray = $_SESSION['deleteUser'];
+		
+		if(isset($_SESSION['updatePriv']))	
+			$updateArray = $_SESSION['updatePriv'];
+		
+		$dbc = connect_to_db('takc');
+		
+		if(isset($_SESSION['delete'])){
+		foreach ($deleteArray as $id) {
+			//delete
+			$query = "DELETE from users where U_ID='".$id."';";
+			$result = perform_query( $dbc, $query );
+            
+
+        }
+        }
+        
+        if(isset($_SESSION['updatePriv'])){
+        foreach ($updateArray as $arr) {
+             //update
+            $a = explode('=>', $arr);
+            $query = "UPDATE users SET PRIV='".$a[1]."' where U_ID='".$a[0]."';";
+           
+			$result = perform_query( $dbc, $query );
+             
+
+        }
+        }
+        
+		disconnect_from_db( $dbc, $result );
+
+
+}
 
 	
 
