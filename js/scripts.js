@@ -192,6 +192,8 @@ $(function() {
     // Listen for Form Submission
     $("form").submit(function(e) {
         switch (this.id) {
+            case "search-form":
+                break;
             case "lost-form":
                 var ls_email = $('#lost_email').val();
                 var ls_status = "success";
