@@ -461,7 +461,7 @@ a:active
 }
 .event-list > li > .info > .title
 {
-    font-size: 17pt;
+    font-size: 13pt;
     font-weight: 700;
 
     margin: 0;
@@ -470,7 +470,7 @@ a:active
 }
 .event-list > li > .info > .desc
 {
-    font-size: 13pt;
+    font-size: 10pt;
     font-weight: 300;
 
     margin: 0;
@@ -538,9 +538,9 @@ a:active
     color: rgb(30, 30, 30);
     background-color: rgb(200, 200, 200);
 }
-.facebook i,
-.link i,
-.info i
+li.facebook i,
+li.link i,
+li.info i
 {
     display: block;
 
@@ -548,25 +548,25 @@ a:active
 
     color: rgb(75, 110, 168) !important;
 }
-.link i
+li.link i
 {
     color: rgb(113,166,65) !important;
 }
-.info i
+li.info i
 {
     color: rgb(87,22,25) !important;
 }
-.facebook:hover i
+li.facebook:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(75, 110, 168) !important;
 }
-.link:hover i
+li.link:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(113,166,65) !important;
 }
-.info:hover i
+li.info:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(87,22,25) !important;
@@ -583,6 +583,18 @@ a:active
 .event-list > li > .info > .desc > .descriptionlabel
 {
     font-weight: 500;
+}
+
+@media (min-width: 992px)
+{
+    .event-list > li > .info > .title
+    {
+        font-size: 17pt;
+    }
+    .event-list > li > .info > .desc
+    {
+        font-size: 13pt;
+    }
 }
 
 @media (min-width: 768px)
@@ -670,7 +682,8 @@ a:active
         display: block;
 
         width: 40px;
-        padding: 10px 0 9px;
+        margin-left: -1px;
+        padding: 13px 0 13px;
     }
 }
 
@@ -945,8 +958,10 @@ a:hover .underline
 #event-modal .modal-dialog
 {
     font-family: 'Lato', sans-serif;
-    color: black;
+
     margin-top: 180px;
+
+    color: black;
 }
 
 #event-modal .modal-dialog .modal-body img
