@@ -249,6 +249,8 @@ $(function() {
                 return false;
                 break;
             case "register-form":
+                var rg_firstname = $('#register_firstname').val();
+                var rg_lastname = $('#register_lastname').val();
                 var rg_username = $('#register_username').val();
                 var rg_email = $('#register_email').val();
                 var rg_password = $('#register_password').val();
@@ -259,6 +261,8 @@ $(function() {
                 $(".registererrors").text("");
 
                 // Form Validation
+                var e_firstnameerrors = validateString(rg_firstname);
+                var e_lastnameerrors = validateString(rg_lastname);
                 var rg_emailerror = validateEmail(rg_email);
                 var rg_usernameerror = validateUsername(rg_username);
                 var rg_passworderror = validatePassword(rg_password);
@@ -275,6 +279,14 @@ $(function() {
                         rg_captchaerror = "Captcha Failed.";
                     }
                     // Display Errors
+                    if (e_firstnameerrors != "") {
+                        rg_status = "failure";
+                        $(".eventerrors").append("<li>" + e_firstnameerrors + "first name.</li>");
+                    }
+                    if (e_lastnameerrors != "") {
+                        rg_status = "failure";
+                        $(".eventerrors").append("<li>" + e_lastnameerrors + "last name.</li>");
+                    }
                     if (rg_emailerror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_emailerror + "</li>");
