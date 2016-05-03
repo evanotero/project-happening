@@ -134,7 +134,7 @@ body
     opacity: 0;
     border: 0 none;
     border-radius: 2px;
-    background: none;
+    background-color: rgba(255, 255, 255, .1);
     -webkit-box-shadow: none;
             box-shadow: none;
 }
@@ -201,6 +201,11 @@ div.divider
     min-height: 420px;
     padding-top: 100px;
     padding-bottom: 50px;
+}
+
+section#mywall
+{
+    overflow-x: hidden;
 }
 
 #unapprovedEvents
@@ -311,7 +316,7 @@ a:active
     font-weight: normal;
     line-height: 1.3em;
 
-    margin-bottom: 75px;
+    margin-bottom: 40px;
 }
 
 @media (max-width: 767px)
@@ -1461,4 +1466,71 @@ div.g-recaptcha
 {
     width: 304px;
     margin: 0 auto;
+}
+
+
+/***********************************************************/
+/*                     Search Form                         */
+/***********************************************************/
+
+#search-form #search_input
+{
+    font-family: 'Lato';
+    font-size: 45px;
+    font-weight: 300;
+
+    z-index: 3;
+    top: 0;
+    right: 0;
+
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+
+    cursor: pointer;
+
+    color: #fff;
+    border: none;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    /*background: none;*/
+    background: rgba(0,0,0,.1);
+}
+
+.search-wrap
+{
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+#search-form #search_input:focus
+{
+    cursor: text;
+}
+
+::-webkit-input-placeholder
+{
+    font-family: FontAwesome, 'Lato';
+
+    color: #eee;
+}
+::-moz-placeholder
+{
+    font-family: FontAwesome, 'Lato';
+
+    color: #eee;
+}
+/* firefox 19+ */
+:-ms-input-placeholder
+{
+    font-family: FontAwesome, 'Lato';
+
+    color: #eee;
+}
+/* ie */
+input:-moz-placeholder
+{
+    font-family: FontAwesome, 'Lato';
+
+    color: #eee;
 }
