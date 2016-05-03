@@ -270,7 +270,7 @@ $(function() {
                 var rg_captchaerror = "";
 
                 // Captcha Verification
-                verifyCaptcha(recaptcha1).done(function(result) {
+                verifyCaptcha(recaptcha2).done(function(result) {
                     if (result['status'] == "success") {
                         // Do nothing
                     } else {
