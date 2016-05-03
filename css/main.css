@@ -517,6 +517,7 @@ a:active
 
     display: table-cell;
 
+    width: 33%;
     padding: 3px 0;
 
     cursor: pointer;
