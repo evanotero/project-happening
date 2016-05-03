@@ -36,11 +36,15 @@ foreach ($items as $item) {
     }
     $eventlink = mysqli_real_escape_string($dbc, $item->link);
     // Query to see if event already exits in database
-    $query = "select NAME from events where NAME = '$name'";
+    $query = "select NAME from events where LINK = '$eventlink'";
 
     $result = perform_query( $dbc, $query);
     if (mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        // Event already exists with this name
+        // Event already exists with this link
+        $query = "UPDATE events
+                    SET NAME = '$name', ORGANIZER = '$group', LOCATION = '$location', 
+                    DESCRIPTION = '$description', MEDIAURL = '$mediaurl', STARTDATE = '$startdate',
+                    ENDDATE = '$enddate' WHERE LINK = '$eventlink'";
     } else {                  
         // Insert Event into DB
 
@@ -49,9 +53,8 @@ foreach ($items as $item) {
                     MEDIAURL, STARTDATE, ENDDATE, LINK, APPROVED, U_ID) 
                     VALUES ('$name','$group','$location','$description','$mediaurl',
                     '$startdate','$enddate', '$eventlink', 1, 1)";
-
-        $result = perform_query( $dbc, $query); 
     }    
+    $result = perform_query( $dbc, $query); 
 }
 disconnect_from_db( $dbc, $result );
 ?>
