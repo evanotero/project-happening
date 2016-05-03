@@ -8,6 +8,7 @@ CREATE TABLE users (
      PASSWORD CHAR(40) NOT NULL, 
      PRIV ENUM('admin', 'user', 'unverified') NOT NULL,
      UNIQUE (EMAIL),
+     UNIQUE (USERNAME),
      PRIMARY KEY (U_ID)
 ) engine=innodb;
 
