@@ -178,8 +178,16 @@ $(function() {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
 
-    $('#lost_register_btn').click(function() { modalAnimate(formLost, formRegister); });
-    $('#register_lost_btn').click(function() { modalAnimate(formRegister, formLost); });
+    $('#lost_register_btn').click(function() {grecaptcha.reset(recaptcha3);
+        grecaptcha.reset(recaptcha2);
+        grecaptcha.reset(recaptcha3);
+        modalAnimate(formLost, formRegister);
+    });
+    $('#register_lost_btn').click(function() {
+        grecaptcha.reset(recaptcha2);
+        grecaptcha.reset(recaptcha3);
+        modalAnimate(formRegister, formLost);
+    });
 
     // Listen for Form Submission
     $("form").submit(function(e) {
