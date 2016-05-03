@@ -1486,7 +1486,7 @@ div.g-recaptcha
     width: 100%;
     height: 60px;
     padding: 10px;
-
+    line-height: normal;
     cursor: pointer;
 
     color: #fff;
