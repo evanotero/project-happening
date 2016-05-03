@@ -1,5 +1,6 @@
 <?php
 include("dbconn.php");
+date_default_timezone_set('America/New_York'); 
 // Get RSS URL
 $URL = $_POST['url'];
 $pages = $_POST['per_page'];
@@ -35,6 +36,25 @@ foreach ($items as $item) {
         $mediaurl = NULL;
     }
     $eventlink = mysqli_real_escape_string($dbc, $item->link);
+
+    // Convert to appropriate Time Zone and account
+    // for DST.
+    $allday = date_create('00:00');
+    $allday = date_format($allday, 'H:i');
+
+    date_default_timezone_set('America/New_York');
+    $startdate = date_create($startdate);
+    $enddate = date_create($enddate);
+    if ($allday == date_format($startdate, 'H:i') && $allday == date_format($enddate, 'H:i')) {
+        $startdate = date_format($startdate, 'c');
+        $enddate = date_format($enddate, 'c');
+    } else {
+        date_timezone_set($startdate, timezone_open('America/New_York'));
+        $startdate = date_format($startdate, 'c');
+        date_timezone_set($enddate, timezone_open('America/New_York'));
+        $enddate = date_format($enddate, 'c');
+    }
+
     // Query to see if event already exits in database
     $query = "select NAME from events where LINK = '$eventlink'";
 
