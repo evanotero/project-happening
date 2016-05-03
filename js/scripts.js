@@ -78,7 +78,7 @@ $(document).on('click', '.social .info i', function() {
 
     var headerhtml = "<button type='button' class='close' data-dismiss='modal' aria-label='Close'>" +
                 "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button>"+"<h2 class='title'>" + name + "</h2>";
-    console.log(description.length);
+
     if (description.length > 8)
         description = "<div class='divider'></div><p>" + description + "</p>";
     else
@@ -168,7 +168,7 @@ $(function() {
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important!
     });
-
+    
     /*** Event Listeners ***/
     // Listen for Date Picker
     $("#datetimepicker1").on("dp.change", function(e) {
