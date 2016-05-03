@@ -115,8 +115,8 @@ function displayTable() {
 
 	$dbc = connect_to_db('takc');
 	
-	
-	
+	/******* DISPLAY UNVERIFIED EVENTS   *********/
+		
 	$query = "select * from events where approved=0;";
 	$result = perform_query( $dbc, $query );
 	
@@ -190,6 +190,81 @@ function displayTable() {
 		//all events are approved
 	
 	}
+	
+	/********* DISPLAY USERS ***********/
+	
+	$query = "select * from users;";
+	
+	$result = perform_query( $dbc, $query );
+	
+	if(!(mysqli_num_rows($result) == 0)){
+		
+			echo "
+		 <section class='section' id='usersAdminSection'>
+			<div class='container' id='userslist'>
+				<form method='POST' action='admin.php'>
+        	    <table id='usersAvailable'>
+            	    <thead>
+                	    <tr>
+                	    	<th>Delete</th>
+                	    	<th>User ID<th>
+                    	    <th>First Name</th>
+                        	<th>Last Name</th>
+                   	 		<th>Username</th>
+                        	<th>E-mail</th>
+                        	<th>Privacy</th>
+                    	</tr>
+         	       </thead>
+            	   <tbody>";
+            	   	
+            	   	
+            	   		while($obj = $result->fetch_object()) {
+            	   			//there's another unapproved event
+            	   			$U_ID = $obj->U_ID;
+            	   			$fname = $obj->FIRSTNAME;
+            	   			$lname = $obj->LASTNAME;
+            	   			$username = $obj->USERNAME;
+            	   			$email = $obj->EMAIL;
+            	   			$priv = $obj->PRIV;
+            	   			
+            	   			echo "<tr>";
+            	   			//row
+            	   				echo "<td><input type=checkbox name='deleteUser[]' value='$U_ID'></td>";
+            	   				echo "<td>$fname</td>";
+            	   				echo "<td>$lname</td>";
+            	   				echo "<td>$username</td>";
+            	   				echo "<td>$email</td>";
+            	   				echo "<td>
+            	   						<select>
+            	   							<option value='admin' "; if($priv=='admin') echo "selected"; echo ">Admin</option>
+            	   							<option value='user' "; if($priv=='user') echo "selected"; echo ">User</option>
+            	   							<option value='unverified' "; if($priv=='unverified') echo "selected"; echo ">Unverified</option>
+            	   						</select>
+            	   					  </td>";
+            	   				
+            	   			echo "</tr>";
+            	   		}
+            	   		
+            	   	echo "
+            	   </tbody>
+           	 </table>
+           	 	<input type='submit' name='update' class='btn' value='UPDATE USERS!'>
+           	 </form>";
+           	 
+           	 echo "
+       	 </div>
+   	 </section>";
+		
+		
+	
+	}
+	else{
+		echo "No users found!";
+		//all events are approved
+	
+	}
+	
+	
 	
 	 disconnect_from_db( $dbc, $result );
 	

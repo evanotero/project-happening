@@ -184,6 +184,11 @@ body
     display: block !important;
 }
 
+#usersAdminSection
+{
+    display: block !important;
+}
+
 #mywall,
 #addevent
 {
