@@ -39,12 +39,17 @@ body
 /*                        Nav bar                       */
 /********************************************************/
 
+.navbar
+{
+    color: black;
+}
+
 .mainmenu
 {
-    z-index: 999999;
-
-    width: 100%;
+    z-index: 5;
     padding: 30px 0 0 0;
+    width: 10%;
+    position: fixed;
 }
 
 @media (min-width: 768px)
@@ -52,6 +57,14 @@ body
     .mainmenu
     {
         position: fixed;
+    }
+    #event-modal .modal-dialog
+    {
+        margin-top: 180px !important;
+    }
+    #register-modal .modal-dialog
+    {
+        width: auto;
     }
 }
 
@@ -177,6 +190,8 @@ div.divider
 {
     z-index: 1;
     top: 0;
+    
+    height: 100%; /*Sets the scrollable area to 100% of the viewport*/
 
     display: none;
     overflow: auto;
@@ -210,7 +225,6 @@ div.divider
     {
         padding-top: 160px;
     }
-
     #mywall,
     #addevent
     {
@@ -241,6 +255,7 @@ div.divider
         width: 300px;
     }
 }
+
 
 /********************************************************/
 /*                      Typography                      */
@@ -317,6 +332,7 @@ a:active
     color: #571619;
 }
 
+
 /********************************************************/
 /*                   UI - Buttons                       */
 /********************************************************/
@@ -387,6 +403,7 @@ a:active
 /********************************************************/
 /*              My Wall - Displaying Events             */
 /********************************************************/
+
 .event-list
 {
     font-family: 'Lato', sans-serif;
@@ -396,6 +413,7 @@ a:active
 
     list-style: none;
 }
+
 .event-list > li
 {
     margin: 0 0 20px;
@@ -405,6 +423,7 @@ a:active
     box-shadow: 0 0 5px rgb(51, 51, 51);
     box-shadow: 0 0 5px rgba(51, 51, 51, .7);
 }
+
 .event-list > li > time
 {
     display: inline-block;
@@ -416,16 +435,19 @@ a:active
     text-transform: uppercase;
 
     color: rgb(255, 255, 255);
-    background-color: rgba(254,209,54,.7);
+    background-color: rgba(254, 209, 54, .7);
 }
+
 .event-list > li:nth-child(even) > time
 {
-    background-color: rgba(87,22,25,.7);
+    background-color: rgba(87, 22, 25, .7);
 }
+
 .event-list > li > time > span
 {
     display: none;
 }
+
 .event-list > li > time > .day
 {
     font-size: 42pt;
@@ -434,6 +456,7 @@ a:active
 
     display: block;
 }
+
 .event-list > li time > .month
 {
     font-size: 24pt;
@@ -442,6 +465,7 @@ a:active
 
     display: block;
 }
+
 .event-list > li time > .time
 {
     font-size: 20pt;
@@ -450,12 +474,14 @@ a:active
 
     display: block;
 }
+
 .event-list > li > img
 {
     display: none;
 
     opacity: .9;
 }
+
 .event-list > li > .info
 {
     padding-top: 5px;
@@ -464,10 +490,12 @@ a:active
 
     background-color: rgba(245, 245, 245, .82);
 }
+
 .event-list > li > .social
 {
     background-color: rgba(245, 245, 245, .82);
 }
+
 .event-list > li > .info > .title
 {
     font-size: 13pt;
@@ -477,6 +505,7 @@ a:active
 
     color: black;
 }
+
 .event-list > li > .info > .desc
 {
     font-size: 10pt;
@@ -505,10 +534,12 @@ a:active
 
     text-align: center;
 }
+
 .event-list > li > .social > ul
 {
     margin: 0;
 }
+
 .event-list > li > .info > ul > li,
 .event-list > li > .social > ul > li
 {
@@ -524,6 +555,7 @@ a:active
 
     color: rgb(30, 30, 30);
 }
+
 .event-list > li > .info > ul > li > i
 {
     display: block;
@@ -534,20 +566,24 @@ a:active
 
     color: rgb(30, 30, 30);
 }
+
 .event-list > li > .social > ul > li
 {
     padding: 0;
 }
+
 .event-list > li > .social > ul > li > i
 {
     padding: 3px 0;
 }
+
 .event-list > li > .info > ul > li:hover,
 .event-list > li > .social > ul > li:hover
 {
     color: rgb(30, 30, 30);
     background-color: rgb(200, 200, 200);
 }
+
 li.facebook i,
 li.link i,
 li.info i
@@ -558,28 +594,33 @@ li.info i
 
     color: rgb(75, 110, 168) !important;
 }
+
 li.link i
 {
-    color: rgb(113,166,65) !important;
+    color: rgb(113, 166, 65) !important;
 }
+
 li.info i
 {
-    color: rgb(87,22,25) !important;
+    color: rgb(87, 22, 25) !important;
 }
+
 li.facebook:hover i
 {
     color: rgb(255, 255, 255) !important;
     background-color: rgb(75, 110, 168) !important;
 }
+
 li.link:hover i
 {
     color: rgb(255, 255, 255) !important;
-    background-color: rgb(113,166,65) !important;
+    background-color: rgb(113, 166, 65) !important;
 }
+
 li.info:hover i
 {
     color: rgb(255, 255, 255) !important;
-    background-color: rgb(87,22,25) !important;
+    background-color: rgb(87, 22, 25) !important;
 }
 
 .event-list > li > .social > ul > li > a
@@ -675,7 +716,7 @@ li.info:hover i
 
         width: 40px;
 
-        background-color: rgba(0,0,0,.0);
+        background-color: rgba(0, 0, 0, .0);
     }
     .event-list > li > .social > ul
     {
@@ -696,6 +737,7 @@ li.info:hover i
         padding: 13px 0 13px;
     }
 }
+
 
 /********************************************************/
 /*                     Contact Us                       */
@@ -731,7 +773,11 @@ li.info:hover i
 
 
 /***********************************************************/
+
+
 /*                    Text Shadows                         */
+
+
 /***********************************************************/
 
 .text-shadows
@@ -957,19 +1003,36 @@ a:hover .underline
 /*                        Modals                           */
 /***********************************************************/
 
+.modal button.close
+{
+    font-size: 26px;
+
+    margin-top: 0;
+
+    opacity: 1;
+    color: rgba(87, 22, 25, 1);
+    outline: 0;
+    text-shadow: none;
+}
+
+.modal button.close:hover,
+.modal button.close:focus
+{
+    color: rgba(87, 22, 25, .7);
+}
+
 #register-modal .modal-dialog
 {
     font-family: 'Roboto', sans-serif;
-
-    width: 350px;
-    margin-top: 80px;
+        position: relative;
+    width: auto
 }
 
 #event-modal .modal-dialog
 {
     font-family: 'Lato', sans-serif;
 
-    margin-top: 180px;
+    margin-top: 20px;
 
     color: black;
 }
@@ -991,7 +1054,7 @@ a:hover .underline
     font-size: 17pt;
     font-weight: 700;
 
-    padding-left: 21px;
+    padding-left: 26px;
 
     color: black;
 }
@@ -1062,22 +1125,22 @@ input[type=password]
 {
     max-width: 100px;
     max-height: 100px;
-    margin-right: -21px;
+    margin-right: -26px;
 }
 
 .modal-backdrop.in
 {
-    opacity: .8;
+    opacity: .6;
 
     filter: alpha(opacity=50);
 }
 
 .modal-content
 {
-    border: 1px solid #bdc3c7;
+    border: 0;
     border-radius: 0;
     outline: 0;
-    background-color: rgba(236,236,236,1);
+    background-color: rgba(236, 236, 236, 1);
 }
 
 .modal-header
@@ -1107,6 +1170,11 @@ input[type=password]
 }
 
 div.modal-content .btn
+{
+    border-radius: 0;
+}
+
+input
 {
     border-radius: 0;
 }
@@ -1167,7 +1235,7 @@ div.modal-content .form-control
     margin-top: 10px;
 
     color: #fff;
-    background-color: rgba(87,22,25,.8);
+    background-color: rgba(87, 22, 25, .8);
 }
 
 
@@ -1178,9 +1246,8 @@ div.modal-content .form-control
 .date .bootstrap-datetimepicker-widget
 {
     color: white;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
 }
-
 
 .date .btn
 {
@@ -1192,20 +1259,25 @@ div.modal-content .form-control
 /*                    Add Event Form                       */
 /***********************************************************/
 
+.form-control,
+.input-group-addon
+{
+    border-radius: 0;
+}
+
 form#addevent-form input:not(.submit),
 form#addevent-form textarea
 {
     color: white;
-    background-color: rgba(0,0,0,.8);
+    background-color: rgba(0, 0, 0, .8);
 }
-
 
 form#addevent-form span
 {
     font-weight: bold;
 
     color: white;
-    background-color: rgba(87,22,25,.8);
+    background-color: rgba(87, 22, 25, .8);
 }
 
 form#addevent-form label
@@ -1224,12 +1296,12 @@ form#addevent-form label
 
 .popover-title
 {
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(0, 0, 0, .9);
 }
 
 .popover
 {
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
 }
 
 .submitrow a,
@@ -1239,7 +1311,8 @@ form#addevent-form label
     padding: 5px 5px 5px 5px;
 
     color: white;
-    background-color: rgba(87,22,25,.9);
+    border-radius: 0;
+    background-color: rgba(87, 22, 25, .9);
 }
 
 
@@ -1316,7 +1389,6 @@ form#addevent-form label
     width: 100%;
 }
 
-
 #alertAdminRegister
 {
     font-family: 'Roboto', Helvetica, Arial, sans-serif;
@@ -1324,7 +1396,6 @@ form#addevent-form label
 
     color: red;
 }
-
 
 
 /***********************************************************/
@@ -1380,7 +1451,7 @@ table#results tr:nth-child(even) td
 
 
 /***********************************************************/
-/*                       ReCaptcha                          */
+/*                       ReCaptcha                         */
 /***********************************************************/
 
 div.g-recaptcha
