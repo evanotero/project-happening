@@ -565,10 +565,10 @@ $(function() {
                         starttime = "";
                         endtime = "";
                     } else if (starttime == endtime) {
-                        starttime = "<span class='descriptionlabel'>Time</span>: " + starttime;
+                        starttime = "<i class='fa fa-clock-o' aria-hidden='true'></i> " + starttime;
                         endtime = "<br>";
                     } else {
-                        starttime = "<span class='descriptionlabel'>Time</span>: " + starttime;
+                        starttime = "<i class='fa fa-clock-o' aria-hidden='true'></i> " + starttime;
                         endtime = " - " + endtime + "<br>";
                     }
 
@@ -577,7 +577,7 @@ $(function() {
                     if (location == "")
                         location = "";
                     else
-                        location = "<span class='descriptionlabel'>Location</span>: " + location + "<br>";
+                        location = "<i class='fa fa-map-marker' aria-hidden='true'></i> " + location + "<br>";
 
 
                     if ((startyear > currentyear) || (startyear == currentyear && start[1] > currentmonth) || (startyear == currentyear && start[1] == currentmonth && startday >= currentday)) {
@@ -590,7 +590,7 @@ $(function() {
                                 "<span class='time'>" + displaytime + "</span></time>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<span class='descriptionlabel'>Organizer</span>: <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                                "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
                                 "<span class='timespan'>" + starttime + endtime + "</span>" +
                                 "<span class='location'>" + location + "</span></p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
@@ -612,7 +612,7 @@ $(function() {
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<span class='descriptionlabel'>Organizer</span>: <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                                "<i class='fa fa-clock' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
                                 "<span class='timespan'>" + starttime + endtime + "</span>" +
                                 "<span class='location'>" + location + "</span></p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
