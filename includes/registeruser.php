@@ -1,5 +1,7 @@
 <?php
 include("dbconn.php");
+$msg = "";
+
 $Firstname = $_POST['firstname'];
 $Lastname = $_POST['lastname'];
 $Username=$_POST['username'];
@@ -10,7 +12,10 @@ $PWEncrypt = sha1($Password1);
 
 $dbc= connect_to_db("takc");
 
-$insertsql = "INSERT INTO users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) VALUES ('$Firstname','$Lastname','$Username', '$Register_email','$PWEncrypt', 'unverified')";
+// Ned to check if user already exists
+
+$insertsql = "INSERT INTO users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) VALUES ('$Firstname','$Lastname','$Username', '$Register_email','$PWEncrypt', 'unverified');";
 $result = perform_query( $dbc, $query);
-echo $result;
+echo $msg;
 disconnect_from_db( $dbc, $result );
+?>
