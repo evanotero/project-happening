@@ -168,7 +168,7 @@ $(function() {
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important!
     });
-    
+
     /*** Event Listeners ***/
     // Listen for Date Picker
     $("#datetimepicker1").on("dp.change", function(e) {
@@ -614,7 +614,7 @@ $(function() {
                                 "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
                                 "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                                 "<p class='desc'>" +
-                                "<i class='fa fa-clock' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                                "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
                                 "<span class='timespan'>" + starttime + endtime + "</span>" +
                                 "<span class='location'>" + location + "</span></p>" +
                                 "<p class='deschidden'>" + value.DESCRIPTION +
