@@ -14,7 +14,8 @@ A web application for Boston College students to view, search, and add all event
 - Custom background, Logo, and Favicon designed and created in Adobe Photoshop CC & Adobe Illustrator CC
 
 ### URL
-The website can be reached at: http://cscilab.bc.edu/~takc/happening/index.html.
+- **Main Website**: http://cscilab.bc.edu/~takc/happening/index.html.
+- **Admin Panel**: http://cscilab.bc.edu/~takc/happening/admin/index.php.
 
 ### Proposal Documents
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
