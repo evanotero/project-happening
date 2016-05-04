@@ -373,9 +373,9 @@ function updateUsers(){
             	   			$oldPriv = $obj->PRIV;
             }
             
-            $to = "'$email'";
+            $to = $email;
 			$subject = "Happening - Change in User privacy";
-			$txt = "Hello, '$name'! We have apdated your privacy setting from $oldPriv to $a[1]";
+			$txt = "Hello, '".$name."'! We have apdated your privacy setting from $oldPriv to $a[1]";
 			$headers = "From: happening.bc@gmail.com" . "\r\n" .
 				"BCC: '" . $_SESSION['email'] ."'";
 
