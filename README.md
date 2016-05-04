@@ -12,6 +12,8 @@ A web application for Boston College students to view, search, and add all event
 - **Application Dependenceies**: jQuery, Boston College OrgSync RSS, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, and Font Awesome v4.0.3.
 - 1500+ lines of _CSS_, 700+ lines of _JavaScript_ & _jQuery_, 700+ lines of _PHP_, and 350 lines of _HTML_
 - Custom background, Logo, and Favicon designed and created in Adobe Photoshop CC & Adobe Illustrator CC
+- Complete mobile support with styling designed for touch screens.
+<img src="https://github.com/CSCI2254/project-happening/blob/master/img/mobilemockup.png" width="400px"/>
 
 ### URL
 - **Main Website**: http://cscilab.bc.edu/~takc/happening/index.html.
