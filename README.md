@@ -9,8 +9,8 @@ Final Project for Web Applications Development (CSCI2254, Spring 2016).
 A web application for Boston College students to view, search, and add all events that are occurring on, or near, campus.
 
 ### Application & Code Explained
-- **Application Dependenceies**: jQuery, Boston College OrgSync RSS, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, and Font Awesome v4.0.3.
-- 1500+ lines of _CSS_, 700+ lines of _JavaScript_ & _jQuery_, 700+ lines of _PHP_, and 350 lines of _HTML_
+- **Application Dependencies**: jQuery, Boston College OrgSync RSS, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, and Font Awesome v4.0.3.
+- 1500+ lines of _CSS_, 800+ lines of _JavaScript_ & _jQuery_, 700+ lines of _PHP_, and 350 lines of _HTML_
 - Custom background, logo, and favicon designed and created using Adobe Photoshop CC & Adobe Illustrator CC.
 - Complete mobile support with styling designed for touch screens:
 <img src="https://github.com/CSCI2254/project-happening/blob/master/img/mobilemockup.png" width="400px"/>
