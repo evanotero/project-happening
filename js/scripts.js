@@ -204,7 +204,7 @@ $(function() {
     $("form").submit(function(e) {
         switch (this.id) {
             case "search-form":
-                populateWall($('input#search_input').val());
+                //populateWall($('input#search_input').val());
                 return false;
                 break;
             case "lost-form":
@@ -240,8 +240,8 @@ $(function() {
                         msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Failed to reset password!");
                         divForms.css("height", formLost.height() + 10);
                     } else {
-                        resetPassword();
-                        
+                        resetPassword(); // AJAX
+
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
@@ -283,11 +283,11 @@ $(function() {
                     // Display Errors
                     if (rg_firstnameerrors != "") {
                         rg_status = "failure";
-                        $(".eventerrors").append("<li>" + rg_firstnameerrors + "first name.</li>");
+                        $(".registererrors").append("<li>" + rg_firstnameerrors + "first name.</li>");
                     }
                     if (rg_lastnameerrors != "") {
                         rg_status = "failure";
-                        $(".eventerrors").append("<li>" + rg_lastnameerrors + "last name.</li>");
+                        $(".registererrors").append("<li>" + rg_lastnameerrors + "last name.</li>");
                     }
                     if (rg_emailerror != "") {
                         rg_status = "failure";
@@ -315,16 +315,7 @@ $(function() {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error!");
                         divForms.css("height", formRegister.height() + 30);
                     } else {
-                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
                         registerUser(); // AJAX
-                        $(".registererrors").text("");
-                        $(".losterrors").text("");
-                        $('#register_firstname').val("");
-                        $('#register_lastname').val("");
-                        $('#register_username').val("");
-                        $('#register_email').val("");
-                        $('#register_password').val("");
-                        $('#register_verifypassword').val("");
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
@@ -761,6 +752,24 @@ $(function() {
             data: dataString,
             success: function(data) {
                 //console.log(data); // DEBUG
+                switch (data) {
+                    case "exists":
+                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'),
+                            "error", "glyphicon-remove", "Username/Email already exists!");
+                        break;
+                    case "success":
+                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'),
+                            "success", "glyphicon-ok", "User Registered!");
+                        $('#register_firstname').val("");
+                        $('#register_lastname').val("");
+                        $('#register_username').val("");
+                        $('#register_email').val("");
+                        $('#register_password').val("");
+                        $('#register_verifypassword').val("");
+                        break;
+                    default:
+                        break;
+                }
             },
             error: function(xhr, status, error) {
                 console.log(xhr + " " + status + " " + error); // DEBUG
@@ -776,6 +785,7 @@ $(function() {
             type: "POST",
             data: dataString,
             success: function(data) {
+                //console.log(data); // DEBUG
                 switch (data) {
                     case "reset":
                         msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'),
@@ -796,6 +806,8 @@ $(function() {
                             "error", "glyphicon-remove", "Failed!  Unexpected error.");
                         break;
                     default:
+                        msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'),
+                            "error", "glyphicon-remove", "Failed!  Unexpected error.");
                         break;
                 }
             },
