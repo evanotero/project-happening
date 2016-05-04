@@ -504,7 +504,7 @@ a:active
 .event-list > li > .info > .title
 {
     font-size: 13pt;
-    font-weight: 700;
+    font-weight: 500;
 
     margin: 0;
 
@@ -1059,7 +1059,7 @@ a:hover .underline
 #event-modal .modal-dialog .modal-header .title
 {
     font-size: 17pt;
-    font-weight: 700;
+    font-weight: 500;
 
     padding-left: 26px;
 
