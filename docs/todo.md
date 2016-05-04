@@ -9,7 +9,8 @@
 7. ~~If possible, make all styling compatible with mobile~~
 8. ~~Configure "More Information" button on MyWall~~
 9. Clear ~~Register~~, Add Event, and ~~Lost Password~~ forms on success
-10. [Optional] Use [LazyLoad](http://www.appelsiini.net/projects/lazyload)
+10. [Optional] Add Google Analytics
+11. [Optional] Use [LazyLoad](http://www.appelsiini.net/projects/lazyload)
 
 ## Server-Side
 1. ~~Create Events and Users Tables (Add approved boolean variable to events table; Keep track of manually added events and what users added them)~~
