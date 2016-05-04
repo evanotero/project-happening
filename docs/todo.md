@@ -22,4 +22,4 @@
 7. ~~Add AJAX and PHP for Admins removing/approving events from DB~~
 8. ~~Add AJAX and PHP for Admins approving users to create events~~
 9. ~~Add AJAX and _finish_ PHP for Google reCaptcha~~
-10. Sanitize Inputs
+10. ~~Sanitize Inputs~~
