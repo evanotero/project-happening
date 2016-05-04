@@ -6,7 +6,7 @@
 Final Project for Web Applications Development (CSCI2254, Spring 2016).
 
 ### Summary
-A web application for Boston College students to view, search, and add all events that are occurring on campus.
+A web application for Boston College students to view, search, and add all events that are occurring on, or near, campus.
 
 ### Application & Code Explained
 - **Application Dependenceies**: jQuery, Boston College OrgSync RSS, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, and Font Awesome v4.0.3.
