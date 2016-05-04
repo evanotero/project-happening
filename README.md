@@ -22,6 +22,11 @@ A web application for Boston College students to view, search, and add all event
 ### Proposal Documents
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
 
+### Future
+- Add support for the Boston College event calendar: http://events.bc.edu/calendar.xml.
+- Add support for events only posted on Facebook by Boston College student groups.
+- Increase the search capability and allow more filtering options.
+
 ## Grading
 4/11
 - Looks good.  I really like the wiki.
