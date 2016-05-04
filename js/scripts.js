@@ -398,10 +398,9 @@ $(function() {
 
                     // Register User if no failure occured
                     if (e_status == "failure") {
-                        // Do nothing
+                        // Do nothing, display errors
                     } else {
-                        msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", "Registered!");
-                        // Insert AJAX...
+                        addEvent(); // AJAX
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
@@ -742,6 +741,25 @@ $(function() {
         return hour + min + ampm;
     }
 
+    /*** Add Event ***/
+    function addEvent() {
+        var dataString = $("addevent-form").serialize();
+
+        var request = $.ajax({
+            url: "includes/addevent.php",
+            type: "POST",
+            data: dataString,
+            success: function(data) {
+                switch (data) {
+                    case "":
+                        break;
+                    default:
+                        break;
+                }
+            }
+        })
+    }
+
     /**** Register User ***/
     function registerUser() {
         var dataString = $("#register-form").serialize();
@@ -777,6 +795,7 @@ $(function() {
         });
     }
 
+    /*** Reset User Password ***/
     function resetPassword() {
         var dataString = $("#lost-form").serialize();
 
