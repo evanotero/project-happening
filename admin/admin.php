@@ -209,10 +209,11 @@ function displayTable() {
             	    <thead>
                 	    <tr>
                 	    	<th>Delete</th>
-                	    	<th>First Name</th>
-                    	    <th>Last Name</th>
-                        	<th>Username</th>
-                   	 		<th>Email</th>
+                	    	<th>User ID</th>
+                    	    <th>First Name</th>
+                        	<th>Last Name</th>
+                   	 		<th>Username</th>
+                        	<th>E-mail</th>
                         	<th>Privacy</th>
                     	</tr>
          	       </thead>
@@ -231,6 +232,7 @@ function displayTable() {
             	   			echo "<tr>";
             	   			//row
             	   				echo "<td><input type=checkbox name='deleteUser[]' value='$U_ID'></td>";
+            	   				echo "<td>$U_ID</td>";
             	   				echo "<td>$fname</td>";
             	   				echo "<td>$lname</td>";
             	   				echo "<td>$username</td>";
@@ -356,13 +358,13 @@ function updateUsers(){
         
         
              //update
-           // $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';"; 
+          //  $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';"; 
              
              
             $a = explode('=>', $arr);   // $a[0]=id    $a[1]=priv (new)
            
            /******for email******/ 
-            $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';";
+            $query = "SELECT FIRSTNAME, EMAIL, PRIV from users where U_ID='".$a[0]."';";
             $result = perform_query( $dbc, $query );
             while($obj = $result->fetch_object()) {
             	   			//there's another unapproved event
@@ -373,9 +375,9 @@ function updateUsers(){
             
             $to = "'$email'";
 			$subject = "Happening - Change in User privacy";
-			$txt = "Hello, $name! We have apdated your privacy setting from $oldPriv to $[1]";
-			$headers = "From: webmaster@happeningBC.com" . "\r\n" .
-				"BCC: '$_SESSION['email']'";
+			$txt = "Hello, '$name'! We have apdated your privacy setting from $oldPriv to $a[1]";
+			$headers = "From: happening.bc@gmail.com" . "\r\n" .
+				"BCC: '" . $_SESSION['email'] ."'";
 
 			mail($to,$subject,$txt,$headers);
 
