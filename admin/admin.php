@@ -122,6 +122,7 @@ function displayTable() {
 	$query = "select * from events where approved=0;";
 	$result = perform_query( $dbc, $query );
 	
+	/*********Checks if there are any unapproved events********/
 	if(!(mysqli_num_rows($result) == 0)){
 		
 			echo "
@@ -199,7 +200,7 @@ function displayTable() {
 	
 	$result = perform_query( $dbc, $query );
 	
-	if(!(mysqli_num_rows($result) == 0)){
+	if(!(mysqli_num_rows($result) == 0)){          //if there's any users in the database
 		
 			echo "
 		 <section class='section' id='usersAdminSection'>
@@ -261,8 +262,8 @@ function displayTable() {
 		
 	
 	}
-	else{
-		echo "No users found!";
+	else{       //No users found
+		echo "No users found!<br>";
 		//all events are approved
 	
 	}
