@@ -1446,7 +1446,7 @@ table#usersAvailable th
     border-width: 1px;
     border-style: solid;
     border-color: #666;
-    background-color: #571619;
+    background-color: rgba(87,22,25, .8);
 }
 
 table#eventsToApprove td,
@@ -1457,13 +1457,17 @@ table#usersAvailable td
     border-width: 1px;
     border-style: solid;
     border-color: #666;
-    background-color: #fff;
+    /*background-color: #fff;*/
+    	background-color: rgba(255,255,255, .8);
+
 }
 
 table#eventsToApprove tr:nth-child(even) td,
 table#usersAvailable tr:nth-child(even) td
 {
-    background-color: #fed136;
+    /*background-color: #fed136;*/
+    background-color: rgba(254,209,54, .8);
+
 }
 
 
