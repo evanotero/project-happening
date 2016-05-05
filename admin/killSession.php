@@ -1,5 +1,5 @@
 <?php
-
+/*********Kills the Session**********/
 	session_start();
 	
 	session_unset();
