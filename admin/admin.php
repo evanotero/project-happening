@@ -373,15 +373,15 @@ function updateUsers(){
             	   			$email = $obj->EMAIL;
             	   			$oldPriv = $obj->PRIV;
             }
-            
-            $to = $email;
-			$subject = "Happening - Change in User privacy";
-			$txt = "Hello, '".$name."'! We have apdated your privacy setting from $oldPriv to $a[1]".".";
-			$headers = "From: happening.bc@gmail.com" . "\r\n" .
-				"BCC: '" . $_SESSION['email'] ."'";
-
-			mail($to,$subject,$txt,$headers);
-
+            if ($oldPriv!=$a[1]){      //if there's a change in privacy, then send email.
+	            $to = $email;
+				$subject = "Happening - Change in User privacy";
+				$txt = "Hello, '".$name."'! We have apdated your privacy setting from $oldPriv to $a[1]".".";
+				$headers = "From: happening.bc@gmail.com" . "\r\n" .
+					"BCC: '" . $_SESSION['email'] ."'";
+	
+				mail($to,$subject,$txt,$headers);
+			}
             
              
             /*******updating database*****/

@@ -31,7 +31,7 @@ if(!(mysqli_num_rows($result) == 0)){   //user exists
 
 
 	}
-	if ($priv='unverified'){  //****** not verified user
+	if ($priv=='unverified'){  //****** not verified user
 		$msg .= "Your user has not yet been verified";
 	}
 	else {                   //******* Either an 'admin' or 'user'
