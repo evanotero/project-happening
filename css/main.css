@@ -1417,7 +1417,8 @@ div.table-wrapper
     opacity: .9;
 }
 
-table
+table#eventsToApprove,
+table#usersAvailable
 {
     font-size: 13px;
 
@@ -1431,7 +1432,8 @@ table
     border-color: #666;
 }
 
-table th
+table#eventsToApprove th,
+table#usersAvailable th
 {
     padding: 8px;
 
@@ -1442,7 +1444,8 @@ table th
     background-color: #571619;
 }
 
-table td
+table#eventsToApprove td,
+table#usersAvailable td
 {
     padding: 8px;
 
@@ -1452,7 +1455,8 @@ table td
     background-color: #fff;
 }
 
-table tr:nth-child(even) td
+table#eventsToApprove tr:nth-child(even) td,
+table#usersAvailable tr:nth-child(even) td
 {
     background-color: #fed136;
 }
