@@ -49,7 +49,7 @@
 		}
 		
 		
-		
+		/********Check if there's an error in the submission******/
 		if ($hasError == 1) {    //form has some sort of error
 			$_SESSION['hasError'] = 1;
 			if($hasUserError == 1 && $hasPassError == 1){   //has not provided either user or pass
@@ -70,17 +70,17 @@
 	
 			$query = "select * from users WHERE username='".$username."' and password='".$encPass."' and priv='admin';";
 			
-			
+			/*****Check if the user is an admin*******/
 			$result = perform_query( $dbc, $query );
-			if (mysqli_num_rows($result) == 0) {
+			if (mysqli_num_rows($result) == 0) {  //not admin
 				$_SESSION['hasError'] = 1;
 				$_SESSION['error'] = "Your username or password is incorrect";
 				disconnect_from_db( $dbc, $result );
 	
-				header("Location: index.php");
+				header("Location: index.php");     //sent back to admin login
 			}
-			else {
-				while($obj = $result->fetch_object()) {
+			else {      //admin
+				while($obj = $result->fetch_object()) {  //gets his info
 					$name = $obj->FIRSTNAME;
 					$email = $obj->EMAIL;
 					
@@ -90,7 +90,7 @@
 				
 				disconnect_from_db( $dbc, $result );
 	
-				header("Location: admin.php");
+				header("Location: admin.php");     //he is sent to admin page
 				
 			}
 			
