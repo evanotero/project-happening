@@ -344,7 +344,7 @@ $(function() {
                 var e_locationerrors = validateString(e_location);
                 var e_urlerrors = validateNotEmpty(e_url);
                 var e_usernameerrors = validateUsername(e_username);
-                var e_passworderrors = validatePassword(e_password);
+                var e_passworderrors = validateNotEmpty(e_password);
                 var e_startdateerrors = validateNotEmpty(e_startdate);
                 var e_enddateerrors = validateNotEmpty(e_enddate);
                 var e_captchaerror = "";
@@ -389,7 +389,7 @@ $(function() {
                     }
                     if (e_passworderrors != "") {
                         e_status = "failure";
-                        $(".eventerrors").append("<li>" + e_passworderrors + "</li>");
+                        $(".eventerrors").append("<li>" + e_passworderrors + " password.</li>");
                     }
                     if (e_captchaerror != "") {
                         e_status = "failure";
