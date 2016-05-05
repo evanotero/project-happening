@@ -69,297 +69,311 @@
 </head>
 
 <body class="theme-shadows">
-    <!-- Modal Window for Event Information -->
-    <div class="modal fade bs-event-modal-lg" id="event-modal" tabindex="-1" role="dialog" labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                </div>
-            </div>
+    <!-- Detect if JS is Disabled -->
+    <noscript>
+        <style type="text/css">
+        .pagecontainer {
+            display: none;
+        }
+        </style>
+        <div class="noscriptmsg">
+            You don't have javascript enabled. This web application requires it in order to function.
         </div>
-    </div>
-    <!-- Modal Window Register/Lost Password -->
-    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img class="img-circle" alt="logo" id="img_logo" src="img/happeninglogo.png">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div id="div-forms">
-                    <!-- Register Form -->
-                    <form action="?" id="register-form">
-                        <div class="modal-body">
-                            <div id="div-register-msg">
-                                <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-register-msg">Register an account.</span>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_firstname" class="form-control" type="text" placeholder="First Name" name="firstname" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_lastname" class="form-control" type="text" placeholder="Last Name" name="lastname" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_username" class="form-control" type="text" placeholder="Username" name="username" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_email" class="form-control" type="text" placeholder="E-Mail" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_password" class="form-control" type="password" placeholder="Password" name="password" required>
-                            </div>
-                            <div class="form-group">
-                                <input id="register_verifypassword" class="form-control" type="password" placeholder="Verify Password" name="verifypassword" required>
-                            </div>
-                            <!-- reCAPTCHA -->
-                            <div class="g-recaptcha" id="recaptcha2"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
-                            </div>
-                            <div>
-                                <ul class="registererrors"></ul>
-                            </div>
-                            <div>
-                                <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- Lost Password Form -->
-                    <form action="?" id="lost-form" style="display:none;">
-                        <div class="modal-body">
-                            <div id="div-lost-msg">
-                                <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-lost-msg">Type your e-mail.</span>
-                            </div>
-                            <div class="form-group">
-                                <input id="lost_email" name="lostemail" class="form-control" type="text" placeholder="E-Mail" required>
-                            </div>
-                            <!-- reCAPTCHA -->
-                            <div class="g-recaptcha" id="recaptcha3"></div>
-                        </div>
-                        <div class="modal-footer">
-                            <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
-                            </div>
-                            <div>
-                                <ul class="losterrors"></ul>
-                            </div>
-                            <div>
-                                <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Nav Bar -->
-    <nav class="mainmenu">
-        <div class="container" id="navbar">
-            <div class="dropdown">
-                <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#home" class="active">Welcome</a></li>
-                    <li><a href="#mywall" id="navmywall">My Wall</a></li>
-                    <li><a href="#addevent">Add Event</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Main (Welcome) section -->
-    <section class="section" id="home">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
-                    <br>
-                    <h2 class="subtitle">Find out what's <span class="textgold">Happening</span> near <span class="textmaroon">you</span>.</h2>
-                    <div id="circle-wrap">
-                        <a href="#mywall" class="circle-btn">
-                            <div class="border-inactive"></div>
-                            <div class="border-active"></div>
-                            <div class="letter">go</div>
-                            <div class="underline"></div>
-                        </a>
+    </noscript>
+    <!-- Wrap Content -->
+    <div class="pagecontainer">
+        <!-- Modal Window for Event Information -->
+        <div class="modal fade bs-event-modal-lg" id="event-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Second (My Wall) section -->
-    <section class="section" id="mywall">
-        <div class="container">
-            <h2 class="text-center title">My Wall</h2>
-            <h2 class="text-center tagline">What's <span class="textgold">Happening</span> @ <span class="textmaroon">BC</span>?</h2>
+        <!-- Modal Window Register/Lost Password -->
+        <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img class="img-circle" alt="logo" id="img_logo" src="img/happeninglogo.png">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div id="div-forms">
+                        <!-- Register Form -->
+                        <form action="?" id="register-form">
+                            <div class="modal-body">
+                                <div id="div-register-msg">
+                                    <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-register-msg">Register an account.</span>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_firstname" class="form-control" type="text" placeholder="First Name" name="firstname" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_lastname" class="form-control" type="text" placeholder="Last Name" name="lastname" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_username" class="form-control" type="text" placeholder="Username" name="username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_email" class="form-control" type="text" placeholder="E-Mail" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_password" class="form-control" type="password" placeholder="Password" name="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="register_verifypassword" class="form-control" type="password" placeholder="Verify Password" name="verifypassword" required>
+                                </div>
+                                <!-- reCAPTCHA -->
+                                <div class="g-recaptcha" id="recaptcha2"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+                                </div>
+                                <div>
+                                    <ul class="registererrors"></ul>
+                                </div>
+                                <div>
+                                    <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Lost Password Form -->
+                        <form action="?" id="lost-form" style="display:none;">
+                            <div class="modal-body">
+                                <div id="div-lost-msg">
+                                    <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                    <span id="text-lost-msg">Type your e-mail.</span>
+                                </div>
+                                <div class="form-group">
+                                    <input id="lost_email" name="lostemail" class="form-control" type="text" placeholder="E-Mail" required>
+                                </div>
+                                <!-- reCAPTCHA -->
+                                <div class="g-recaptcha" id="recaptcha3"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                                </div>
+                                <div>
+                                    <ul class="losterrors"></ul>
+                                </div>
+                                <div>
+                                    <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="container">
-            <div class="row search-wrap">
-                <form id="search-form" action="?" autocomplete="on">
-                    <div class=" [col-xs-12 col-sm-offset-2 col-sm-8 ] ">
-                        <input id="search_input" name="q" type="text" size="40" placeholder="&#xf002; ...">
+        <!-- Nav Bar -->
+        <nav class="mainmenu">
+            <div class="container" id="navbar">
+                <div class="dropdown">
+                    <button type="button" class="navbar-toggle" data-toggle="dropdown"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#home" class="active">Welcome</a></li>
+                        <li><a href="#mywall" id="navmywall">My Wall</a></li>
+                        <li><a href="#addevent">Add Event</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Main (Welcome) section -->
+        <section class="section" id="home">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+                        <br>
+                        <h2 class="subtitle">Find out what's <span class="textgold">Happening</span> near <span class="textmaroon">you</span>.</h2>
+                        <div id="circle-wrap">
+                            <a href="#mywall" class="circle-btn">
+                                <div class="border-inactive"></div>
+                                <div class="border-active"></div>
+                                <div class="letter">go</div>
+                                <div class="underline"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Second (My Wall) section -->
+        <section class="section" id="mywall">
+            <div class="container">
+                <h2 class="text-center title">My Wall</h2>
+                <h2 class="text-center tagline">What's <span class="textgold">Happening</span> @ <span class="textmaroon">BC</span>?</h2>
+            </div>
+            <div class="container">
+                <div class="row search-wrap">
+                    <form id="search-form" action="?" autocomplete="on">
+                        <div class=" [col-xs-12 col-sm-offset-2 col-sm-8 ] ">
+                            <input id="search_input" name="q" type="text" size="40" placeholder="&#xf002; ...">
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                        <ul class="event-list">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Third (Add Event) section -->
+        <section class="section" id="addevent">
+            <div class="container">
+                <h2 class="text-center title">Add Event</h2>
+                <p class="lead text-center">
+                    Share your events with the entire <span class="textgold">Boston College</span> campus.
+                    <a tabindex="0" class="btn btn-sm btn-info" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Help - click anywhere to dismiss" id="help"><i class="fa fa-question" aria-hidden="true"></i></a>
+                </p>
+            </div>
+            <div class="container">
+                <form action="?" id="addevent-form">
+                    <!-- Event Name Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventnamelabel">Event Name</span>
+                                <input type="text" id="event_name" name="name" class="form-control" placeholder="..." aria-describedby="eventnamelabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event Group Name Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventgrouplabel">Host/Group Name</span>
+                                <input type="text" id="event_host" name="group" class="form-control" placeholder="..." aria-describedby="eventgrouplabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Location Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventlocationlabel">Location</span>
+                                <input type="text" id="event_location" name="location" class="form-control" placeholder="..." aria-describedby="eventlocationlabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event URL Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventurllabel">Event URL</span>
+                                <input type="url" id="event_url" name="link" class="form-control" placeholder="https://orgsync.com/12345/events/..." aria-describedby="eventurllabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Media URL Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventmedialabel">Media URL</span>
+                                <input type="url" id="event_mediaurl" name="media" class="form-control" placeholder="http://i.imgur.com/12345.jpg" aria-describedby="eventmedialabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Date Input -->
+                    <div class="row">
+                        <div class='col-sm-3 col-sm-offset-3'>
+                            <div class="form-group">
+                                <label for="datetimepicker1input">Date/Time Start:</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' id="datetimepicker1input" name="datestart" class="form-control" />
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-sm-3'>
+                            <div class="form-group">
+                                <label for="datetimepicker2input">Date/Time End:</label>
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' id='datetimepicker2input' name="dateend" class="form-control" />
+                                    <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Event Description Input -->
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <div class="form-group">
+                                <label for="event_description">Event Descripton:</label>
+                                <textarea class="form-control" id="event_description" rows="5" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Username Input -->
+                    <div class="row">
+                        <div class='col-sm-3 col-sm-offset-3'>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventusernamelabel">Username</span>
+                                <input type="text" id="event_username" name="username" class="form-control" placeholder="..." aria-describedby="eventusernamelabel">
+                            </div>
+                        </div>
+                        <!-- Password Input -->
+                        <div class='col-sm-3'>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="eventpasswordlabel">Password</span>
+                                <input type="password" id="event_password" name="password" class="form-control" placeholder="..." aria-describedby="eventpasswordlabel">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- reCaptcha -->
+                    <div class="row">
+                        <div class="g-recaptcha" id="recaptcha1"></div>
+                    </div>
+                    <div class="row submitrow">
+                        <!-- Register User Modal Button -->
+                        <div class="col-sm-3 col-sm-offset-3">
+                            <a href="#" class="col-sm-12 btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password </a>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="col-sm-3">
+                            <input type="submit" name="submit" class="col-sm-12 btn btn-primary btn-sm submit" value="Submit Event">
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <ul class="eventerrors"></ul>
+                        </div>
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-                    <ul class="event-list">
-                    </ul>
+        </section>
+        <!-- Fourth (Contact) section -->
+        <section class="section" id="contact">
+            <div class="container">
+                <img src="img/happeninglogo.png" alt="logo" id="logo" />
+                <h2 class="text-center title">Get in touch</h2>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <p class="lead">Have a question, or want to suggest a new feature?</p>
+                        <ul class="list-inline list-social">
+                            <li><a href="https://github.com/CSCI2254/project-happening" class="btn btn-link"><i class="fa fa-github fa-fw"></i> Github</a></li>
+                            <li><a href="mailto:happening.bc@gmail.com" class="btn btn-link"><i class="fa fa-envelope-o fa-fw"></i> Email</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Third (Add Event) section -->
-    <section class="section" id="addevent">
-        <div class="container">
-            <h2 class="text-center title">Add Event</h2>
-            <p class="lead text-center">
-                Share your events with the entire <span class="textgold">Boston College</span> campus.
-                <a tabindex="0" class="btn btn-sm btn-info" role="button" data-html="true" data-toggle="popover" data-trigger="focus" title="Help - click anywhere to dismiss" id="help"><i class="fa fa-question" aria-hidden="true"></i></a>
-            </p>
-        </div>
-        <div class="container">
-            <form action="?" id="addevent-form">
-                <!-- Event Name Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventnamelabel">Event Name</span>
-                            <input type="text" id="event_name" name="name" class="form-control" placeholder="..." aria-describedby="eventnamelabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- Event Group Name Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventgrouplabel">Host/Group Name</span>
-                            <input type="text" id="event_host" name="group" class="form-control" placeholder="..." aria-describedby="eventgrouplabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- Location Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventlocationlabel">Location</span>
-                            <input type="text" id="event_location" name="location" class="form-control" placeholder="..." aria-describedby="eventlocationlabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- Event URL Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventurllabel">Event URL</span>
-                            <input type="url" id="event_url" name="link" class="form-control" placeholder="https://orgsync.com/12345/events/..." aria-describedby="eventurllabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- Media URL Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventmedialabel">Media URL</span>
-                            <input type="url" id="event_mediaurl" name="media" class="form-control" placeholder="http://i.imgur.com/12345.jpg" aria-describedby="eventmedialabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- Date Input -->
-                <div class="row">
-                    <div class='col-sm-3 col-sm-offset-3'>
-                        <div class="form-group">
-                            <label for="datetimepicker1input">Date/Time Start:</label>
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' id="datetimepicker1input" name="datestart" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-3'>
-                        <div class="form-group">
-                            <label for="datetimepicker2input">Date/Time End:</label>
-                            <div class='input-group date' id='datetimepicker2'>
-                                <input type='text' id='datetimepicker2input' name="dateend" class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Event Description Input -->
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <div class="form-group">
-                            <label for="event_description">Event Descripton:</label>
-                            <textarea class="form-control" id="event_description" rows="5" name="description"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <!-- Username Input -->
-                <div class="row">
-                    <div class='col-sm-3 col-sm-offset-3'>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventusernamelabel">Username</span>
-                            <input type="text" id="event_username" name="username" class="form-control" placeholder="..." aria-describedby="eventusernamelabel">
-                        </div>
-                    </div>
-                    <!-- Password Input -->
-                    <div class='col-sm-3'>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="eventpasswordlabel">Password</span>
-                            <input type="password" id="event_password" name="password" class="form-control" placeholder="..." aria-describedby="eventpasswordlabel">
-                        </div>
-                    </div>
-                </div>
-                <!-- reCaptcha -->
-                <div class="row">
-                    <div class="g-recaptcha" id="recaptcha1"></div>
-                </div>
-                <div class="row submitrow">
-                    <!-- Register User Modal Button -->
-                    <div class="col-sm-3 col-sm-offset-3">
-                        <a href="#" class="col-sm-12 btn btn-primary btn-sm" role="button" data-toggle="modal" data-target="#register-modal">Register / Forgot Password </a>
-                    </div>
-                    <!-- Submit Button -->
-                    <div class="col-sm-3">
-                        <input type="submit" name="submit" class="col-sm-12 btn btn-primary btn-sm submit" value="Submit Event">
-                    </div>
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <ul class="eventerrors"></ul>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-    <!-- Fourth (Contact) section -->
-    <section class="section" id="contact">
-        <div class="container">
-            <img src="img/happeninglogo.png" alt="logo" id="logo" />
-            <h2 class="text-center title">Get in touch</h2>
-            <div class="row">
-                <div class="col-sm-8 col-sm-offset-2 text-center">
-                    <p class="lead">Have a question, or want to suggest a new feature?</p>
-                    <ul class="list-inline list-social">
-                        <li><a href="https://github.com/CSCI2254/project-happening" class="btn btn-link"><i class="fa fa-github fa-fw"></i> Github</a></li>
-                        <li><a href="mailto:happening.bc@gmail.com" class="btn btn-link"><i class="fa fa-envelope-o fa-fw"></i> Email</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <!-- Custom scripts -->
     <script src="js/navbar.js"></script>
     <script src="js/scripts.js"></script>
