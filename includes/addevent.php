@@ -37,7 +37,7 @@ if(!(mysqli_num_rows($result) == 0)){   //user exists
 	else {                   //******* Either an 'admin' or 'user'
 		// Check if link already exists & 
 		//if event w/ that name on that day
-		$query = "SELECT * FROM events WHERE LINK='$Link' OR EVENTNAME='$EventName' AND STARTDATE = '$Startdate';";
+		$query = "SELECT * FROM events WHERE LINK='$Link' OR (NAME='$EventName' AND STARTDATE = '$Startdate');";
 		$result = perform_query($dbc, $query);
 
 		/**********Checks if the event already exists**********/
@@ -46,7 +46,7 @@ if(!(mysqli_num_rows($result) == 0)){   //user exists
 		} else {         //******the event does not exist
 			$verifed=0;
 			/*******if the user is an admin then the event is verified*******/
-			if ($priv = 'admin')
+			if ($priv == 'admin')
 				$verified = 1;
 			else        //user
 				$verified = 0;
