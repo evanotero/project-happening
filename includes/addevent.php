@@ -25,14 +25,11 @@ $result = perform_query($dbc, $query);
 if(!(mysqli_num_rows($result) == 0)){   //user exists
 
 	while($obj = $result->fetch_object()) {   //assigning values for user
-	
 		$U_ID = $obj->U_ID;   //user id
 		$priv = $obj->PRIV;   //user privacy ('admin', 'user', 'unverified')
-
-
 	}
 	if ($priv=='unverified'){  //****** not verified user
-		$msg .= "Your user has not yet been verified";
+		$msg .= "unverified";
 	}
 	else {                   //******* Either an 'admin' or 'user'
 		// Check if link already exists & 
@@ -42,7 +39,7 @@ if(!(mysqli_num_rows($result) == 0)){   //user exists
 
 		/**********Checks if the event already exists**********/
 		if (mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    		$msg .= "event already exists";
+    		$msg .= "exists";
 		} else {         //******the event does not exist
 			$verifed=0;
 			/*******if the user is an admin then the event is verified*******/
@@ -60,7 +57,7 @@ if(!(mysqli_num_rows($result) == 0)){   //user exists
 	}
 }     
 else {         //**********User does not exist
-	$msg .="You are not a user";
+	$msg .="notuser";
 }
 	echo $msg;
 
