@@ -753,21 +753,25 @@ $(function() {
 
     /*** Add Event ***/
     function addEvent() {
-        var dataString = $("addevent-form").serialize();
+        var dataString = $("#addevent-form").serialize();
 
         var request = $.ajax({
             url: "includes/addevent.php",
             type: "POST",
             data: dataString,
             success: function(data) {
+                console.log(data);
                 switch (data) {
                     case "":
                         break;
                     default:
                         break;
                 }
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr + " " + status + " " + error); // DEBUG
             }
-        })
+        });
     }
 
     /**** Register User ***/
