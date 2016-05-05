@@ -753,16 +753,54 @@ $(function() {
 
     /*** Add Event ***/
     function addEvent() {
-        var dataString = $("#addevent-form").serialize();
+        //var dataString = $("#addevent-form").serialize();
+        var datestart = new Date($('#datetimepicker1input').val());
+        var dateend = new Date($('#datetimepicker2input').val());
+        datestart = datestart.toISOString();
+        dateend = dateend.toISOString();
+        var name = $('#event_name').val();
+        var host = $('#event_host').val();
+        var location = $('#event_location').val();
+        var url = $('#event_url').val();
+        var mediaurl = $('#event_mediaurl').val();
+        var desc = $('#event_description').val();
+        var username = $('#event_username').val();
+        var password = $('#event_password').val();
+
+        if (mediaurl == "")
+            mediaurl = null;
 
         var request = $.ajax({
             url: "includes/addevent.php",
             type: "POST",
-            data: dataString,
+            data: "name=" + name + "&group=" + host + "&location=" + location +
+                "&link=" + url + "&media=" + mediaurl + "&datestart=" + datestart +
+                "&dateend=" + dateend + "&description=" + desc + "&username=" +
+                username + "&password=" + password,
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 switch (data) {
-                    case "":
+                    case "success":
+                        $('#event_name').val("");
+                        $('#event_host').val("");
+                        $('#event_location').val("");
+                        $('#event_url').val("");
+                        $('#event_mediaurl').val("");
+                        $('#datetimepicker1input').val("");
+                        $('#datetimepicker2input').val("");
+                        $('#event_description').val("");
+                        $('#event_username').val("");
+                        $('#event_password').val("");
+                        $(".eventerrors").append("<li>Event added! An administrator will now review the event.</li>");
+                        break;
+                    case "unverified":
+                        $(".eventerrors").append("<li>You have not been approved for adding events!</li>");
+                        break;
+                    case "exists":
+                        $(".eventerrors").append("<li>This event already exists!</li>");
+                        break;
+                    case "notuser":
+                        $(".eventerrors").append("<li>You are not a registered user!  Register above.</li>");
                         break;
                     default:
                         break;
@@ -812,6 +850,7 @@ $(function() {
     /*** Reset User Password ***/
     function resetPassword() {
         var dataString = $("#lost-form").serialize();
+
 
         var request = $.ajax({
             url: "includes/resetpassword.php",
