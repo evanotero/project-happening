@@ -1067,7 +1067,7 @@ a:hover .underline
 }
 
 #register-modal input[type=text],
-input[type=password]
+#register-modal input[type=password]
 {
     margin-top: 10px;
 }
