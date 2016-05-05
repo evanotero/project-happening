@@ -339,9 +339,9 @@ $(function() {
                 $(".eventerrors").text("");
 
                 // Form Validation
-                var e_nameerrors = validateString(e_name);
-                var e_organizationerrors = validateString(e_organization);
-                var e_locationerrors = validateString(e_location);
+                var e_nameerrors = validateStringNum(e_name);
+                var e_organizationerrors = validateStringNum(e_organization);
+                var e_locationerrors = validateStringNum(e_location);
                 var e_urlerrors = validateNotEmpty(e_url);
                 var e_usernameerrors = validateUsername(e_username);
                 var e_passworderrors = validateNotEmpty(e_password);
@@ -429,6 +429,16 @@ $(function() {
         var strregex = /^[a-zA-Z\s]*$/;
         if (!strregex.test(str) || str.length < 1)
             error = "Please enter a valid ";
+        else
+            error = "";
+        return error;
+    }
+
+    function validateStringNum(str) {
+        var error = "";
+        var strregex = /^.*?(?=[\^#%&$\*:<>\?/\{\|\}]).*$/;
+        if (strregex.test(str) || str.length < 1)
+            error = "No special characters.  Please enter a valid ";
         else
             error = "";
         return error;
