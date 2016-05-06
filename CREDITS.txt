@@ -1,0 +1,57 @@
+CREDITS
+This application uses Open Source components.  You can find the source code of their open source projects along with the license information below.  We acknowledge and are grateful to these developers for their contributions to open source.
+
+====
+
+Project: Font Awesome https://github.com/FortAwesome/Font-Awesome
+Copyright Dave Gandy
+License (MIT) http://fontawesome.io/license/ (Code License)
+
+Project: jQuery https://github.com/jquery/jquery/blob/master/LICENSE.txt
+Copyright jQuery Foundation and other contributors, https://jquery.org/
+License (MIT) https://github.com/jquery/jquery/blob/master/LICENSE.txt
+
+Project: Button Hover Styles http://codepen.io/galefacekillah/pen/myWGyj
+Copyright 2015 Galen Strasen
+License (MIT) https://blog.codepen.io/legal/licensing/
+
+Project: Bootstrap 3 https://github.com/twbs/bootstrap
+Copyright 2011-2016 Twitter, Inc.
+License (MIT) https://github.com/twbs/bootstrap/blob/master/LICENSE
+
+Project: Bootstrap Datetimepicker https://github.com/Eonasdan/bootstrap-datetimepicker
+Copyright 2015 Jonathan Peterson (@Eonasdan)
+License (MIT) https://github.com/Eonasdan/bootstrap-datetimepicker/blob/master/LICENSE
+
+Project: Event List http://bootsnipp.com/snippets/featured/event-list
+Copyright 2013 Bootsnipp.com
+License (MIT) http://bootsnipp.com/license
+
+Project: Moment https://github.com/moment/moment
+Copyright 2011-2016 Tim Wood, Iskren Chernev, Moment.js contributors
+License (MIT) https://github.com/moment/moment/blob/develop/LICENSE
+
+Project: reCAPTCHA https://github.com/google/recaptcha
+Copyright 2014, Google Inc.
+License (3-Clause BSD) https://github.com/google/recaptcha/blob/master/LICENSE
+
+Project: Magister https://github.com/pozh/Magister
+Copyright 2016 Sergey Pozhilov
+License (Creative Commons Attribution 3.0) [license file not included on project]
+**Project Happening’s styling is a derivative of the aforementioned project.  The content has been modified heavily, with over 1,000 lines of code added to the original styling in addition to the modification of the majority of the previous styling.
+
+Project: Open Sans https://www.google.com/fonts/specimen/Open+Sans
+Copyright 2010-2011, Google Corporation.
+License (Apache License, version 2.0) https://www.google.com/fonts/attribution
+
+Project: Roboto https://www.google.com/fonts/specimen/Roboto
+Copyright 2011 Google Inc.
+License (Apache License, version 2.0) https://www.google.com/fonts/attribution
+
+Project: Oswald https://www.google.com/fonts/specimen/Oswald
+Copyright 2011,-2012, Vernon Adams
+License (SIL Open Font License, 1.1) https://www.google.com/fonts/attribution
+
+Project: Lato https://www.google.com/fonts/specimen/Lato
+Copyright 2010-2011, tyPoland Łukasz Dziedzic 
+License (SIL Open Font License, 1.1) https://www.google.com/fonts/attribution
