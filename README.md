@@ -27,7 +27,7 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 - Add support for events only posted on Facebook by Boston College student groups.
 - Increase the search capability and allow more filtering options.
 
-Copyright 2016 Evan Otero, Clinton Tak, Sinclair Jones
+&copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
 
 ## Grading
 4/11
