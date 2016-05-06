@@ -1,9 +1,8 @@
 <?php
+  include("keys.php");
   $response = array();
   $errMsg = "";
   if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
-    // Secret Key
-    $secret = '6LciMB4TAAAAAHC62dLUopifKuaJlF6XT1kLKPcZ';
     // Verify Response Data
     $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
     $responseData = json_decode($verifyResponse);
