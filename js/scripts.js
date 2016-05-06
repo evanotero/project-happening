@@ -11,19 +11,19 @@ var recaptcha3;
 var onloadCallback = function() {
     // Render the recaptcha1 on the element with ID "recaptcha1"
     recaptcha1 = grecaptcha.render('recaptcha1', {
-        'sitekey': '6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0',
+        'sitekey': '6LeGNh8TAAAAAF9fmtdHP7g2qoBLBAZMXNrKhiJD',
         'theme': 'dark'
     });
 
     // Render the recaptcha2 on the element with ID "recaptcha2"
     recaptcha2 = grecaptcha.render('recaptcha2', {
-        'sitekey': '6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0',
+        'sitekey': '6LeGNh8TAAAAAF9fmtdHP7g2qoBLBAZMXNrKhiJD',
         'theme': 'light'
     });
 
     // Render the recaptcha3 on the element with ID "recaptcha3"
     recaptcha3 = grecaptcha.render('recaptcha3', {
-        'sitekey': '6LciMB4TAAAAACRFghDmLuY4esS0kG6W0va6M9B0',
+        'sitekey': '6LeGNh8TAAAAAF9fmtdHP7g2qoBLBAZMXNrKhiJD',
         'theme': 'light'
     });
 };
