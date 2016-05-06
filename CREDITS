@@ -1,5 +1,7 @@
 CREDITS
-This application uses Open Source components.  You can find the source code of their open source projects along with the license information below.  We acknowledge and are grateful to these developers for their contributions to open source.
+This application uses Open Source components.
+You can find the source code of their open source projects along with the license information below.
+We acknowledge and are grateful to these developers for their contributions to open source.
 
 ====
 
@@ -38,7 +40,8 @@ License (3-Clause BSD) https://github.com/google/recaptcha/blob/master/LICENSE
 Project: Magister https://github.com/pozh/Magister
 Copyright 2016 Sergey Pozhilov
 License (Creative Commons Attribution 3.0) [license file not included on project]
-**Project Happening’s styling is a derivative of the aforementioned project.  The content has been modified heavily, with over 1,000 lines of code added to the original styling in addition to the modification of the majority of the previous styling.
+**Project Happening’s styling is a derivative of the aforementioned project.
+**The content has been both heavily modified and added to, totalling over 1,100 lines of changes to the original styling.
 
 Project: Open Sans https://www.google.com/fonts/specimen/Open+Sans
 Copyright 2010-2011, Google Corporation.
