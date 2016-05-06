@@ -28,7 +28,7 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 - Increase the search capability and allow more filtering options.
 
 &copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
-
+<hr>
 ## Grading
 4/11
 - Looks good.  I really like the wiki.
