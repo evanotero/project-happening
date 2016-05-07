@@ -25,6 +25,7 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 ### Future
 - Add support for the Boston College event calendar: http://events.bc.edu/calendar.xml.
 - Add support for events only posted on Facebook by Boston College student groups.
+- Create a Cron Job to run fetchevents.php on a time interval.
 - Increase the search capability and allow more filtering options.
 
 &copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
