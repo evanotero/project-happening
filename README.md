@@ -28,6 +28,7 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 - Create a Cron Job to run fetchevents.php on a time interval.
 - Increase the search capability and allow more filtering options.
 
+<hr>
 &copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
 <hr>
 ## Grading
