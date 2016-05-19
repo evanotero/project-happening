@@ -16,8 +16,8 @@ A web application for Boston College students to view, search, and add all event
 <img src="https://github.com/CSCI2254/project-happening/blob/master/img/mobilemockup.png" width="400px"/>
 
 ### URL
-- **Main Website**: http://cscilab.bc.edu/~takc/happening/index.html.
-- **Admin Panel**: http://cscilab.bc.edu/~takc/happening/admin/index.php.
+- **Main Website**: http://projecthappening.io
+- **Alternative URL**: http://bostoncollegeevents.com
 
 ### Proposal Documents
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
