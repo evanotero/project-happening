@@ -8,7 +8,7 @@ $Username=$_POST['username'];
 $Register_email=$_POST['email'];
 $pwd=$_POST['password'];
 
-$dbc= connect_to_db("takc");
+$dbc= connect_to_db("ProjectHappening");
 
 // Check if user already exists
 $query = "SELECT * FROM users WHERE EMAIL='$Register_email' OR USERNAME='$Username';";

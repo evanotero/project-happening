@@ -19,7 +19,7 @@ try {
 } catch (Exception $e) {
    echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
-$dbc = connect_to_db("takc"); // Connect to DB
+$dbc = connect_to_db("ProjectHappening"); // Connect to DB
 $items = $rssobject->channel->item; // One or the other will work
 if (!$items) $items = $rssobject->item;
 foreach ($items as $item) {

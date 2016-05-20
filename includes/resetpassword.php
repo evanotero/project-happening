@@ -2,7 +2,7 @@
 include("dbconn.php");
 $msg = "";
 $email = $_POST['lostemail'];
-$dbc = connect_to_db("takc");
+$dbc = connect_to_db("ProjectHappening");
 // Verify Email is already registered
 $query = "SELECT * FROM users WHERE EMAIL='$email';";
 $result = perform_query($dbc, $query);

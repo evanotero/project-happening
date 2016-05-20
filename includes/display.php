@@ -1,7 +1,7 @@
 <?php
 include("dbconn.php");
 $string = isset($_GET['q']) ? $_GET['q'] : "";
-$dbc= connect_to_db("takc");
+$dbc= connect_to_db("ProjectHappening");
 if ($string == "" ) {
     //$query="select * from `events`";
     $query="select * from `events` ORDER BY STARTDATE ASC;";
