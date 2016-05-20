@@ -66,7 +66,7 @@
 		else {                  //no error. Check the server if user is admin
 			/*   To be reactivated once I include the search function
 			*/
-			$dbc = connect_to_db('takc');
+			$dbc = connect_to_db('ProjectHappening');
 	
 			$query = "select * from users WHERE username='".$username."' and password='".$encPass."' and priv='admin';";
 			

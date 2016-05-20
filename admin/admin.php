@@ -115,7 +115,7 @@ function displayAdminPage() {
 
 function displayTable() {
 
-	$dbc = connect_to_db('takc');
+	$dbc = connect_to_db('ProjectHappening');
 	
 	/******* DISPLAY UNVERIFIED EVENTS   *********/
 		
@@ -295,7 +295,7 @@ function approve() {
 		if(isset($_SESSION['approve']))	
 			$approveArray = $_SESSION['approve'];
 		
-		$dbc = connect_to_db('takc');
+		$dbc = connect_to_db('ProjectHappening');
 		
 		if(isset($_SESSION['delete'])){
 		foreach ($deleteArray as $id) {
@@ -342,7 +342,7 @@ function updateUsers(){
 		if(isset($_SESSION['updatePriv']))	
 			$updateArray = $_SESSION['updatePriv'];
 		
-		$dbc = connect_to_db('takc');
+		$dbc = connect_to_db('ProjectHappening');
 		
 		if(isset($_SESSION['deleteUser'])){
 		foreach ($deleteArray as $id) {

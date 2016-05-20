@@ -23,7 +23,7 @@
 		if(isset($_SESSION['approve']))	
 			$approveArray = $_SESSION['approve'];
 		
-		$dbc = connect_to_db('takc');
+		$dbc = connect_to_db('ProjectHappening');
 		
 		if(isset($_SESSION['approve'])){
 		foreach ($deleteArray as $id) {
