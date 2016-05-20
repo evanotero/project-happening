@@ -10,7 +10,7 @@ Awared the top final project for the Boston College Web Applications Development
 
 ### Application & Code Explained
 - **Application Dependencies**: jQuery, Boston College OrgSync RSS, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, Google Analytics, and Font Awesome v4.0.3.
-- 1500+ lines of _CSS_, 900+ lines of _JavaScript_ & _jQuery_, 900+ lines of _PHP_, and 350+ lines of _HTML_
+- **Languages Used**: HTML, CSS, JavaScript & jQuery, PHP, and SQL.
 - Custom background, logo, and favicon designed and created using Adobe Photoshop CC & Adobe Illustrator CC.
 - Complete mobile support with styling designed for touch screens:
 <img src="https://github.com/CSCI2254/project-happening/blob/master/img/mobilemockup.png" width="400px"/>
