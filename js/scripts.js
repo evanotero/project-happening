@@ -166,7 +166,7 @@ $(function() {
 
     /*** Function Calls when Document is Ready ***/
     displayPopover(); // Help Popover
-    scrapeRSS(url); // Get data from RSS
+    // scrapeRSS(url); // Get data from RSS
     populateWall(""); // Put events on MyWall
     $('#datetimepicker1').datetimepicker(); // Bootstrap 3 Datepicker v4
     $('#datetimepicker2').datetimepicker({
@@ -560,7 +560,7 @@ $(function() {
     /*** Parse RSS Data and Insert into DB ***/
     function scrapeRSS(url) {
         var request = $.ajax({
-            url: "includes/fetchevents.php",
+            url: "includes/fetchorgsync.php",
             type: "POST",
             data: "url=" + url,
             success: function(data) {
