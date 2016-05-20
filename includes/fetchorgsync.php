@@ -2,9 +2,9 @@
 include("dbconn.php");
 date_default_timezone_set('America/New_York'); 
 // Get RSS URL
-$URL = $_POST['url'];
-$pages = $_POST['per_page'];
-$upcoming = $_POST['upcoming'];
+$URL = "https://api.orgsync.com/api/v3/communities/510/events.rss?key=8mr8ZuXiuuuyQD9j2QRoyKSY_zw6K3Sw_52uGzgpZ-Q";
+$pages = "100";
+$upcoming = "true";
 // Verify Application
 $options = array(
     "http" => array(
@@ -67,7 +67,6 @@ foreach ($items as $item) {
                     ENDDATE = '$enddate' WHERE LINK = '$eventlink';";
     } else {                  
         // Insert Event into DB
-
         $query = "INSERT INTO events (
                     NAME, ORGANIZER, LOCATION, DESCRIPTION, 
                     MEDIAURL, STARTDATE, ENDDATE, LINK, APPROVED, U_ID) 
