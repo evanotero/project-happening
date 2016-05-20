@@ -17,8 +17,8 @@ Awared the top final project for the Boston College Web Applications Development
 <img src="https://github.com/CSCI2254/project-happening/blob/master/img/mobilemockup.png" width="400px"/>
 
 ### URL
-- **Main Website**: http://projecthappening.io
-- **Alternative URL**: http://bostoncollegeevents.com
+- **Main Website**: http://whatshappening.io
+- **Alternative URLs**: http://bostoncollegeevents.com, http://projecthappening.io
 
 ### Proposal Documents
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
