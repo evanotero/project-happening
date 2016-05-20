@@ -16,7 +16,7 @@ $pass = $_POST['password'];
 
 $password = sha1($pass);
 
-$dbc= connect_to_db("takc");
+$dbc= connect_to_db("ProjectHappening");
 
 $query = "SELECT U_ID, PRIV from users where USERNAME='".$username."' AND PASSWORD='".$password."';";
 
