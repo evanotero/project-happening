@@ -9,7 +9,7 @@ $upcoming = $_POST['upcoming'];
 $options = array(
     "http" => array(
         'method' => "GET",
-        'header' => "Accept-language: en\r\n"."User-Agent: CSCI2252/v1.0"."(http://cscilab.bc.edu/; contact.happening.bc@gmail.com)"
+        'header' => "Accept-language: en\r\n"."User-Agent: ProjectHappening/v1.0"."(http://projecthappening.io/; contact.happening.bc@gmail.com)"
     )
 );
 try {
