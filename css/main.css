@@ -288,7 +288,7 @@ a:active
 
 .lead
 {
-    font-size: 1.5em;
+    font-size: 1.6em !important;
     font-weight: normal;
     line-height: 1.2em;
 }
@@ -781,6 +781,12 @@ li.info:hover i
     margin: 0 auto;
 }
 
+#faq .container > div > div > p
+{
+    font-size: 1.1em;
+
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 1);
+}
 
 /***********************************************************/
 
@@ -1458,8 +1464,7 @@ table#usersAvailable td
     border-style: solid;
     border-color: #666;
     /*background-color: #fff;*/
-    	background-color: rgba(255,255,255, .8);
-
+    background-color: rgba(255,255,255, .8);
 }
 
 table#eventsToApprove tr:nth-child(even) td,
@@ -1467,7 +1472,6 @@ table#usersAvailable tr:nth-child(even) td
 {
     /*background-color: #fed136;*/
     background-color: rgba(254,209,54, .8);
-
 }
 
 
