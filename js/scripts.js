@@ -172,6 +172,11 @@ $(function() {
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important!
     });
+    $('#datetimepicker3').datetimepicker({
+        viewMode: 'years',
+        format: 'MM/DD/YYYY',
+        showTodayButton: true
+    });
 
     /*** Event Listeners ***/
     // Listen for Date Picker
@@ -180,6 +185,12 @@ $(function() {
     });
     $("#datetimepicker2").on("dp.change", function(e) {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+    });
+    $("#datetimepicker3").on("dp.change", function(e) {
+        if ($('#datetimepicker3input').val())
+            $("#resultslabel").text("Displaying Events for " + e.date.format("LL") + ":");
+        // TO-DO:
+        // Call populateWall and only show on day
     });
 
     $('#lost_register_btn').click(function() {
@@ -197,7 +208,17 @@ $(function() {
     $('input#search_input').keyup(function() {
         clearTimeout(timeoutID);
         var $target = $(this);
-        timeoutID = setTimeout(function() { populateWall($target.val()); }, 500);
+        timeoutID = setTimeout(function() {
+            $("#datetimepicker3").data("DateTimePicker").clear();
+            $("#resultslabel").text("Displaying Events from Search:");
+            populateWall($target.val());
+        }, 500);
+    });
+
+    // Listen for "This Week" button press
+    $(".displayweek").click(function() {
+        $("#datetimepicker3").data("DateTimePicker").clear();
+        $("#resultslabel").text("Displaying Events for This Week:");
     });
 
     // Listen for Form Submission
