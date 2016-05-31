@@ -212,7 +212,10 @@ $(function() {
         var $target = $(this);
         timeoutID = setTimeout(function() { populateWall($target.val(), "week"); }, 500);
         $("#datetimepicker3").data("DateTimePicker").clear();
-        $("#resultslabel").text("Displaying Events from Search:");
+        if ($target.val() == "")
+            $("#resultslabel").text("Displaying Events for This Week:");
+        else
+            $("#resultslabel").text("Displaying Events from Search:");
     });
 
     // Listen for "This Week" button press
