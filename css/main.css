@@ -165,7 +165,7 @@ body
 
     text-decoration: none;
 
-    color: white;
+    color: #fff;
     -webkit-border-radius: 2px;
        -moz-border-radius: 2px;
             border-radius: 2px;
@@ -211,6 +211,7 @@ div.divider
 section#mywall
 {
     overflow-x: hidden;
+
     padding-bottom: 250px;
 }
 
@@ -335,7 +336,7 @@ a:active
 
 .textgold
 {
-    color: #fed136;
+    color: #fed136 !important;
 }
 
 .textmaroon
@@ -519,7 +520,7 @@ a:active
 
 .event-list > li > .info > .desc
 {
-    font-size: 10pt;
+    font-size: 9pt;
     font-weight: 300;
 
     margin: 0;
@@ -647,7 +648,7 @@ li.info:hover i
     font-weight: 500;
 }
 
-@media (min-width: 992px)
+@media (min-width: 1200px)
 {
     .event-list > li > .info > .title
     {
@@ -784,17 +785,23 @@ li.info:hover i
 
 #faq .container > div > div > p
 {
-    font-size: 1.1em;
+    font-family: 'Oswald', Helvetica, Arial, sans-serif;
+    font-size: 1.3em;
 
+    color: #fff;
+    background: rgba(0,0,0,.4);
+    line-height: 1.25;
+}
+
+#faq .container > div > div > p.lead.textgold
+{
+    font-size: 1.9em !important;
+    background: none !important;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 1);
 }
 
 /***********************************************************/
-
-
 /*                    Text Shadows                         */
-
-
 /***********************************************************/
 
 .text-shadows
@@ -1211,7 +1218,7 @@ div.modal-content .btn.active.focus
 div.modal-content .btn-lg,
 div.modal-content .btn-group-lg > .btn
 {
-    color: white;
+    color: #fff;
     border-radius: 0;
     background-color: #571619;
 }
@@ -1264,13 +1271,13 @@ div.modal-content .form-control
 
 .date .bootstrap-datetimepicker-widget
 {
-    color: white;
+    color: #fff;
     background-color: rgba(0, 0, 0, .7);
 }
 
 .date .btn
 {
-    color: white;
+    color: #fff;
 }
 
 
@@ -1287,7 +1294,7 @@ div.modal-content .form-control
 form#addevent-form input:not(.submit),
 form#addevent-form textarea
 {
-    color: white;
+    color: #fff;
     background-color: rgba(0, 0, 0, .8);
 }
 
@@ -1295,7 +1302,7 @@ form#addevent-form span
 {
     font-weight: bold;
 
-    color: white;
+    color: #fff;
     background-color: rgba(87, 22, 25, .8);
 }
 
@@ -1303,7 +1310,7 @@ form#addevent-form label
 {
     font-weight: bold;
 
-    color: white;
+    color: #fff;
     border-radius: 1px;
 }
 
@@ -1329,7 +1336,7 @@ form#addevent-form label
     margin-top: 10px;
     padding: 5px 5px 5px 5px;
 
-    color: white;
+    color: #fff;
     border: 1px solid #fff;
     border-radius: 0;
     background-color: rgba(87, 22, 25, .9);
@@ -1518,14 +1525,15 @@ div.g-recaptcha
 
 .datelabel
 {
-    line-height: 40px;
     font-size: 17px;
+    line-height: 40px;
+
     margin-right: -20px;
 }
 
 form#search-form input:not(.submit)
 {
-    color: white;
+    color: #fff;
     background-color: rgba(0, 0, 0, .8);
 }
 
@@ -1539,11 +1547,13 @@ form#search-form .daterow input
 {
     font-family: 'Lato';
     font-size: 15px;
+
     height: 33px;
+
+    color: #fff;
     border: 1px solid #fff;
     border-radius: 0;
     background-color: rgba(87, 22, 25, .9);
-    color: #fff;
 }
 
 .row.daterow,
@@ -1552,14 +1562,20 @@ form#search-form .daterow input
     padding-top: 10px;
 }
 
+.row.daterow .btn {
+    margin-bottom: 10px;
+}
+
 span#resultslabel
 {
     font-family: 'Lato';
     font-size: 18px;
     font-weight: bold;
-    color: white;
-    background: rgba(0,0,0,.15);
+
     padding: 5px;
+
+    color: #fff;
+    background: rgba(0,0,0,.15);
 }
 
 #search-form #search_input:focus
