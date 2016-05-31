@@ -167,7 +167,7 @@ $(function() {
     /*** Function Calls when Document is Ready ***/
     displayPopover(); // Help Popover
     // scrapeRSS(url); // Get data from RSS
-    populateWall(""); // Put events on MyWall
+    populateWall("", "week"); // Put events on MyWall from THIS WEEK (DEFAULT)
     $('#datetimepicker1').datetimepicker(); // Bootstrap 3 Datepicker v4
     $('#datetimepicker2').datetimepicker({
         useCurrent: false //Important!
@@ -177,6 +177,7 @@ $(function() {
         format: 'MM/DD/YYYY',
         showTodayButton: true
     });
+    $("#datetimepicker3").data("DateTimePicker").clear();
 
     /*** Event Listeners ***/
     // Listen for Date Picker
@@ -187,10 +188,11 @@ $(function() {
         $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
     });
     $("#datetimepicker3").on("dp.change", function(e) {
-        if ($('#datetimepicker3input').val())
+        if ($('#datetimepicker3input').val()) {
+            $("#search_input").val("");
             $("#resultslabel").text("Displaying Events for " + e.date.format("LL") + ":");
-        // TO-DO:
-        // Call populateWall and only show on day
+            populateWall("", e.date.toDate());
+        }
     });
 
     $('#lost_register_btn').click(function() {
@@ -208,16 +210,16 @@ $(function() {
     $('input#search_input').keyup(function() {
         clearTimeout(timeoutID);
         var $target = $(this);
-        timeoutID = setTimeout(function() {
-            $("#datetimepicker3").data("DateTimePicker").clear();
-            $("#resultslabel").text("Displaying Events from Search:");
-            populateWall($target.val());
-        }, 500);
+        timeoutID = setTimeout(function() { populateWall($target.val(), "week"); }, 500);
+        $("#datetimepicker3").data("DateTimePicker").clear();
+        $("#resultslabel").text("Displaying Events from Search:");
     });
 
     // Listen for "This Week" button press
     $(".displayweek").click(function() {
+        $("#search_input").val("");
         $("#datetimepicker3").data("DateTimePicker").clear();
+        populateWall("", "week");
         $("#resultslabel").text("Displaying Events for This Week:");
     });
 
@@ -596,19 +598,58 @@ $(function() {
     }
 
     /*** Insert DB data on to MyWall ***/
-    function populateWall(search) {
+    function populateWall(search, date) {
         var str = "";
+        var start_day = "";
+        var end_day = "";
         // Check to see if user is searching for events
-        if (search)
+        if (search) {
             str = search;
+        }
+        // Check to see if user is searching by date
+        if (date) {
+            if (date == "week") {
+                d = new Date();
+                var day = d.getDay(), 
+                    diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+                d.setHours(0);
+                d.setMinutes(0);
+                d.setSeconds(0);
+                start_day = new Date(d.setDate(diff));
+                end_day = new Date(d.setDate(diff + 7));
+                start_day = moment(start_day).format();
+                end_day = moment(end_day).subtract(1, 'minute').format();
+            } else {
+                start_day = date;
+                start_day = moment(start_day).format();
+                end_day = moment(start_day).add(1, 'day').subtract(1, 'minute').format();
+            }
+        }
         $(".event-list").empty(); // Clear all listed events
-        $.getJSON("includes/display.php", { q: str }, function(data) {
+
+        // // FOR DEBUGGINGS ONLY
+        // console.log(start_day);
+        // var request = $.ajax({
+        //     url: "includes/display.php",
+        //     type: "GET",
+        //     data: "q=" + name + "&start=" + start_day + "&end=" + end_day,
+        //     success: function(data) {
+        //         console.log(data); // DEBUG
+        //         return true;
+        //     },
+        //     error: function(xhr, status, error) {
+        //         console.log(xhr + " " + status + " " + error); // DEBUG
+        //         return false;
+        //     }
+        // });
+        // 
+        $.getJSON("includes/display.php", { q: str, start: start_day, end: end_day }, function(data) {
                 $.each(data, function(i, value) {
                     // Current Dates
-                    var currentdate = new Date();
-                    var currentday = currentdate.getDate();
-                    var currentmonth = currentdate.getMonth() + 1;
-                    var currentyear = currentdate.getFullYear();
+                    // var currentdate = new Date();
+                    // var currentday = currentdate.getDate();
+                    // var currentmonth = currentdate.getMonth() + 1;
+                    // var currentyear = currentdate.getFullYear();
 
                     // Start Dates
                     var start = value.STARTDATE.split("-");
@@ -646,52 +687,49 @@ $(function() {
                     else
                         location = "<i class='fa fa-map-marker' aria-hidden='true'></i> " + location + "<br>";
 
-
-                    if ((startyear > currentyear) || (startyear == currentyear && start[1] > currentmonth) || (startyear == currentyear && start[1] == currentmonth && startday >= currentday)) {
-                        if (value.MEDIAURL == "" || value.MEDIAURL == null)
-                            $(".event-list").append("<li>" +
-                                "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
-                                "<span class='day'>" + startday + "</span>" +
-                                "<span class='month'>" + startmonth + "</span>" +
-                                "<span class='year'>" + startyear + "</span>" +
-                                "<span class='time'>" + displaytime + "</span></time>" +
-                                "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
-                                "<p class='desc'>" +
-                                "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
-                                "<span class='timespan'>" + starttime + endtime + "</span>" +
-                                "<span class='location'>" + location + "</span></p>" +
-                                "<p class='deschidden'>" + value.DESCRIPTION +
-                                "</p></div>" +
-                                "<div class='social'><ul>" +
-                                "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
-                                "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
-                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
-                                "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
-                                "</ul></div></li>");
-                        else
-                            $(".event-list").append("<li>" +
-                                "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
-                                "<span class='day'>" + startday + "</span>" +
-                                "<span class='month'>" + startmonth + "</span>" +
-                                "<span class='year'>" + startyear + "</span>" +
-                                "<span class='time'>" + displaytime + "</span></time>" +
-                                "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
-                                "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
-                                "<p class='desc'>" +
-                                "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
-                                "<span class='timespan'>" + starttime + endtime + "</span>" +
-                                "<span class='location'>" + location + "</span></p>" +
-                                "<p class='deschidden'>" + value.DESCRIPTION +
-                                "</p></div>" +
-                                "<div class='social'><ul>" +
-                                "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
-                                "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
-                                "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
-                                "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
-                                "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
-                                "</ul></div></li>");
-                    }
+                    if (value.MEDIAURL == "" || value.MEDIAURL == null)
+                        $(".event-list").append("<li>" +
+                            "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
+                            "<span class='day'>" + startday + "</span>" +
+                            "<span class='month'>" + startmonth + "</span>" +
+                            "<span class='year'>" + startyear + "</span>" +
+                            "<span class='time'>" + displaytime + "</span></time>" +
+                            "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
+                            "<p class='desc'>" +
+                            "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                            "<span class='timespan'>" + starttime + endtime + "</span>" +
+                            "<span class='location'>" + location + "</span></p>" +
+                            "<p class='deschidden'>" + value.DESCRIPTION +
+                            "</p></div>" +
+                            "<div class='social'><ul>" +
+                            "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
+                            "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
+                            "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
+                            "</ul></div></li>");
+                    else
+                        $(".event-list").append("<li>" +
+                            "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
+                            "<span class='day'>" + startday + "</span>" +
+                            "<span class='month'>" + startmonth + "</span>" +
+                            "<span class='year'>" + startyear + "</span>" +
+                            "<span class='time'>" + displaytime + "</span></time>" +
+                            "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
+                            "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
+                            "<p class='desc'>" +
+                            "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
+                            "<span class='timespan'>" + starttime + endtime + "</span>" +
+                            "<span class='location'>" + location + "</span></p>" +
+                            "<p class='deschidden'>" + value.DESCRIPTION +
+                            "</p></div>" +
+                            "<div class='social'><ul>" +
+                            "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
+                            "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
+                            "<a target='_blank' href='" + value.LINK + "'></a></i></li>" +
+                            "<li class='facebook'><i class='fa fa-facebook fa-lg' aria-hidden='true'>" +
+                            "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
+                            "</ul></div></li>");
                 });
             })
             .fail(function(xhr, status, error) {
