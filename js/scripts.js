@@ -672,7 +672,7 @@ $(function() {
                     if (starttime == "All Day") {
                         starttime = "";
                         endtime = "";
-                    } else if (starttime == endtime) {
+                    } else if (starttime == endtime || value.HIDDENINFO != null) {
                         starttime = "<i class='fa fa-clock-o' aria-hidden='true'></i> " + starttime;
                         endtime = "<br>";
                     } else {
