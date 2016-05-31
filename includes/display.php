@@ -1,13 +1,19 @@
 <?php
 include("dbconn.php");
 $string = isset($_GET['q']) ? $_GET['q'] : "";
-$dbc= connect_to_db("ProjectHappening");
-if ($string == "" ) {
-    //$query="select * from `events`";
-    $query="select * from `events` ORDER BY STARTDATE ASC;";
+$startdate = isset($_GET['start']) ? $_GET['start'] : "";
+$enddate = isset($_GET['end']) ? $_GET['end'] : "";
+
+$dbc = connect_to_db("ProjectHappening");
+
+$startdate = mysqli_real_escape_string($dbc, $startdate);
+$enddate = mysqli_real_escape_string($dbc, $enddate);
+
+if ($string == "") {
+    $query = "SELECT * FROM `events` WHERE `STARTDATE` BETWEEN '$startdate' AND '$enddate' ORDER BY `STARTDATE` ASC;";
 } else {
     $string = "%".$string."%";
-    $query = "(select * from `events` where `NAME` like '$string') union (select * from `events` where `ORGANIZER` like '$string') union (select * from `events` where `LOCATION` like '$string') union (select * from `events` where `DESCRIPTION` like '$string') ORDER BY STARTDATE ASC;";
+    $query = "(select * from `events` where `NAME` like '$string' and STARTDATE >= '$startdate') union (select * from `events` where `ORGANIZER` like '$string' and STARTDATE >= '$startdate') union (select * from `events` where `LOCATION` like '$string' and STARTDATE >= '$startdate') union (select * from `events` where `DESCRIPTION` like '$string' and STARTDATE >= '$startdate') ORDER BY `STARTDATE` ASC;";
 }
 $result = perform_query( $dbc, $query );       
 $data = array();
