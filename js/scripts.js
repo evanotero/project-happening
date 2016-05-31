@@ -610,8 +610,8 @@ $(function() {
         if (date) {
             if (date == "week") {
                 d = new Date();
-                var day = d.getDay(), 
-                    diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+                var day = d.getDay(),
+                    diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
                 d.setHours(0);
                 d.setMinutes(0);
                 d.setSeconds(0);
@@ -715,7 +715,7 @@ $(function() {
                             "<span class='month'>" + startmonth + "</span>" +
                             "<span class='year'>" + startyear + "</span>" +
                             "<span class='time'>" + displaytime + "</span></time>" +
-                            "<img alt='" + value.E_ID + "'src='" + value.MEDIAURL + "'/>" +
+                            "<img alt='" + value.E_ID + "' src='" + value.MEDIAURL + "' width='120' height='120'/>" +
                             "<div class='info'><h2 class='title'>" + value.NAME + "</h2>" +
                             "<p class='desc'>" +
                             "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
