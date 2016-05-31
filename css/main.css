@@ -1537,6 +1537,8 @@ form#search-form input:not(.submit)
 
 form#search-form .daterow input
 {
+    font-family: 'Lato';
+    font-size: 15px;
     height: 33px;
     border: 1px solid #fff;
     border-radius: 0;
@@ -1552,7 +1554,8 @@ form#search-form .daterow input
 
 span#resultslabel
 {
-    font-size: 17px;
+    font-family: 'Lato';
+    font-size: 18px;
     font-weight: bold;
     color: white;
     background: rgba(0,0,0,.15);
