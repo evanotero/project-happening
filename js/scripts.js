@@ -619,9 +619,8 @@ $(function() {
                 d.setMinutes(0);
                 d.setSeconds(0);
                 start_day = new Date(d.setDate(diff));
-                end_day = new Date(d.setDate(diff + 7));
                 start_day = moment(start_day).format();
-                end_day = moment(end_day).subtract(1, 'minute').format();
+                end_day = moment(start_day).add(7, 'day').subtract(1, 'minute').format();
             } else {
                 start_day = date;
                 start_day = moment(start_day).format();
@@ -631,6 +630,9 @@ $(function() {
         $(".event-list").empty(); // Clear all listed events
 
         // // FOR DEBUGGINGS ONLY
+        // console.log(start_day);
+        // console.log(end_day);
+        // console.log(str);
         // var request = $.ajax({
         //     url: "includes/display.php",
         //     type: "GET",
