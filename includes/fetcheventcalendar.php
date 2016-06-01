@@ -26,8 +26,8 @@ foreach ($items as $item) {
     $title = substr(strchr($fulltitle,":"), 2);
 
     if (strrpos($title, " at ")) {
-        $location = substr($title, strrpos($title, "at") + 3);
-        $name = substr($title, 0, strrpos($title, "at") - 1);
+        $location = substr($title, strrpos($title, " at ") + 4);
+        $name = substr($title, 0, strrpos($title, " at "));
     } else {
         $name = $title;
         $location = "";
