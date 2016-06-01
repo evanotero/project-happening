@@ -10,7 +10,7 @@ CREATE TABLE users (
      UNIQUE (EMAIL),
      UNIQUE (USERNAME),
      PRIMARY KEY (U_ID)
-) engine=innodb;
+) engine=MyISAM;
 
 insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Org', 'Sync', 'orgsync', 'oteroev@bc.edu', '30246a560dfa5906e2dbc886cb70734350f50a0f', 'admin');
 insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Catherine', 'Anderson', 'canderson0', 'canderson0@imgur.com', 'g8m5j3061642w10t6vk2df7n482s3051mlrj9728', 'user');
@@ -31,12 +31,12 @@ CREATE TABLE events (
     STARTDATE DATETIME NOT NULL, 
     ENDDATE DATETIME NOT NULL,
     LINK VARCHAR(500),
-    HIDDENBCINFO VARCHAR(200) NOT NULL,
+    HIDDENINFO VARCHAR(200) NOT NULL,
     APPROVED tinyint(1) DEFAULT 0 NOT NULL,
     U_ID int(11) NOT NULL,
     PRIMARY KEY (E_ID),
-    FOREIGN KEY (U_ID) REFERENCES users(U_ID)
-) engine=innodb;
+    FULLTEXT INDEX `FullText` (NAME, ORGANIZER, LOCATION, DESCRIPTION)
+) engine=MyISAM;
 
 insert into events (NAME, ORGANIZER, LOCATION, DESCRIPTION, MEDIAURL, STARTDATE, ENDDATE, LINK, APPROVED, U_ID) values ('lobortis sapien sapien non mi integer ac', 'Yakidoo', '6 Mariners Cove Crossing', 'rlynch0@wikispaces.com', 'http://dummyimage.com/169x171.gif/5fa2dd/ffffff', '2015-09-30 00:04:31', '2015-09-12 21:34:24', 'https://cyberchimps.com/neque.png', 1, 187);
 insert into events (NAME, ORGANIZER, LOCATION, DESCRIPTION, MEDIAURL, STARTDATE, ENDDATE, LINK, APPROVED, U_ID) values ('sit amet nunc viverra dapibus nulla suscipit', 'Gabvine', '20467 Arizona Park', 'bcarroll1@cam.ac.uk', null, '2016-03-29 13:56:26', '2015-09-14 01:28:24', 'http://topsy.com/donec/odio.jpg', 0, 464);
