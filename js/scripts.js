@@ -631,7 +631,6 @@ $(function() {
         $(".event-list").empty(); // Clear all listed events
 
         // // FOR DEBUGGINGS ONLY
-        // console.log(start_day);
         // var request = $.ajax({
         //     url: "includes/display.php",
         //     type: "GET",
@@ -645,7 +644,7 @@ $(function() {
         //         return false;
         //     }
         // });
-        // 
+        
         $.getJSON("includes/display.php", { q: str, start: start_day, end: end_day }, function(data) {
                 $.each(data, function(i, value) {
                     // Current Dates
