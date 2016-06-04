@@ -35,7 +35,7 @@ foreach ($items as $item) {
     
     $description = mysqli_real_escape_string($dbc, $item->description);
     $description = strip_tags($description, '<a>');
-    $description = substr($description, 0, strpos($description, "<a"));
+    $description = substr($description, 0, strpos($description, "http://events.bc.edu/event/") - 10);
 
     $categories = $item->category;
     $group = "";
