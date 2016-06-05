@@ -25,9 +25,7 @@ Awared the top final project for the Boston College Web Applications Development
 Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/project-happening/wiki/About) page in the wiki.
 
 ### Future
-- ~~Add support for the Boston College event calendar: http://events.bc.edu/calendar.xml.~~
 - Add support for events only posted on Facebook by Boston College student groups.
-- ~~Increase the search capability and allow more filtering options.~~
 
 <hr>
 &copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
