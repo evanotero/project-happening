@@ -1588,6 +1588,10 @@ span#resultslabel
     cursor: text;
 }
 
+#thisweekdiv {
+    height: 43px;
+}
+
 ::-webkit-input-placeholder
 {
     font-family: FontAwesome, 'Lato';
