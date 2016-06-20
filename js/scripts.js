@@ -252,10 +252,12 @@ $(function() {
                         ls_captchaerror = "Captcha Failed.";
                     }
                     // Display Errors
+                    // Email
                     if (ls_emailerror != "") {
                         ls_status = "failure";
                         $(".losterrors").append("<li>" + ls_emailerror + "</li>");
                     }
+                    // Captcha
                     if (ls_captchaerror != "") {
                         ls_status = "failure";
                         $(".losterrors").append("<li>" + ls_captchaerror + "</li>");
@@ -266,7 +268,7 @@ $(function() {
                         msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Failed to reset password!");
                         divForms.css("height", formLost.height() + 10);
                     } else {
-                        resetPassword(); // AJAX
+                        resetPassword();
 
                     }
                 }).fail(function() {
@@ -307,30 +309,37 @@ $(function() {
                         rg_captchaerror = "Captcha Failed.";
                     }
                     // Display Errors
+                    // First Name
                     if (rg_firstnameerrors != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_firstnameerrors + "first name.</li>");
                     }
+                    // Last Name
                     if (rg_lastnameerrors != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_lastnameerrors + "last name.</li>");
                     }
+                    // Email
                     if (rg_emailerror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_emailerror + "</li>");
                     }
+                    // Username
                     if (rg_usernameerror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_usernameerror + "</li>");
                     }
+                    // Password
                     if (rg_passworderror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_passworderror + "  Must be at least 6 characters, 1 number, 1 lowercase and 1 uppercase letter.</li>");
                     }
+                    // Second Password Entry
                     if (rg_verifypassworderror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_verifypassworderror + "</li>");
                     }
+                    // Captcha
                     if (rg_captchaerror != "") {
                         rg_status = "failure";
                         $(".registererrors").append("<li>" + rg_captchaerror + "</li>");
@@ -341,7 +350,7 @@ $(function() {
                         msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "error", "glyphicon-remove", "Register error!");
                         divForms.css("height", formRegister.height() + 30);
                     } else {
-                        registerUser(); // AJAX
+                        registerUser();
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
@@ -385,38 +394,47 @@ $(function() {
                         e_captchaerror = "Captcha Failed.";
                     }
                     // Display Errors
+                    // Event Name
                     if (e_nameerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_nameerrors + "name.</li>");
                     }
+                    // Event Organizer
                     if (e_organizationerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_organizationerrors + "organization.</li>");
                     }
+                    // Location
                     if (e_locationerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_locationerrors + "location.</li>");
                     }
+                    // Start Date
                     if (e_startdateerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_startdateerrors + "start date.</li>");
                     }
+                    // End Date
                     if (e_enddateerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_enddateerrors + "end date.</li>");
                     }
+                    // Event/MEDIA URL
                     if (e_urlerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_urlerrors + "url.</li>");
                     }
+                    // Username
                     if (e_usernameerrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_usernameerrors + "</li>");
                     }
+                    // Password
                     if (e_passworderrors != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_passworderrors + " password.</li>");
                     }
+                    // Captcha
                     if (e_captchaerror != "") {
                         e_status = "failure";
                         $(".eventerrors").append("<li>" + e_captchaerror + "</li>");
@@ -426,7 +444,7 @@ $(function() {
                     if (e_status == "failure") {
                         // Do nothing, display errors
                     } else {
-                        addEvent(); // AJAX
+                        addEvent();
                     }
                 }).fail(function() {
                     // console.log("Error in Captcha - Add Event.");
