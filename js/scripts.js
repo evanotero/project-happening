@@ -166,7 +166,7 @@ $(function() {
 
     /*** Function Calls when Document is Ready ***/
     displayPopover(); // Help Popover
-    // scrapeRSS(url); // Get data from RSS
+    // scrapeRSS(url); // Get data from RSS; Now handled by CRON job
     populateWall("", "week"); // Put events on MyWall from THIS WEEK (DEFAULT)
     $('#datetimepicker1').datetimepicker(); // Bootstrap 3 Datepicker v4
     $('#datetimepicker2').datetimepicker({
@@ -913,7 +913,6 @@ $(function() {
     /*** Reset User Password ***/
     function resetPassword() {
         var dataString = $("#lost-form").serialize();
-
 
         var request = $.ajax({
             url: "includes/resetpassword.php",
