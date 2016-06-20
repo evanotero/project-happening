@@ -89,13 +89,11 @@
 
 
 function displayAdminPage() {
-
 	$name = $_SESSION['name'];
 	$email = $_SESSION['email'];
 	
 	echo "Hello, ".$name."!";
 	//echo "Your email is ".$email;
-	
 	
 	?>
 	
@@ -105,27 +103,20 @@ function displayAdminPage() {
           <button type="submit" name="Logout" class="btn">Log Out</button>
         </div>
     </form>
-    
-    
       
     <?php
-    
-     
 }
 
 function displayTable() {
-
 	$dbc = connect_to_db('ProjectHappening');
 	
 	/******* DISPLAY UNVERIFIED EVENTS   *********/
-		
 	$query = "select * from events where approved=0;";
 	$result = perform_query( $dbc, $query );
 	
-	/*********Checks if there are any unapproved events********/
+	/********Checks if there are any unapproved events*******/
 	if(!(mysqli_num_rows($result) == 0)){
-		
-			echo "
+		echo "
 		 <section class='section' id='unapprovedEvents'>
 			<div class='container' id='adminEventlist'>
 				<form method='POST' action='admin.php'>
@@ -147,107 +138,104 @@ function displayTable() {
             	   <tbody>";
             	   	
             	   	
-            	   		while($obj = $result->fetch_object()) {
-            	   			//there's another unapproved event
-            	   			$E_ID = $obj->E_ID;
-            	   			$name = $obj->NAME;
-            	   			$organizer = $obj->ORGANIZER;
-            	   			$location = $obj->LOCATION;
-            	   			$desc = $obj->DESCRIPTION;
-            	   			$medurl = $obj->MEDIAURL;
-            	   			$start = $obj->STARTDATE;
-            	   			$end = $obj->ENDDATE;
-            	   			$link = $obj->LINK;
-            	   			
-            	   			echo "<tr>";
-            	   			//row
-            	   				echo "<td><input type=checkbox name='approve[]' value='$E_ID'></td>";
-            	   				echo "<td><input type=checkbox name='delete[]' value='$E_ID'></td>";
-            	   				echo "<td>$name</td>";
-            	   				echo "<td>$organizer</td>";
-            	   				echo "<td>$location</td>";
-            	   				echo "<td>$desc</td>";
-            	   				echo "<td>$medurl</td>";
-            	   				echo "<td>$start</td>";
-            	   				echo "<td>$end</td>";
-            	   				echo "<td>$link</td>";
-            	   			
-            	   			echo "</tr>";
-            	   		}
-            	   		
-            	   	echo "
-            	   </tbody>
+   		while($obj = $result->fetch_object()) {
+   			//there's another unapproved event
+   			$E_ID = $obj->E_ID;
+   			$name = $obj->NAME;
+   			$organizer = $obj->ORGANIZER;
+   			$location = $obj->LOCATION;
+   			$desc = $obj->DESCRIPTION;
+   			$medurl = $obj->MEDIAURL;
+   			$start = $obj->STARTDATE;
+   			$end = $obj->ENDDATE;
+   			$link = $obj->LINK;
+   			
+   			echo "<tr>";
+   			//row
+   				echo "<td><input type=checkbox name='approve[]' value='$E_ID'></td>";
+   				echo "<td><input type=checkbox name='delete[]' value='$E_ID'></td>";
+   				echo "<td>$name</td>";
+   				echo "<td>$organizer</td>";
+   				echo "<td>$location</td>";
+   				echo "<td>$desc</td>";
+   				echo "<td>$medurl</td>";
+   				echo "<td>$start</td>";
+   				echo "<td>$end</td>";
+   				echo "<td>$link</td>";
+   			
+   			echo "</tr>";
+   		}
+        echo "
+            </tbody>
            	 </table>
            	 	<input type='submit' name='filter' class='btn' value='FILTER!'>
            	 </form>";
-           	 echo "<br> You deleted ".$_SESSION['amountDeleted']." events, and approved ".$_SESSION['amountApproved']." events<br>";
-           	 echo "
+       	echo "<br> You deleted ".$_SESSION['amountDeleted']." events, and approved ".$_SESSION['amountApproved']." events<br>";
+        echo "
        	 </div>
-   	 </section>";
+   	    </section>";
 		
 		
 	
-	}
-	else{
+	} else {
 		echo "All events are up to date!";
 		//all events are approved
-	
 	}
 	
 	/********* DISPLAY USERS ***********/
 	
 	$query = "select * from users;";
-	
 	$result = perform_query( $dbc, $query );
 	
-	if(!(mysqli_num_rows($result) == 0)){          //if there's any users in the database
+	if(!(mysqli_num_rows($result) == 0)) {
+    //if there's any users in the database
 		
-			echo "
-		 <section class='section' id='usersAdminSection'>
-			<div class='container' id='userslist'>
-				<form method='POST' action='admin.php'>
-        	    <table id='usersAvailable'>
-            	    <thead>
-                	    <tr>
-                	    	<th>Delete</th>
-                	    	<th>User ID</th>
-                    	    <th>First Name</th>
-                        	<th>Last Name</th>
-                   	 		<th>Username</th>
-                        	<th>E-mail</th>
-                        	<th>Privacy</th>
-                    	</tr>
-         	       </thead>
-            	   <tbody>";
+		echo "
+	 <section class='section' id='usersAdminSection'>
+		<div class='container' id='userslist'>
+			<form method='POST' action='admin.php'>
+    	    <table id='usersAvailable'>
+        	    <thead>
+            	    <tr>
+            	    	<th>Delete</th>
+            	    	<th>User ID</th>
+                	    <th>First Name</th>
+                    	<th>Last Name</th>
+               	 		<th>Username</th>
+                    	<th>E-mail</th>
+                    	<th>Privacy</th>
+                	</tr>
+     	       </thead>
+        	   <tbody>";
             	   	
             	   	
-            	   		while($obj = $result->fetch_object()) {
-            	   			//there's another unapproved event
-            	   			$U_ID = $obj->U_ID;
-            	   			$fname = $obj->FIRSTNAME;
-            	   			$lname = $obj->LASTNAME;
-            	   			$username = $obj->USERNAME;
-            	   			$email = $obj->EMAIL;
-            	   			$priv = $obj->PRIV;
-            	   			
-            	   			echo "<tr>";
-            	   			//row
-            	   				echo "<td><input type=checkbox name='deleteUser[]' value='$U_ID'></td>";
-            	   				echo "<td>$U_ID</td>";
-            	   				echo "<td>$fname</td>";
-            	   				echo "<td>$lname</td>";
-            	   				echo "<td>$username</td>";
-            	   				echo "<td>$email</td>";
-            	   				echo "<td>
-            	   						<select name='updatePriv[]'>
-            	   							<option value='$U_ID=>admin' "; if($priv=='admin') echo "selected"; echo ">Admin</option>
-            	   							<option value='$U_ID=>user' "; if($priv=='user') echo "selected"; echo ">User</option>
-            	   							<option value='$U_ID=>unverified' "; if($priv=='unverified') echo "selected"; echo ">Unverified</option>
-            	   						</select>
-            	   					  </td>";
-            	   				
-            	   			echo "</tr>";
-            	   		}
+   		while($obj = $result->fetch_object()) {
+   			//there's another unapproved event
+   			$U_ID = $obj->U_ID;
+   			$fname = $obj->FIRSTNAME;
+   			$lname = $obj->LASTNAME;
+   			$username = $obj->USERNAME;
+   			$email = $obj->EMAIL;
+   			$priv = $obj->PRIV;
+   			
+   			echo "<tr>";
+   			//row
+   				echo "<td><input type=checkbox name='deleteUser[]' value='$U_ID'></td>";
+   				echo "<td>$U_ID</td>";
+   				echo "<td>$fname</td>";
+   				echo "<td>$lname</td>";
+   				echo "<td>$username</td>";
+   				echo "<td>$email</td>";
+   				echo "<td>
+   						<select name='updatePriv[]'>
+   							<option value='$U_ID=>admin' "; if($priv=='admin') echo "selected"; echo ">Admin</option>
+   							<option value='$U_ID=>user' "; if($priv=='user') echo "selected"; echo ">User</option>
+   							<option value='$U_ID=>unverified' "; if($priv=='unverified') echo "selected"; echo ">Unverified</option>
+   						</select>
+   					  </td>";
+   				
+   			echo "</tr>";
+   		}
             	   		
             	   	echo "
             	   </tbody>
@@ -259,109 +247,91 @@ function displayTable() {
        	 </div>
    	 </section>";
 		
-		
-	
-	}
-	else{       //No users found
+	} else {       //No users found
 		echo "No users found!<br>";
 		//all events are approved
-	
 	}
-	
-	
-	
-	 disconnect_from_db( $dbc, $result );
-	
+	disconnect_from_db( $dbc, $result );
 }
 
 
 function approve() {
-
-		$_SESSION['amountDeleted'] = 0;
-		$del=0;
-		
-		$_SESSION['amountApproved'] = 0;
-		$app=0;
-		
-		if(isset($_POST['approve']))
-			$_SESSION['approve'] = $_POST['approve'];
+	$_SESSION['amountDeleted'] = 0;
+	$del=0;
 	
-		if(isset($_POST['delete']))
-			$_SESSION['delete'] = $_POST['delete'];
-		
-		if(isset($_SESSION['delete']))
-			$deleteArray = $_SESSION['delete'];
-		
-		if(isset($_SESSION['approve']))	
-			$approveArray = $_SESSION['approve'];
-		
-		$dbc = connect_to_db('ProjectHappening');
-		
-		if(isset($_SESSION['delete'])){
-		foreach ($deleteArray as $id) {
-			//delete
-			$query = "DELETE from events where E_ID='".$id."';";
-			$result = perform_query( $dbc, $query );
-            
-            $del++;
-        }
-        }
-        
-        if(isset($_SESSION['approve'])){
-        foreach ($approveArray as $id) {
-             //update
-            $query = "UPDATE events SET APPROVED=1 where E_ID='".$id."';";
-			$result = perform_query( $dbc, $query );
-             
-            $app++;
-        }
-        }
-        
-        $_SESSION['amountDeleted'] = $del;
-        $_SESSION['amountApproved'] = $app;
-		
-		disconnect_from_db( $dbc, $result );
+	$_SESSION['amountApproved'] = 0;
+	$app=0;
 	
+	if(isset($_POST['approve']))
+		$_SESSION['approve'] = $_POST['approve'];
 
+	if(isset($_POST['delete']))
+		$_SESSION['delete'] = $_POST['delete'];
+	
+	if(isset($_SESSION['delete']))
+		$deleteArray = $_SESSION['delete'];
+	
+	if(isset($_SESSION['approve']))	
+		$approveArray = $_SESSION['approve'];
+	
+	$dbc = connect_to_db('ProjectHappening');
+	
+	if(isset($_SESSION['delete'])){
+	foreach ($deleteArray as $id) {
+		//delete
+		$query = "DELETE from events where E_ID='".$id."';";
+		$result = perform_query( $dbc, $query );
+        
+        $del++;
+    }
+    }
+    
+    if(isset($_SESSION['approve'])){
+    foreach ($approveArray as $id) {
+         //update
+        $query = "UPDATE events SET APPROVED=1 where E_ID='".$id."';";
+		$result = perform_query( $dbc, $query );
+         
+        $app++;
+    }
+    }
+    
+    $_SESSION['amountDeleted'] = $del;
+    $_SESSION['amountApproved'] = $app;
+	
+	disconnect_from_db( $dbc, $result );
 }
 
-function updateUsers(){
+function updateUsers() {
+	//setting sessions
+	if(isset($_POST['deleteUser']))
+		$_SESSION['deleteUser'] = $_POST['deleteUser'];
 
-		
-		//setting sessions
-		if(isset($_POST['deleteUser']))
-			$_SESSION['deleteUser'] = $_POST['deleteUser'];
+	if(isset($_POST['updatePriv']))
+		$_SESSION['updatePriv'] = $_POST['updatePriv'];
 	
-		if(isset($_POST['updatePriv']))
-			$_SESSION['updatePriv'] = $_POST['updatePriv'];
-		
-		//setting arrays
-		if(isset($_SESSION['deleteUser']))
-			$deleteArray = $_SESSION['deleteUser'];
-		
-		if(isset($_SESSION['updatePriv']))	
-			$updateArray = $_SESSION['updatePriv'];
-		
-		$dbc = connect_to_db('ProjectHappening');
-		
-		if(isset($_SESSION['deleteUser'])){
-		foreach ($deleteArray as $id) {
-			//delete
-			$query = "DELETE from users where U_ID='".$id."';";
-			$result = perform_query( $dbc, $query );
-            
+	//setting arrays
+	if(isset($_SESSION['deleteUser']))
+		$deleteArray = $_SESSION['deleteUser'];
+	
+	if(isset($_SESSION['updatePriv']))	
+		$updateArray = $_SESSION['updatePriv'];
+	
+	$dbc = connect_to_db('ProjectHappening');
+	
+	if(isset($_SESSION['deleteUser'])){
+    	foreach ($deleteArray as $id) {
+    		//delete
+    		$query = "DELETE from users where U_ID='".$id."';";
+    		$result = perform_query( $dbc, $query );
+        }
+    }
 
-        }
-        }
-        
-        if(isset($_SESSION['updatePriv'])){
-        foreach ($updateArray as $arr) {
-        
-        
-             //update
-          //  $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';"; 
-             
-             
+    if(isset($_SESSION['updatePriv'])){
+        foreach ($updateArray as $arr) {       
+            //update
+            //  $query = "SELECT FIRSTNAME, EMAIL, PRIV where U_ID='".$a[0]."';"; 
+
             $a = explode('=>', $arr);   // $a[0]=id    $a[1]=priv (new)
            
            /******for email******/ 
@@ -374,29 +344,20 @@ function updateUsers(){
             	   			$oldPriv = $obj->PRIV;
             }
             if ($oldPriv!=$a[1]){      //if there's a change in privacy, then send email.
-	            $to = $email;
-				$subject = "Happening - Change in User privacy";
-				$txt = "Hello, '".$name."'! We have apdated your privacy setting from $oldPriv to $a[1]".".";
-				$headers = "From: happening.bc@gmail.com" . "\r\n" .
-					"BCC: '" . $_SESSION['email'] ."'";
-	
-				mail($to,$subject,$txt,$headers);
-			}
-            
-             
+                $to = $email;
+    			$subject = "Happening - Change in User privacy";
+    			$txt = "Hello, '".$name."'! We have apdated your privacy setting from $oldPriv to $a[1]".".";
+    			$headers = "From: happening.bc@gmail.com" . "\r\n" .
+    				"BCC: '" . $_SESSION['email'] ."'";
+
+    			mail($to,$subject,$txt,$headers);
+    		}
+
             /*******updating database*****/
             $query = "UPDATE users SET PRIV='".$a[1]."' where U_ID='".$a[0]."';";
-			$result = perform_query( $dbc, $query );
-             
-
+    		$result = perform_query( $dbc, $query );
         }
-        }
-        
-		disconnect_from_db( $dbc, $result );
-
-
+    }
+	disconnect_from_db( $dbc, $result );
 }
-
-	
-
 ?>

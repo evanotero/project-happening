@@ -91,8 +91,4 @@ function displayForm() {
       </form>
 <?php
 }
-/*
-
-*/	
-
 ?>
