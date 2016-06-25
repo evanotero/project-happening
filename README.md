@@ -1,6 +1,6 @@
 # Project Happening
 
-![](https://github.com/CSCI2254/project-happening/blob/master/img/happeninglogo.png)
+*insert logo here*
 
 ## Description
 
