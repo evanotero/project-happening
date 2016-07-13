@@ -26,6 +26,9 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 
 ### Future
 - Add support for events only posted on Facebook by Boston College student groups.
+- Re-design user accounts to allow students to subscribe to organizations, favorite specific events, and more.
+- Re-design MyWall to display events from their list of favorites and from subcribed organizations.
+- Create a General Events page (what MyWall is currently), called EagleView.
 
 <hr>
 &copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
