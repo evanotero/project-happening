@@ -220,17 +220,17 @@ $(function() {
 
     // Listen event filter buttons
     $('.showstudent, .showbc').click(function() {
-        if ($(this).hasClass('active')) {
-            if ($(this).hasClass('showstudent') && $('.li.student').hasClass('hide'))
-                $('.li.student').removeClass('hide');
-            if ($(this).hasClass('showbc') && $('.li.bc').hasClass('hide'))
-                $('.li.bc').removeClass('hide');
+        if (!$(this).hasClass('active')) {
+            if ($(this).hasClass('showstudent') && $('li.student').hasClass('hide'))
+                $('li.student').removeClass('hide');
+            if ($(this).hasClass('showbc') && $('li.bc').hasClass('hide'))
+                $('li.bc').removeClass('hide');
         }
         else {
-            if ($(this).hasClass('showstudent') && !$('.li.student').hasClass('hide'))
-                $('.li.student').addClass('hide');
-            if ($(this).hasClass('showbc') && !$('.li.bc').hasClass('hide'))
-                $('.li.bc').addClass('hide');
+            if ($(this).hasClass('showstudent') && !$('li.student').hasClass('hide'))
+                $('li.student').addClass('hide');
+            if ($(this).hasClass('showbc') && !$('li.bc').hasClass('hide'))
+                $('li.bc').addClass('hide');
         }
     });
 
@@ -721,10 +721,10 @@ $(function() {
                     // Determine type of event
                     var cls = "";
                     switch (value.U_ID) {
-                        case 1:
+                        case "1":
                             cls = "student"; // Orgsync Events
                             break;
-                        case 2:
+                        case "2":
                             cls = "bc";  // BC Event Calendar Events
                             break;
                         default:
@@ -761,7 +761,7 @@ $(function() {
                             "<a href='http://facebook.com/sharer.php?u=" + value.LINK + "' target='_new'></a></i></li>" +
                             "</ul></div></li>");
                     else
-                        $(".event-list").append("<li>" +
+                        $(".event-list").append("<li class='" + cls + "'>" +
                             "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
                             "<span class='day'>" + startday + "</span>" +
                             "<span class='month'>" + startmonth + "</span>" +
