@@ -741,8 +741,8 @@ $(function() {
                             "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
                             "<span class='timespan'>" + starttime + endtime + "</span>" +
                             "<span class='location'>" + location + "</span></p>" +
-                            "<p class='deschidden'>" + value.DESCRIPTION +
-                            "</p></div>" +
+                            "<div class='deschidden'>" + value.DESCRIPTION +
+                            "</div></div>" +
                             "<div class='social'><ul>" +
                             "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +
@@ -763,8 +763,8 @@ $(function() {
                             "<i class='fa fa-users' aria-hidden='true'></i> <span class='organizer'>" + value.ORGANIZER + "</span><br>" +
                             "<span class='timespan'>" + starttime + endtime + "</span>" +
                             "<span class='location'>" + location + "</span></p>" +
-                            "<p class='deschidden'>" + value.DESCRIPTION +
-                            "</p></div>" +
+                            "<div class='deschidden'>" + value.DESCRIPTION +
+                            "</div></div>" +
                             "<div class='social'><ul>" +
                             "<li class='info'><i class='fa fa-info fa-lg' aria-hidden='true'></i></li>" +
                             "<li class='link'><i class='fa fa-link fa-lg' aria-hidden='true'>" +

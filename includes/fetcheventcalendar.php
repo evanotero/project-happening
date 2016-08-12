@@ -34,8 +34,8 @@ foreach ($items as $item) {
     }
     
     $description = mysqli_real_escape_string($dbc, $item->description);
-    $description = strip_tags($description, '<a>');
-    $description = substr($description, 0, strpos($description, "http://events.bc.edu/event/") - 10);
+    $description = strip_tags($description, '<p><a>');
+    $description = substr($description, 0, strpos($description, "http://events.bc.edu/event/") - 13);
 
     $categories = $item->category;
     $group = "";
@@ -70,15 +70,24 @@ foreach ($items as $item) {
     }
 
     // Query to see if event already exits in database
-    $query = "select NAME from events where LINK = '$eventlink' AND HIDDENINFO = '$fulltitle'";
+    $query1 = "select NAME from events where NAME = '$name' AND STARTDATE = '$date'";
+    $result1 = perform_query( $dbc, $query1);
 
-    $result = perform_query( $dbc, $query);
-    if (mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    $query2 = "select NAME from events where LINK = '$eventlink' AND STARTDATE = '$date'";
+    $result2 = perform_query( $dbc, $query2);
+
+    if (mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+        // Event already exists with this name and date
+        $query = "UPDATE events
+                    SET ORGANIZER = '$group', LOCATION = '$location', DESCRIPTION = '$description', 
+                    MEDIAURL = '$mediaurl', LINK = '$eventlink', HIDDENINFO = '$fulltitle' 
+                    WHERE NAME = '$name' AND STARTDATE = '$date';";
+    } elseif (mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
         // Event already exists with this link
         $query = "UPDATE events
                     SET NAME = '$name', ORGANIZER = '$group', LOCATION = '$location', 
-                    DESCRIPTION = '$description', MEDIAURL = '$mediaurl', STARTDATE = '$date' 
-                    WHERE LINK = '$eventlink' AND HIDDENINFO = '$fulltitle';";
+                    DESCRIPTION = '$description', MEDIAURL = '$mediaurl', HIDDENINFO = '$fulltitle' 
+                    WHERE LINK = '$eventlink' AND STARTDATE = '$date';";
     } else {                  
         // Insert Event into DB
         $query = "INSERT INTO events (
