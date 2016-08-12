@@ -663,24 +663,6 @@ $(function() {
         }
         $(".event-list").empty(); // Clear all listed events
 
-        // // FOR DEBUGGINGS ONLY
-        // console.log(start_day);
-        // console.log(end_day);
-        // console.log(str);
-        // var request = $.ajax({
-        //     url: "includes/display.php",
-        //     type: "GET",
-        //     data: "q=" + name + "&start=" + start_day + "&end=" + end_day,
-        //     success: function(data) {
-        //         console.log(data); // DEBUG
-        //         return true;
-        //     },
-        //     error: function(xhr, status, error) {
-        //         console.log(xhr + " " + status + " " + error); // DEBUG
-        //         return false;
-        //     }
-        // });
-        
         $.getJSON("includes/display.php", { q: str, start: start_day, end: end_day }, function(data) {
                 $.each(data, function(i, value) {
                     // Current Dates
@@ -722,10 +704,18 @@ $(function() {
                     var cls = "";
                     switch (value.U_ID) {
                         case "1":
-                            cls = "student"; // Orgsync Events
+                            // Orgsync Events
+                            if ($('.showstudent').hasClass('active'))
+                                cls = "student";
+                            else
+                                cls = "student hide";
                             break;
                         case "2":
-                            cls = "bc";  // BC Event Calendar Events
+                            // BC Event Calendar Events
+                            if ($('.showbc').hasClass('active'))
+                                cls = "bc";
+                            else
+                                cls = "bc hide";
                             break;
                         default:
                             cls = "student"; // Custom Events
