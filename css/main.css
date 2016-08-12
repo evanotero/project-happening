@@ -787,15 +787,16 @@ li.info:hover i
 {
     font-family: 'Oswald', Helvetica, Arial, sans-serif;
     font-size: 1.3em;
+    line-height: 1.25;
 
     color: #fff;
     background: rgba(0,0,0,.4);
-    line-height: 1.25;
 }
 
 #faq .container > div > div > p.lead.textgold
 {
     font-size: 1.9em !important;
+
     background: none !important;
     text-shadow: 0 2px 3px rgba(0, 0, 0, 1);
 }
@@ -1565,7 +1566,9 @@ form#search-form .daterow input
 {
     font-family: 'Lato';
     font-size: 15px;
+
     width: 50%;
+
     color: #000;
     border: 1px solid #fff;
     border-radius: 0;
@@ -1573,16 +1576,16 @@ form#search-form .daterow input
 
 .showrow .btn.active
 {
-    background-color: rgba(254,209,54, .9);
     color: #000;
     border: 1px solid #fff;
+    background-color: rgba(254,209,54, .9);
 }
 
 .showrow .btn:active
 {
     color: #000;
-    background-color: rgba(254,209,54, .4);
     border: 1px solid #fff;
+    background-color: rgba(254,209,54, .4);
 }
 
 .row.daterow,
@@ -1614,7 +1617,8 @@ span#resultslabel
     cursor: text;
 }
 
-#thisweekdiv {
+#thisweekdiv
+{
     height: 43px;
 }
 
