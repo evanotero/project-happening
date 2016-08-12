@@ -85,7 +85,7 @@ foreach ($items as $item) {
                     NAME, ORGANIZER, LOCATION, DESCRIPTION, 
                     MEDIAURL, STARTDATE, LINK, HIDDENINFO, APPROVED, U_ID) 
                     VALUES ('$name','$group','$location','$description','$mediaurl',
-                    '$date', '$eventlink', '$fulltitle', 1, 1);";
+                    '$date', '$eventlink', '$fulltitle', 1, 2);";
     }    
     $result = perform_query( $dbc, $query); 
 }

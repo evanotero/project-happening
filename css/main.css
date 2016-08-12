@@ -1561,13 +1561,39 @@ form#search-form .daterow input
     background-color: rgba(87, 22, 25, .9);
 }
 
+.showrow .btn
+{
+    font-family: 'Lato';
+    font-size: 15px;
+    width: 50%;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 0;
+}
+
+.showrow .btn.active
+{
+    background-color: rgba(254,209,54, .9);
+    color: #000;
+    border: 1px solid #fff;
+}
+
+.showrow .btn:active
+{
+    color: #000;
+    background-color: rgba(254,209,54, .4);
+    border: 1px solid #fff;
+}
+
 .row.daterow,
-.row.resultslabelrow
+.row.resultslabelrow,
+.row.showrow
 {
     padding-top: 10px;
 }
 
-.row.daterow .btn {
+.row.daterow .btn
+{
     margin-bottom: 10px;
 }
 

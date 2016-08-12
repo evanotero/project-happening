@@ -218,6 +218,22 @@ $(function() {
             $("#resultslabel").text("Displaying Events from Search:");
     });
 
+    // Listen event filter buttons
+    $('.showstudent, .showbc').click(function() {
+        if ($(this).hasClass('active')) {
+            if ($(this).hasClass('showstudent') && $('.li.student').hasClass('hide'))
+                $('.li.student').removeClass('hide');
+            if ($(this).hasClass('showbc') && $('.li.bc').hasClass('hide'))
+                $('.li.bc').removeClass('hide');
+        }
+        else {
+            if ($(this).hasClass('showstudent') && !$('.li.student').hasClass('hide'))
+                $('.li.student').addClass('hide');
+            if ($(this).hasClass('showbc') && !$('.li.bc').hasClass('hide'))
+                $('.li.bc').addClass('hide');
+        }
+    });
+
     // Listen for "This Week" button press
     $(".displayweek").click(function() {
         $("#search_input").val("");
@@ -702,6 +718,20 @@ $(function() {
                         endtime = " - " + endtime + "<br>";
                     }
 
+                    // Determine type of event
+                    var cls = "";
+                    switch (value.U_ID) {
+                        case 1:
+                            cls = "student"; // Orgsync Events
+                            break;
+                        case 2:
+                            cls = "bc";  // BC Event Calendar Events
+                            break;
+                        default:
+                            cls = "student"; // Custom Events
+                            break;
+                    }
+
                     // Determine location information to display
                     var location = value.LOCATION;
                     if (location == "")
@@ -710,7 +740,7 @@ $(function() {
                         location = "<i class='fa fa-map-marker' aria-hidden='true'></i> " + location + "<br>";
 
                     if (value.MEDIAURL == "" || value.MEDIAURL == null)
-                        $(".event-list").append("<li>" +
+                        $(".event-list").append("<li class='" + cls + "'>" +
                             "<time datetime=" + startyear + "-" + startmonth + "-" + startday + ">" +
                             "<span class='day'>" + startday + "</span>" +
                             "<span class='month'>" + startmonth + "</span>" +
@@ -757,7 +787,8 @@ $(function() {
             .fail(function(xhr, status, error) {
                 console.log("getJSON error");
                 console.log(xhr + " " + status + " " + error); // DEBUG
-            });
+            }
+        );
     }
 
     /*** Convert numbered month to abbreviation ***/
