@@ -56,7 +56,7 @@ foreach ($items as $item) {
     }
 
     // Do NOT add events from Academic Calendar (BC event calendar contains this information)
-    if (strcmp($group, "Academic") != 0) {
+    if (strcmp($group, "Academic") != 0 && strcmp($group, "OCH") != 0) {
         // Query to see if event already exits in database
         $query = "select NAME from events where LINK = '$eventlink'";
 
