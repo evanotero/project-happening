@@ -173,7 +173,6 @@ $(function() {
         useCurrent: false //Important!
     });
     $('#datetimepicker3').datetimepicker({
-        viewMode: 'years',
         format: 'MM/DD/YYYY',
         showTodayButton: true
     });
