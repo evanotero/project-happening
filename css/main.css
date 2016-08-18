@@ -510,7 +510,7 @@ a:active
 
 .event-list > li > .info > .title
 {
-    font-size: 13pt;
+    font-size: 11pt;
     font-weight: 500;
 
     margin: 0;
@@ -652,11 +652,11 @@ li.info:hover i
 {
     .event-list > li > .info > .title
     {
-        font-size: 17pt;
+        font-size: 16pt;
     }
     .event-list > li > .info > .desc
     {
-        font-size: 13pt;
+        font-size: 12pt;
     }
 }
 
