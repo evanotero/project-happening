@@ -29,7 +29,6 @@ Proposal Documents can be found on the [_About_](https://github.com/CSCI2254/pro
 - Re-design user accounts to allow students to subscribe to organizations, favorite specific events, and more.
 - Re-design MyWall to display events from their list of favorites and from subcribed organizations.
 - Create a General Events page (what MyWall is currently), called EagleView.
-- Allow users to filter events by _Official Calendar_ and _Student Events_.
 
 <hr>
-&copy; 2016 Evan Otero, Clinton Tak, Sinclair Jones
+&copy; 2016 Evan Otero
