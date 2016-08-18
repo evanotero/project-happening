@@ -12,7 +12,7 @@ CREATE TABLE users (
      PRIMARY KEY (U_ID)
 ) engine=MyISAM;
 
-insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Org', 'Sync', 'orgsync', 'oteroev@bc.edu', '30246a560dfa5906e2dbc886cb70734350f50a0f', 'admin');
+insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Org', 'Sync', 'orgsync', 'oteroev@bc.edu', 'g8m5j3061642w10t6vk2df7n482s3051mlrj9728', 'admin');
 insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Catherine', 'Anderson', 'canderson0', 'canderson0@imgur.com', 'g8m5j3061642w10t6vk2df7n482s3051mlrj9728', 'user');
 insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Harold', 'Cook', 'hcook1', 'hcook1@pagesperso-orange.fr', 'f75ku5877owcztc2ind6ac4899d9ksn65p6qsppq', 'unverified');
 insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values ('Paula', 'Hayes', 'phayes2', 'phayes2@taobao.com', 'uo8o08v61wbsk71930bdx3f3306g18490ijw19po', 'unverified');
@@ -23,7 +23,7 @@ insert into users (FIRSTNAME, LASTNAME, USERNAME, EMAIL, PASSWORD, PRIV) values 
 # convert org_id to group/club's name
 CREATE TABLE events (
     E_ID int NOT NULL AUTO_INCREMENT,
-    NAME VARCHAR(100) NOT NULL,
+    NAME VARCHAR(150) NOT NULL,
     ORGANIZER VARCHAR(70) NOT NULL,
     LOCATION VARCHAR(320) NOT NULL,
     DESCRIPTION VARCHAR(2000) NOT NULL,
