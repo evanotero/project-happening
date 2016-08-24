@@ -58,7 +58,7 @@ foreach ($items as $item) {
     // Do NOT add events from Academic Calendar (BC event calendar contains this information)
     if (strcmp($group, "Academic") != 0 && strcmp($group, "OCH") != 0) {
         // Query to see if event already exits in database
-        $query = "select NAME from events where LINK = '$eventlink'";
+        $query = "select NAME from events where LINK = '$eventlink' AND U_ID = 1";
 
         $result = perform_query( $dbc, $query);
         if (mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -66,7 +66,7 @@ foreach ($items as $item) {
             $query = "UPDATE events
                         SET NAME = '$name', ORGANIZER = '$group', LOCATION = '$location', 
                         DESCRIPTION = '$description', MEDIAURL = '$mediaurl', STARTDATE = '$startdate',
-                        ENDDATE = '$enddate' WHERE LINK = '$eventlink';";
+                        ENDDATE = '$enddate' WHERE LINK = '$eventlink' AND U_ID = 1;";
         } else {                  
             // Insert Event into DB
             $query = "INSERT INTO events (

@@ -70,10 +70,10 @@ foreach ($items as $item) {
     }
 
     // Query to see if event already exits in database
-    $query1 = "select NAME from events where NAME = '$name' AND STARTDATE = '$date'";
+    $query1 = "select NAME from events where NAME = '$name' AND STARTDATE = '$date' AND U_ID = 2";
     $result1 = perform_query( $dbc, $query1);
 
-    $query2 = "select NAME from events where LINK = '$eventlink' AND STARTDATE = '$date'";
+    $query2 = "select NAME from events where LINK = '$eventlink' AND STARTDATE = '$date' AND U_ID = 2";
     $result2 = perform_query( $dbc, $query2);
 
     if (mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
@@ -81,13 +81,13 @@ foreach ($items as $item) {
         $query = "UPDATE events
                     SET ORGANIZER = '$group', LOCATION = '$location', DESCRIPTION = '$description', 
                     MEDIAURL = '$mediaurl', LINK = '$eventlink', HIDDENINFO = '$fulltitle' 
-                    WHERE NAME = '$name' AND STARTDATE = '$date';";
+                    WHERE NAME = '$name' AND STARTDATE = '$date' AND U_ID = 2;";
     } elseif (mysqli_fetch_array($result2, MYSQLI_ASSOC)) {
         // Event already exists with this link
         $query = "UPDATE events
                     SET NAME = '$name', ORGANIZER = '$group', LOCATION = '$location', 
                     DESCRIPTION = '$description', MEDIAURL = '$mediaurl', HIDDENINFO = '$fulltitle' 
-                    WHERE LINK = '$eventlink' AND STARTDATE = '$date';";
+                    WHERE LINK = '$eventlink' AND STARTDATE = '$date' AND U_ID = 2;";
     } else {                  
         // Insert Event into DB
         $query = "INSERT INTO events (
