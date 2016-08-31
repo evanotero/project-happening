@@ -9,6 +9,7 @@ A web application for Boston College students to view, search, and add all event
 Awared the top final project for the Boston College Web Applications Development course (CSCI2254, Spring 2016).
 
 ### Application & Code Explained
+- Over 1,000 unique users.
 - **Application Dependencies**: jQuery, Boston College OrgSync RSS, Boston College Events Calendar, Bootstrap DatePicker v4 (Moment.js), Bootstrap v3.3.6, Google Fonts API, Google reCAPTCHA, Google Analytics, and Font Awesome v4.0.3.
 - **Languages Used**: HTML, CSS, JavaScript & jQuery, PHP, and SQL.
 - Cron Job runs PHP scripts every hour to fetch events.
